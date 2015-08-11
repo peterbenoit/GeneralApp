@@ -1,0 +1,18 @@
+<ion-view title="Disease of the Week">
+    <ion-content class="has-header">
+        {{storage}}
+        
+        <div class="list">
+
+
+
+            <a class="item" ng-class="{'item-thumbnail-left' : new.picture}" href="#/app/dotw/{{$index}}" ng-repeat="disease in diseases">
+
+                <h2>{{disease.name}}</h2>
+                <p>{{disease.shortDescription}}</p>
+            </a>
+
+        </div>
+       
+    </ion-content>
+</ion-view>

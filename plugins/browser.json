@@ -1,0 +1,57 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {
+            "config.xml": {
+                "parents": {
+                    "/*": [
+                        {
+                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"browser-package\" value=\"BarcodeScanner\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
+                            "count": 1
+                        }
+                    ]
+                }
+            }
+        }
+    },
+    "installed_plugins": {
+        "com.ionic.keyboard": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "com.phonegap.plugins.barcodescanner": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "com.pushwoosh.plugins.pushwoosh": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "de.appplant.cordova.plugin.email-composer": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "org.apache.cordova.dialogs": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "org.apache.cordova.geolocation": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        }
+    },
+    "dependent_plugins": {}
+}
