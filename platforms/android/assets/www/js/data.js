@@ -17,84 +17,84 @@ angular.module('cdcgeneralapp.data', [])
 			note: 'Disease of the Week',
 			url: '#/app/dotw'
 		},		
-		{ 
-			title: 'Products',
-			icon: 'ion-bag',
-			note: 'Our Products',
-			url: '#/app/products'
-		},
+		// { 
+		// 	title: 'Products',
+		// 	icon: 'ion-bag',
+		// 	note: 'Our Products',
+		// 	url: '#/app/products'
+		// },
 		{ 
 			title: 'Health Articles',
 			icon: 'ion-android-bicycle',
 			note: 'Health Articles',
 			url: '#/app/healtharticles'
 		},		
-		{ 
-			title: 'Gallery',
-			icon: 'ion-images',
-			note: 'Our Photos',
-			url: '#/app/gallery'
-		},
-		{ 
-			title: 'Map',
-			icon: 'ion-map',
-			note: 'Find Us',
-			url: '#/app/map'
-		},
-		{ 
-			title: 'About',
-			icon: 'ion-person-stalker',
-			note: 'About Us',
-			url: '#/app/about'
-		},
-		{ 
-			title: 'Contact',
-			icon: 'ion-email',
-			note: 'Contact Us',
-			url: '#/app/contact'
-		},
-		{ 
-			title: 'RSS',
-			icon: 'ion-social-rss',
-			note: 'RSS Feed',
-			url: '#/app/feeds'
-		},
-		{ 
-			title: 'Feed Plugin',
-			icon: 'ion-social-rss-outline',
-			note: 'Atom, RSS, or Media RSS',
-			url: '#/app/feed-categories'
-		},
-		{ 
-			title: 'YouTube',
-			icon: 'ion-social-youtube',
-			note: 'YouTube Videos',
-			url: '#/app/youtubevideos'
-		},
-		{ 
-			title: 'Wordpress JSON',
-			icon: 'ion-social-wordpress',
-			note: 'JSON API plugin',
-			url: '#/app/posts'
-		},
-		{ 
-			title: 'Wordpress Pagination',
-			icon: 'ion-social-wordpress-outline',
-			note: 'Server Side',
-			url: '#/app/serverposts'
-		},
-		{ 
-			title: 'Mobile Plugins',
-			icon: 'ion-iphone',
-			note: 'Cordova/PhoneGap',
-			url: '#/app/plugins'
-		},
-        { 
-            title: 'Quiz',
-            icon: 'ion-university',
-            note: 'CDC Quiz Module',
-            url: '#/app/quiz'
-        },		
+		// { 
+		// 	title: 'Gallery',
+		// 	icon: 'ion-images',
+		// 	note: 'Our Photos',
+		// 	url: '#/app/gallery'
+		// },
+		// { 
+		// 	title: 'Map',
+		// 	icon: 'ion-map',
+		// 	note: 'Find Us',
+		// 	url: '#/app/map'
+		// },
+		// { 
+		// 	title: 'About',
+		// 	icon: 'ion-person-stalker',
+		// 	note: 'About Us',
+		// 	url: '#/app/about'
+		// },
+		// { 
+		// 	title: 'Contact',
+		// 	icon: 'ion-email',
+		// 	note: 'Contact Us',
+		// 	url: '#/app/contact'
+		// },
+		// { 
+		// 	title: 'RSS',
+		// 	icon: 'ion-social-rss',
+		// 	note: 'RSS Feed',
+		// 	url: '#/app/feeds'
+		// },
+		// { 
+		// 	title: 'Feed Plugin',
+		// 	icon: 'ion-social-rss-outline',
+		// 	note: 'Atom, RSS, or Media RSS',
+		// 	url: '#/app/feed-categories'
+		// },
+		// { 
+		// 	title: 'YouTube',
+		// 	icon: 'ion-social-youtube',
+		// 	note: 'YouTube Videos',
+		// 	url: '#/app/youtubevideos'
+		// },
+		// { 
+		// 	title: 'Wordpress JSON',
+		// 	icon: 'ion-social-wordpress',
+		// 	note: 'JSON API plugin',
+		// 	url: '#/app/posts'
+		// },
+		// { 
+		// 	title: 'Wordpress Pagination',
+		// 	icon: 'ion-social-wordpress-outline',
+		// 	note: 'Server Side',
+		// 	url: '#/app/serverposts'
+		// },
+		// { 
+		// 	title: 'Mobile Plugins',
+		// 	icon: 'ion-iphone',
+		// 	note: 'Cordova/PhoneGap',
+		// 	url: '#/app/plugins'
+		// },
+  //       { 
+  //           title: 'Quiz',
+  //           icon: 'ion-university',
+  //           note: 'CDC Quiz Module',
+  //           url: '#/app/quiz'
+  //       },		
 	]; 
 	
 	return data;
@@ -111,25 +111,25 @@ angular.module('cdcgeneralapp.data', [])
 			url: '#/app'
 		},        
 		{ 
-			title: 'Elements',
+			title: 'Typeface',
 			icon: 'ion-code',
-			url: '#/app/elements'
+			url: '#/app/typeface'
 		},        
-		{ 
-			title: 'Tabs',
-			icon: 'ion-drag',
-			url: '#/app/tabs'
-		},
-		{ 
-			title: 'Grid',
-			icon: 'ion-grid',
-			url: '#/app/grid'
-		},
-		{ 
-			title: 'RSS (Pull to refresh)',
-			icon: 'ion-social-rss',
-			url: '#/app/feeds-refresher'
-		}
+		// { 
+		// 	title: 'Tabs',
+		// 	icon: 'ion-drag',
+		// 	url: '#/app/tabs'
+		// },
+		// { 
+		// 	title: 'Grid',
+		// 	icon: 'ion-grid',
+		// 	url: '#/app/grid'
+		// },
+		// { 
+		// 	title: 'RSS (Pull to refresh)',
+		// 	icon: 'ion-social-rss',
+		// 	url: '#/app/feeds-refresher'
+		// }
 	]; 
 	
 	return data;
@@ -627,14 +627,6 @@ angular.module('cdcgeneralapp.data', [])
 		}, 
 		{
 		   name: 'Third Option',
-		   value: false
-		}, 
-		{
-		   name: 'Fourth Option',
-		   value: false
-		}, 
-		{
-		   name: 'Fifth Option',
 		   value: false
 		}],
 		sorting: 'A',

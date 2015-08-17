@@ -9,19 +9,20 @@
 
   <ion-side-menu side="left">
     <header class="bar bar-header bar-stable">
-    <h1 class="title">Menu</h1>
+    <h1 class="title">Sources</h1>
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item ng-repeat="item in items" nav-clear menu-close href="{{item.url}}">
+        <ion-item ng-repeat="item in items" nav-clear menu-close href="{{item.url}}" nav-transition="ios">
         <i class="icon {{item.icon}}"></i> {{item.title}}
         </ion-item>
-        <ion-item nav-clear menu-close ng-click="login()">
+<!--         <ion-item nav-clear menu-close ng-click="login()">
         <i class="icon ion-log-in"></i> Login
         </ion-item>
+-->        
         <ion-item nav-clear menu-close ng-click="show()">
-        <i class="icon ion-arrow-swap"></i> Action Sheet
-        </ion-item>
+        <i class="icon ion-arrow-swap"></i> Share This
+        </ion-item> 
       </ion-list>
     </ion-content>
   </ion-side-menu>

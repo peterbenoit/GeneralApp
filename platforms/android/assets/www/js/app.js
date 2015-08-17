@@ -67,13 +67,25 @@ angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgener
 			url: "/home",
 			views: {
 				'menuContent' :{
-					templateUrl: "templates/home-grid-2b.html",
+					// templateUrl: "templates/home-typeface.html",
+					// templateUrl: "templates/home-grid-2b.html",
+					templateUrl: "templates/home-grid-2.html",
 					// templateUrl: "templates/home-grid-3.html",
 					// templateUrl: "templates/home-rows.html",
 					controller: 'HomeCtrl'
 				}
 			}
 		})
+
+		.state('app.typeface', {
+			url: "/typeface",
+			views: {
+				'menuContent' :{
+					templateUrl: "templates/home-typeface.html",
+					controller: 'TypefaceCtrl'
+				}
+			}
+		})		
 
 		.state('app.news', {
 			url: "/news",

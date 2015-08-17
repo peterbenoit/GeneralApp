@@ -4,17 +4,21 @@
         {{storage}}
 
         <div class="row" ng-repeat="row in healtharticles | partition:2">
-
-{{row}}
-
-<!--             <div class="col" ng-repeat="product in row">
-            <a href="#/app/products/{{(($parent.$index*row.length)+$index)}}"><img ng-src="{{product.thumb}}"alt="{{product.title}}"/></a>
+        {{row.category._term}}
+            <div class="col card" ng-repeat="field in row">
+                
+                <a href="#/app/healtharticle/{{(($parent.$index*row.length)+$index)}}">
+                    <h2>{{field.title.__cdata}}</h2>
+                    <p>{{field.summary.__cdata}}</p>
+                </a>
+          <!--   <a href="#/app/products/{{(($parent.$index*row.length)+$index)}}"><img ng-src="{{product.thumb}}"alt="{{product.title}}"/></a>
             <a href="#/app/products/{{(($parent.$index*row.length)+$index)}}"><h2>{{product.title}}</h2></a>
             <p ng-model="letterLimit">{{product.body | limitTo:letterLimit}}...</p>
             <p class="tags"><i class="icon ion-pricetags"></i>
             <span ng-repeat="tag in product.tags">{{tag}}{{$last ? '' : ', '}}</span>
             </p>
-            </div> -->
+           -->  
+            </div>
         </div>
 
     </ion-content>

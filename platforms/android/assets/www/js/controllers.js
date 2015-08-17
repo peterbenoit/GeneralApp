@@ -9,6 +9,11 @@ angular.module('cdcgeneralapp.controllers', [])
 	}
 })
 
+// Typeface Controller
+.controller('TypefaceCtrl', function($scope, Data) {
+	// $scope.items = Data.items;
+})
+
 // News Controller
 .controller('NewsCtrl', function($scope, $ionicLoading, NewsData, NewsStorage) {
 	

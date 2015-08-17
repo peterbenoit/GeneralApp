@@ -29,48 +29,48 @@ angular.module('cdcgeneralapp.data', [])
 			note: 'Health Articles',
 			url: '#/app/healtharticles'
 		},		
-		// { 
-		// 	title: 'Gallery',
-		// 	icon: 'ion-images',
-		// 	note: 'Our Photos',
-		// 	url: '#/app/gallery'
-		// },
+		{ 
+			title: 'Gallery',
+			icon: 'ion-images',
+			note: 'Our Photos',
+			url: '#/app/gallery'
+		},
 		// { 
 		// 	title: 'Map',
 		// 	icon: 'ion-map',
 		// 	note: 'Find Us',
 		// 	url: '#/app/map'
 		// },
-		// { 
-		// 	title: 'About',
-		// 	icon: 'ion-person-stalker',
-		// 	note: 'About Us',
-		// 	url: '#/app/about'
-		// },
+		{ 
+			title: 'About',
+			icon: 'ion-person-stalker',
+			note: 'About Us',
+			url: '#/app/about'
+		},
 		// { 
 		// 	title: 'Contact',
 		// 	icon: 'ion-email',
 		// 	note: 'Contact Us',
 		// 	url: '#/app/contact'
 		// },
-		// { 
-		// 	title: 'RSS',
-		// 	icon: 'ion-social-rss',
-		// 	note: 'RSS Feed',
-		// 	url: '#/app/feeds'
-		// },
+		{ 
+			title: 'RSS',
+			icon: 'ion-social-rss',
+			note: 'RSS Feed',
+			url: '#/app/feeds'
+		},
 		// { 
 		// 	title: 'Feed Plugin',
 		// 	icon: 'ion-social-rss-outline',
 		// 	note: 'Atom, RSS, or Media RSS',
 		// 	url: '#/app/feed-categories'
 		// },
-		// { 
-		// 	title: 'YouTube',
-		// 	icon: 'ion-social-youtube',
-		// 	note: 'YouTube Videos',
-		// 	url: '#/app/youtubevideos'
-		// },
+		{ 
+			title: 'YouTube',
+			icon: 'ion-social-youtube',
+			note: 'YouTube Videos',
+			url: '#/app/youtubevideos'
+		},
 		// { 
 		// 	title: 'Wordpress JSON',
 		// 	icon: 'ion-social-wordpress',
@@ -111,15 +111,20 @@ angular.module('cdcgeneralapp.data', [])
 			url: '#/app'
 		},        
 		{ 
-			title: 'Elements',
+			title: 'Typeface',
 			icon: 'ion-code',
-			url: '#/app/elements'
-		},        
-		{ 
-			title: 'Tabs',
-			icon: 'ion-drag',
-			url: '#/app/tabs'
+			url: '#/app/typeface'
 		},
+		{ 
+			title: 'Cards',
+			icon: 'ion-code',
+			url: '#/app/cards'
+		},
+		// { 
+		// 	title: 'Tabs',
+		// 	icon: 'ion-drag',
+		// 	url: '#/app/tabs'
+		// },
 		{ 
 			title: 'Grid',
 			icon: 'ion-grid',
@@ -627,14 +632,6 @@ angular.module('cdcgeneralapp.data', [])
 		}, 
 		{
 		   name: 'Third Option',
-		   value: false
-		}, 
-		{
-		   name: 'Fourth Option',
-		   value: false
-		}, 
-		{
-		   name: 'Fifth Option',
 		   value: false
 		}],
 		sorting: 'A',

@@ -3,7 +3,7 @@
         
         {{storage}}
 
-        <div class="row" ng-repeat="row in healtharticles | partition:2">
+        <div class="row healtharticles" ng-repeat="row in healtharticles | partition:2">
         {{row.category._term}}
             <div class="col card" ng-repeat="field in row">
                 

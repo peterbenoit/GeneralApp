@@ -111,25 +111,25 @@ angular.module('cdcgeneralapp.data', [])
 			url: '#/app'
 		},        
 		{ 
-			title: 'Elements',
+			title: 'Typeface',
 			icon: 'ion-code',
-			url: '#/app/elements'
+			url: '#/app/typeface'
 		},        
-		{ 
-			title: 'Tabs',
-			icon: 'ion-drag',
-			url: '#/app/tabs'
-		},
-		{ 
-			title: 'Grid',
-			icon: 'ion-grid',
-			url: '#/app/grid'
-		},
-		{ 
-			title: 'RSS (Pull to refresh)',
-			icon: 'ion-social-rss',
-			url: '#/app/feeds-refresher'
-		}
+		// { 
+		// 	title: 'Tabs',
+		// 	icon: 'ion-drag',
+		// 	url: '#/app/tabs'
+		// },
+		// { 
+		// 	title: 'Grid',
+		// 	icon: 'ion-grid',
+		// 	url: '#/app/grid'
+		// },
+		// { 
+		// 	title: 'RSS (Pull to refresh)',
+		// 	icon: 'ion-social-rss',
+		// 	url: '#/app/feeds-refresher'
+		// }
 	]; 
 	
 	return data;
@@ -627,14 +627,6 @@ angular.module('cdcgeneralapp.data', [])
 		}, 
 		{
 		   name: 'Third Option',
-		   value: false
-		}, 
-		{
-		   name: 'Fourth Option',
-		   value: false
-		}, 
-		{
-		   name: 'Fifth Option',
 		   value: false
 		}],
 		sorting: 'A',

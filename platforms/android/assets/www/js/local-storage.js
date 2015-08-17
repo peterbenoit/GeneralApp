@@ -165,14 +165,6 @@ angular.module('cdcgeneralapp.storage', [])
 			{
 				name: 'Third Option',
 				checked: false
-			}, 
-			{
-				name: 'Fourth Option',
-				checked: false
-			}, 
-			{
-				name: 'Fifth Option',
-				checked: false
 			}],
 			sorting: 'A',
 			range:30
