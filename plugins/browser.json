@@ -28,9 +28,6 @@
         "com.phonegap.plugins.barcodescanner": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
-        "com.pushwoosh.plugins.pushwoosh": {
-            "PACKAGE_NAME": "com.cdc.generalapp"
-        },
         "de.appplant.cordova.plugin.email-composer": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         },

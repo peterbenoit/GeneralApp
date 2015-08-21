@@ -9,6 +9,64 @@ angular.module('cdcgeneralapp.controllers', [])
 	}
 })
 
+// Home Stream Controller
+.controller('HomeStreamCtrl', function($scope, $ionicLoading, HomeStreamData, HomeStreamStorage) {
+	$scope.homestream = [];
+	$scope.storage = '';
+
+   $scope.template = {
+		"a1":"templates/cards/a1.html",
+		"a2":"templates/cards/a2.html",
+		"a3":"templates/cards/a3.html",
+		"b1":"templates/cards/b1.html",
+		"b2":"templates/cards/b2.html",
+		"c1":"templates/cards/c1.html",
+		"c2":"templates/cards/c2.html",
+		"c3":"templates/cards/c3.html",
+		"d1":"templates/cards/d1.html",
+		"d2":"templates/cards/d2.html",
+		"e1":"templates/cards/e1.html",
+		"e2":"templates/cards/e2.html",
+		"social":"templates/cards/social.html",
+   }	
+
+	$scope.loading = $ionicLoading.show({
+	  template: '<ion-spinner icon="spiral"></ion-spinner>',
+
+	  //Will a dark overlay or backdrop cover the entire view
+	  showBackdrop: false,
+
+	  // The delay in showing the indicator
+	  showDelay: 10
+	});
+
+	var getData = function() {
+		HomeStreamData.async().then(
+			// successCallback
+			function() {
+				$scope.homestream = HomeStreamData.getAll();
+				$scope.$broadcast('scroll.refreshComplete');
+				$ionicLoading.hide();
+			},
+			// errorCallback 
+			function() {
+				$scope.homestream = HomeStreamStorage.all();
+				$scope.storage = 'Data from local storage';
+				$scope.$broadcast('scroll.refreshComplete');				
+				$ionicLoading.hide();
+			},
+			// notifyCallback
+			function() {}
+		);
+	}
+
+	getData();
+
+	$scope.doRefresh = function() {
+		getData();  
+	}
+})
+
 // Typeface Controller
 .controller('TypefaceCtrl', function($scope, Data) {
 	// $scope.items = Data.items;
@@ -38,12 +96,14 @@ angular.module('cdcgeneralapp.controllers', [])
 		// successCallback
 		function() {
 			$scope.news = NewsData.getAll();
+			$scope.$broadcast('scroll.refreshComplete');
 			$ionicLoading.hide();
 		},
 		// errorCallback 
 		function() {
 			$scope.news = NewsStorage.all();
 			$scope.storage = 'Data from local storage';
+			$scope.$broadcast('scroll.refreshComplete');
 			$ionicLoading.hide();
 		},
 		// notifyCallback
@@ -53,7 +113,7 @@ angular.module('cdcgeneralapp.controllers', [])
 })
 
 // DOTW Controller
-.controller('DotwCtrl', function($scope, $ionicLoading, DotwData, DotwStorage) {
+.controller('DotwCtrl', function($scope, $ionicLoading, HomeStreamData, DotwStorage) {
 	
 	$scope.news = [];
 	$scope.storage = '';
@@ -83,14 +143,11 @@ angular.module('cdcgeneralapp.controllers', [])
 		// notifyCallback
 		function() {}
 	);
-
 })
 
 // New Controller
 .controller('NewCtrl', function($scope, $stateParams, NewsData) {
-
 	$scope.new = NewsData.get($stateParams.newId);
-	
 })
 
 // Disease Controller
@@ -611,8 +668,6 @@ angular.module('cdcgeneralapp.controllers', [])
 	}
 	
 })
-
-
 
 // Plugins Controller
 .controller('PluginsCtrl', function($scope, PluginsData) {

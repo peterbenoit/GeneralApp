@@ -130,11 +130,11 @@ angular.module('cdcgeneralapp.data', [])
 			icon: 'ion-grid',
 			url: '#/app/grid'
 		},
-		{ 
-			title: 'RSS (Pull to refresh)',
-			icon: 'ion-social-rss',
-			url: '#/app/feeds-refresher'
-		}
+		// { 
+		// 	title: 'RSS (Pull to refresh)',
+		// 	icon: 'ion-social-rss',
+		// 	url: '#/app/feeds-refresher'
+		// }
 	]; 
 	
 	return data;
@@ -265,10 +265,7 @@ angular.module('cdcgeneralapp.data', [])
 })
 
 // News Data: JSON
-.factory('NewsData', function($http, $q, NewsStorage) {
-
-	alert('narp')
-	
+.factory('NewsData', function($http, $q, NewsStorage) {	
 	var json = 'json/news.json';
 
 	var deferred = $q.defer();
@@ -303,6 +300,109 @@ angular.module('cdcgeneralapp.data', [])
 	return service;
 })
 
+// Home Stream Data: JSON
+.factory('HomeStreamData', function($http, $q, HomeStreamStorage) {	
+	var deferred = $q.defer();
+	var promise = deferred.promise;
+	var data = [];
+	var service = {};
+	var card = "";
+	var dirty = false;
+	var facebookCard = {
+		"name": "Facebook",
+		"cardtype": "type-social",
+		"date": "2081-02-04T18:26:56.828Z",
+		"image": "img/facebook.png"
+	};
+
+	var twitterCard = {
+		"name": "Twitter",
+		"cardtype": "type-social",
+		"date": "2081-02-04T18:26:56.828Z",
+		"image": "img/twitter.png"
+	};
+
+	var feed = 'http://www.filltext.com/?rows=10&name={firstName}~{lastName}&pretty=true&date={date}&description={lorem|20}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22]&cardtype=["type-a1","type-a1","type-a1","type-a2","type-a2","type-a3","type-a3","type-b1","type-b2","type-c1","type-c2","type-c3","type-d1","type-d2","type-e1","type-e2"]';	
+	
+	service.async = function() {
+		$http(
+			{
+				method: 'GET', 
+				url: feed,
+				timeout: 5000
+			}
+		).
+		// this callback will be called asynchronously
+		// when the response is available.
+		success(function(d) {
+			data = d;
+			var lastCardType = data[data.length - 1].cardtype;
+
+			//The final card shouldn't be of type-d
+			if(lastCardType === 'type-d1') {
+				lastCardType = 'type-a1';
+			}
+			else if(lastCardType === 'type-d2') {
+				lastCardType = 'type-a2';
+			}
+
+			for (var key in data) {			
+				// if the previous card is set, and it's one of the D's
+				if(card !== '' && (card === 'type-d1' || card === 'type-d2') && !dirty) {
+					// set this card to match the previous
+					data[key].cardtype = 'type-d2';
+					data[key].modified = 'true';
+					dirty = true
+				}
+				else {				
+					dirty = false;
+				}
+
+				// set a new card
+				card = data[key].cardtype;
+
+				// quick and dirty, add a random image based on card type 
+				if(card.indexOf('type-a') === 0) {
+					// + key to randomize
+					data[key].image = 'http://placeimg.com/335/250/any/' + key;
+				}
+				else if(card.indexOf('type-c') === 0) {
+					data[key].image = 'http://placeimg.com/80/80/any/' + key;
+				}
+				else if(card.indexOf('type-d') === 0) {
+					data[key].image = 'http://placeimg.com/150/120/any/' + key;
+				}
+
+				// console.log(data[key])
+			}
+
+			// insert sources which aren't in aggregate feed into random spots, but not between type-ds
+			var position = Math.floor(Math.random() * (data.length - 0 + 1)) + 0;
+			data.splice(position, 0, facebookCard);
+			position = Math.floor(Math.random() * (data.length - 0 + 1)) + 0;
+			data.splice(position, 0, twitterCard);			
+
+			HomeStreamStorage.save(data);
+			deferred.resolve();
+		}).
+		// called asynchronously if an error occurs
+		// or server returns response with an error status.
+		error(function() {
+			data = HomeStreamStorage.all();
+			deferred.reject();
+		});
+			
+		return promise;
+		
+	};
+	
+	service.getAll = function() { return data; };
+
+	service.get = function(newId) { return data[newId]; };
+
+	return service;
+})
+
 // DOTW Data: JSON
 .factory('DotwData', function($http, $q, DotwStorage) {	
 	var deferred = $q.defer();
@@ -315,7 +415,7 @@ angular.module('cdcgeneralapp.data', [])
 		{
 			method: 'GET', 
 			url: 'http://www.cdc.gov/mobile/Applications/CDCGeneral/DotW/diseases.xml', 
- 			transformResponse:function(data) {
+			transformResponse:function(data) {
 				// convert the data to JSON and provide
 				// it to the success function below
 				var x2js = new X2JS();
@@ -330,7 +430,25 @@ angular.module('cdcgeneralapp.data', [])
 	success(function(d) {
 		data = d.diseases.disease;
 
-		console.log(data);
+		var cardtypes = 'a,b,c,d,e'.split(','),
+			card = '';
+
+
+		for (var key in data) {
+			// if the selected card is a double
+			if (card === 'd') {
+				data[key].cardtype = 'type-' + card;
+				card = '';  // card is cached, reset it if we're using the previous value
+			} else {
+				// get the card for this item
+				card = cardtypes[Math.floor(Math.random() * cardtypes.length)];
+			}
+
+			// if one hasn't been applied already
+			if (typeof data[key].cardtype === 'undefined') {
+				data[key].cardtype = 'type-' + card;
+			}
+		}
 
 		DotwStorage.save(data);
 		deferred.resolve();
@@ -405,7 +523,7 @@ angular.module('cdcgeneralapp.data', [])
 		{
 			method: 'GET', 
 			url: 'http://www.cdc.gov/mobile/applications/cdcgeneral/l24_nometrics.xml', 
- 			transformResponse:function(data) {
+			transformResponse:function(data) {
 				// convert the data to JSON and provide
 				// it to the success function below
 				var x2js = new X2JS();
@@ -419,6 +537,27 @@ angular.module('cdcgeneralapp.data', [])
 	// when the response is available.
 	success(function(d) {
 		data = d.feed.entry;
+
+		var cardtypes = 'a,b,c,d,e'.split(','),
+			card = '';
+
+
+		for (var key in data) {
+			// if the selected card is a double
+			if (card === 'd') {
+				data[key].cardtype = 'type-' + card;
+				card = '';  // card is cached, reset it if we're using the previous value
+			} else {
+				// get the card for this item
+				card = cardtypes[Math.floor(Math.random() * cardtypes.length)];
+			}
+
+			// if one hasn't been applied already
+			if (typeof data[key].cardtype === 'undefined') {
+				data[key].cardtype = 'type-' + card;
+			}
+		}
+
 		console.log(data);
 		HealthArticlesStorage.save(data);
 		deferred.resolve();

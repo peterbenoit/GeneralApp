@@ -3,7 +3,7 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'cdcgeneralapp' is the name of this angular module (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgeneralapp.data', 'cdcgeneralapp.directives', 'cdcgeneralapp.filters', 'cdcgeneralapp.storage', 'ngSanitize', 'uiGmapgoogle-maps'])
+angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgeneralapp.data', 'cdcgeneralapp.directives', 'cdcgeneralapp.filters', 'cdcgeneralapp.storage', 'ngSanitize', 'uiGmapgoogle-maps', 'angularMoment'])
 
 .run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
@@ -69,10 +69,12 @@ angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgener
 				'menuContent' :{
 					// templateUrl: "templates/home-typeface.html",
 					// templateUrl: "templates/home-grid-2b.html",
-					templateUrl: "templates/home-grid-2.html",
+					// templateUrl: "templates/home-grid-2.html",
 					// templateUrl: "templates/home-grid-3.html",
 					// templateUrl: "templates/home-rows.html",
-					controller: 'HomeCtrl'
+					templateUrl: "templates/home-stream-phone-portrait.html",
+					// controller: 'HomeCtrl'
+					controller: 'HomeStreamCtrl'
 				}
 			}
 		})
@@ -86,7 +88,15 @@ angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgener
 				}
 			}
 		})		
-
+		.state('app.cards', {
+			url: "/cards",
+			views: {
+				'menuContent' :{
+					templateUrl: "templates/cards.html",
+					controller: 'CardsCtrl'
+				}
+			}
+		})	
 		.state('app.news', {
 			url: "/news",
 			views: {

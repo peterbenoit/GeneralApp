@@ -5,7 +5,7 @@
 
         <div class="row healtharticles" ng-repeat="row in healtharticles | partition:2">
         {{row.category._term}}
-            <div class="col card" ng-repeat="field in row">
+            <div class="col card {{field.cardtype}}" ng-repeat="field in row">
                 
                 <a href="#/app/healtharticle/{{(($parent.$index*row.length)+$index)}}">
                     <h2>{{field.title.__cdata}}</h2>

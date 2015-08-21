@@ -1,9 +1,15 @@
 // CDCGeneralApp: Mobile Ionic Framework
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'cdcgeneralapp' is the name of this angular module (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgeneralapp.data', 'cdcgeneralapp.directives', 'cdcgeneralapp.filters', 'cdcgeneralapp.storage', 'ngSanitize', 'uiGmapgoogle-maps'])
+angular.module('cdcgeneralapp', [
+	'ionic', 
+	'cdcgeneralapp.controllers', 
+	'cdcgeneralapp.data', 
+	'cdcgeneralapp.directives', 
+	'cdcgeneralapp.filters', 
+	'cdcgeneralapp.storage', 
+	'ngSanitize',
+	'angular.filter',
+	'angularMoment'])
 
 .run(function($ionicPlatform) {
 	$ionicPlatform.ready(function() {
@@ -69,10 +75,12 @@ angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgener
 				'menuContent' :{
 					// templateUrl: "templates/home-typeface.html",
 					// templateUrl: "templates/home-grid-2b.html",
-					templateUrl: "templates/home-grid-2.html",
+					// templateUrl: "templates/home-grid-2.html",
 					// templateUrl: "templates/home-grid-3.html",
 					// templateUrl: "templates/home-rows.html",
-					controller: 'HomeCtrl'
+					templateUrl: "templates/home-stream-phone-portrait.html",
+					// controller: 'HomeCtrl'
+					controller: 'HomeStreamCtrl'
 				}
 			}
 		})
@@ -95,15 +103,6 @@ angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgener
 				}
 			}
 		})	
-		.state('app.news', {
-			url: "/news",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/news.html",
-					controller: 'NewsCtrl'
-				}
-			}
-		})
 
 		.state('app.dotw', {
 			url: "/dotw",
@@ -111,16 +110,6 @@ angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgener
 				'menuContent' :{
 					templateUrl: "templates/dotw.html",
 					controller: 'DotwCtrl'
-				}
-			}
-		})		
-
-		.state('app.new', {
-			url: "/news/:newId",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/new.html",
-					controller: 'NewCtrl'
 				}
 			}
 		})
@@ -155,210 +144,12 @@ angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgener
 			}
 		})
 
-		.state('app.products', {
-			url: "/products",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/products.html",
-					controller: 'ProductsCtrl'
-				}
-			}
-		})
-
 		.state('app.healtharticles', {
 			url: "/healtharticles",
 			views: {
 				'menuContent' :{
 					templateUrl: "templates/healtharticles.html",
 					controller: 'HealthArticlesCtrl'
-				}
-			}
-		})
-
-		.state('app.product', {
-			url: "/products/:productId",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/product.html",
-					controller: 'ProductCtrl'
-				}
-			}
-		})
-
-		.state('app.gallery', {
-			url: "/gallery",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/gallery.html",
-					controller: 'GalleryCtrl'
-				}
-			}
-		}) 
-
-		.state('app.map', {
-			url: "/map",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/map.html",
-					controller: 'MapCtrl'
-				}
-			}
-		})
-
-		.state('app.about', {
-			url: "/about",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/about.html",
-					controller: 'AboutCtrl'
-				}
-			}
-		})
-
-		.state('app.member', {
-			url: "/about/:memberId",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/member.html",
-					controller: 'MemberCtrl'
-				}
-			}
-		})
-
-		.state('app.contact', {
-			url: "/contact",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/contact.html",
-					controller: 'ContactCtrl'
-				}
-			}
-		})
-
-		.state('app.posts', {
-			url: "/posts",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/posts.html",
-					controller: 'PostsCtrl'
-				}
-			}
-		})
-
-		.state('app.post', {
-			url: "/posts/:postId",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/post.html",
-					controller: 'PostCtrl'
-				}
-			}
-		})
-
-		.state('app.serverposts', {
-			url: "/serverposts",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/serverposts.html",
-					controller: 'ServerPostsCtrl'
-				}
-			}
-		})
-
-		.state('app.serverpost', {
-			url: "/serverposts/:serverpostId",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/serverpost.html",
-					controller: 'ServerPostCtrl'
-				}
-			}
-		})
-
-		.state('app.elements', {
-			url: "/elements",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/elements.html"
-				}
-			}
-		})
-
-		.state('app.grid', {
-			url: "/grid",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/grid.html"
-				}
-			}
-		})
-
-		.state('app.feeds', {
-			url: "/feeds",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/feeds.html",
-					controller: 'FeedsCtrl'
-				}
-			}
-		})
-
-		.state('app.feed', {
-			url: "/feeds/:entryId",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/feed.html",
-					controller: 'FeedCtrl'
-				}
-			}
-		})
-		
-		.state('app.feeds-refresher', {
-			url: "/feeds-refresher",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/feeds-refresher.html",
-					controller: 'FeedsRefresherCtrl'
-				}
-			}
-		})
-		
-		.state('app.feed-categories', {
-			url: "/feed-categories",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/feed-categories.html",
-					controller: 'FeedPluginCategoriesCtrl'
-				}
-			}
-		})
-
-		.state('app.feed-category', {
-			url: "/feed-category/:id",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/feed-category.html",
-					controller: 'FeedPluginCategoryCtrl'
-				}
-			}
-		})
-		
-		.state('app.feed-master', {
-			url: "/feed-master/:categoryId/:id",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/feed-master.html",
-					controller: 'FeedPluginMasterCtrl'
-				}
-			}
-		})
-		
-		.state('app.feed-detail', {
-			url: "/feed-detail/:id",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/feed-detail.html",
-					controller: 'FeedPluginDetailCtrl'
 				}
 			}
 		})
@@ -369,16 +160,6 @@ angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgener
 				'menuContent' :{
 					templateUrl: "templates/plugins.html",
 					controller: 'PluginsCtrl'
-				}
-			}
-		})
-
-		.state('app.geolocation', {
-			url: "/plugins/geolocation",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/plugins/geolocation.html",
-					controller: 'GeolocationCtrl'
 				}
 			}
 		})
@@ -403,25 +184,6 @@ angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgener
 			}
 		})
 
-		.state('app.barcodescanner', {
-			url: "/plugins/barcodescanner",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/plugins/barcodescanner.html",
-					controller: 'BarcodescannerCtrl'
-				}
-			}
-		})
-
-		.state('app.tabs', {
-			url: "/tabs",
-			views: {
-				'menuContent' :{
-					templateUrl: "templates/tabs.html"
-				}
-			}
-		})
-
 		.state('app.settings', {
 			url: "/settings",
 			views: {
@@ -432,12 +194,31 @@ angular.module('cdcgeneralapp', ['ionic', 'cdcgeneralapp.controllers', 'cdcgener
 			}
 		})
 
-		.state('app.quiz', {
-			url: "/quiz",
+		.state('app.grid', {
+			url: "/grid",
 			views: {
 				'menuContent' :{
-					templateUrl: "templates/quiz.html",
-					controller: 'QuizCtrl'
+					templateUrl: "templates/grid.html",
+					controller: 'GenericCtrl'
+				}
+			}
+		})		
+
+		.state('app.guided-quiz', {
+			url: "/guided-quiz",
+			views: {
+				'menuContent' :{
+					templateUrl: "templates/guided-quiz.html",
+					controller: 'GuidedQuizCtrl'
+				}
+			}
+		})
+		.state('app.form-quiz', {
+			url: "/form-quiz",
+			views: {
+				'menuContent' :{
+					templateUrl: "templates/form-quiz.html",
+					controller: 'FormQuizCtrl'
 				}
 			}
 		})

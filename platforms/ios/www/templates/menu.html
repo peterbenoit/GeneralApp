@@ -9,11 +9,11 @@
 
   <ion-side-menu side="left">
     <header class="bar bar-header bar-stable">
-    <h1 class="title">Menu</h1>
+    <h1 class="title">Sources</h1>
     </header>
     <ion-content class="has-header">
       <ion-list>
-        <ion-item ng-repeat="item in items" nav-clear menu-close href="{{item.url}}">
+        <ion-item ng-repeat="item in items" nav-clear menu-close href="{{item.url}}" nav-transition="ios">
         <i class="icon {{item.icon}}"></i> {{item.title}}
         </ion-item>
 <!--         <ion-item nav-clear menu-close ng-click="login()">

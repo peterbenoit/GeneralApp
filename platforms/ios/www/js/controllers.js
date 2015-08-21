@@ -9,8 +9,59 @@ angular.module('cdcgeneralapp.controllers', [])
 	}
 })
 
+// Home Stream Controller
+.controller('HomeStreamCtrl', function($scope, $ionicLoading, HomeStreamData, HomeStreamStorage) {
+	$scope.homestream = [];
+	$scope.storage = '';
+
+   $scope.template = {
+		"a1":"templates/cards/a1.html",
+		"a2":"templates/cards/a2.html",
+		"a3":"templates/cards/a3.html",
+		"b1":"templates/cards/b1.html",
+		"b2":"templates/cards/b2.html",
+		"c1":"templates/cards/c1.html",
+		"c2":"templates/cards/c2.html",
+		"c3":"templates/cards/c3.html",
+		"d1":"templates/cards/d1.html",
+		"d2":"templates/cards/d2.html",
+		"e1":"templates/cards/e1.html",
+		"e2":"templates/cards/e2.html"
+   }	
+
+	$scope.loading = $ionicLoading.show({
+	  template: '<ion-spinner icon="spiral"></ion-spinner>',
+
+	  //Will a dark overlay or backdrop cover the entire view
+	  showBackdrop: false,
+
+	  // The delay in showing the indicator
+	  showDelay: 10
+	});
+
+	HomeStreamData.async().then(
+		// successCallback
+		function() {
+			$scope.homestream = HomeStreamData.getAll();
+			$ionicLoading.hide();
+		},
+		// errorCallback 
+		function() {
+			$scope.homestream = HomeStreamStorage.all();
+			$scope.storage = 'Data from local storage';
+			$ionicLoading.hide();
+		},
+		// notifyCallback
+		function() {}
+	);
+})
+
 // Typeface Controller
 .controller('TypefaceCtrl', function($scope, Data) {
+	// $scope.items = Data.items;
+})
+// Cards Controller
+.controller('CardsCtrl', function($scope, Data) {
 	// $scope.items = Data.items;
 })
 
@@ -21,7 +72,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.storage = '';
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
@@ -49,13 +100,13 @@ angular.module('cdcgeneralapp.controllers', [])
 })
 
 // DOTW Controller
-.controller('DotwCtrl', function($scope, $ionicLoading, DotwData, DotwStorage) {
+.controller('DotwCtrl', function($scope, $ionicLoading, HomeStreamData, DotwStorage) {
 	
 	$scope.news = [];
 	$scope.storage = '';
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
@@ -79,14 +130,11 @@ angular.module('cdcgeneralapp.controllers', [])
 		// notifyCallback
 		function() {}
 	);
-
 })
 
 // New Controller
 .controller('NewCtrl', function($scope, $stateParams, NewsData) {
-
 	$scope.new = NewsData.get($stateParams.newId);
-	
 })
 
 // Disease Controller
@@ -103,7 +151,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.storage = '';
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
@@ -139,7 +187,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.storage = '';
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
@@ -205,7 +253,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.about = [];
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
@@ -268,7 +316,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.storage = '';
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
@@ -348,7 +396,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.storage = '';
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
@@ -383,7 +431,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.showMoreItems = function () {
 		$scope.page += 1;
 		$ionicLoading.show({
-		template: '<i class="icon ion-load-c"></i> Loading Data',
+		template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 		//Will a dark overlay or backdrop cover the entire view
 		showBackdrop: false,
@@ -440,7 +488,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.feeds = [];
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
@@ -514,7 +562,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.feeds = [];
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
@@ -671,7 +719,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.loading = $ionicLoading.show({
 
 	  //The text to display in the loading indicator
-	  template: '<i class="icon ion-load-c"></i> Getting current location',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Getting current location',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
@@ -812,7 +860,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.categories = [];
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
@@ -852,13 +900,16 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.feeds = [];
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,
 
 	  // The delay in showing the indicator
-	  showDelay: 10
+	  showDelay: 10,
+
+	  // what type of animation
+	  animation: 'fade-in',
 	});
 	
 	var data;
@@ -990,7 +1041,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.videos = [];
 	
 	$scope.loading = $ionicLoading.show({
-	  template: '<i class="icon ion-load-c"></i> Loading Data',
+	  template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
 
 	  //Will a dark overlay or backdrop cover the entire view
 	  showBackdrop: false,

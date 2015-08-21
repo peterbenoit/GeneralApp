@@ -15,13 +15,6 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/com.pushwoosh.plugins.pushwoosh/www/PushNotification.js",
-        "id": "com.pushwoosh.plugins.pushwoosh.PushNotification",
-        "clobbers": [
-            "plugins.pushNotification"
-        ]
-    },
-    {
         "file": "plugins/de.appplant.cordova.plugin.email-composer/www/email_composer.js",
         "id": "de.appplant.cordova.plugin.email-composer.EmailComposer",
         "clobbers": [
@@ -70,7 +63,6 @@ module.exports.metadata =
 {
     "com.ionic.keyboard": "1.0.4",
     "com.phonegap.plugins.barcodescanner": "2.0.1",
-    "com.pushwoosh.plugins.pushwoosh": "3.5.3",
     "de.appplant.cordova.plugin.email-composer": "0.8.2",
     "nl.x-services.plugins.socialsharing": "4.3.18",
     "org.apache.cordova.console": "0.2.13",

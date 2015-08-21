@@ -10110,7 +10110,7 @@ function headerFooterBarDirective(isHeader) {
  * ```html
  * <ion-infinite-scroll
  *   ng-if="moreDataCanBeLoaded()"
- *   icon="ion-load-c"
+ *   icon="ion-loading-c"
  *   on-infinite="loadMoreData()">
  * </ion-infinite-scroll>
  * ```
