@@ -1,40 +1,40 @@
 /* Empty. Add your own CSS if you like */
 
 @font-face {
-  font-family: "Source Sans Pro";
-  src: url("../font/SourceSansPro-Regular.ttf");
+	font-family: "Source Sans Pro";
+	src: url("../font/SourceSansPro-Regular.ttf");
 }
 
 @font-face {
-  font-family: "Source Sans Pro";
-  src: url("../font/SourceSansPro-Italic.ttf");
-  font-style:italic;
+	font-family: "Source Sans Pro";
+	src: url("../font/SourceSansPro-Italic.ttf");
+	font-style:italic;
 }
 
 @font-face {
-  font-family: "Open Sans";
-  src: url("../font/SourceSansPro-Light.ttf");
-  font-weight: 300;
+	font-family: "Open Sans";
+	src: url("../font/SourceSansPro-Light.ttf");
+	font-weight: 300;
 }
 
 @font-face {
-  font-family: "Source Sans Pro";
-  src: url("../font/SourceSansPro-LightItalic.ttf");
-  font-weight: 300;
-  font-style:italic;
+	font-family: "Source Sans Pro";
+	src: url("../font/SourceSansPro-LightItalic.ttf");
+	font-weight: 300;
+	font-style:italic;
 }
 
 @font-face {
-  font-family: "Source Sans Pro";
-  src: url("../font/SourceSansPro-Bold.ttf");
-  font-weight: 600;
+	font-family: "Source Sans Pro";
+	src: url("../font/SourceSansPro-Bold.ttf");
+	font-weight: 600;
 }
 
 @font-face {
-  font-family: "Source Sans Pro";
-  src: url("../font/SourceSansPro-BoldItalic.ttf");
-  font-weight: 600;
-  font-style:italic;
+	font-family: "Source Sans Pro";
+	src: url("../font/SourceSansPro-BoldItalic.ttf");
+	font-weight: 600;
+	font-style:italic;
 }
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Source Sans Pro', sans-serif; }
@@ -55,25 +55,91 @@ img { max-width: 100%; height:auto; }
 
 .card.col.home, .card.col.home .item-note { text-align: center; float:none; }
 
-.card { margin:10px; }
+.card { margin:7.5px 10px 7.5px; position:relative;}
 
- .screen{
-   position:relative;
- }
+.card strong {
+	/*font-family: 'Roboto Condensed', sans-serif;*/
+}
+.inline {
+	position: relative;
+}
+.inline.half {
+	width: 50%;
+	height: 275px;
+	overflow: hidden;
+}
 
- .screen img{
-   display: inherit;
- }
+.inline.full {
+	width: 100%;
+}
 
- .screen .item{
-   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: 0;
-  border: 0;
-  background: rgba(255,255,255, 0.6);
- }
+.card .item .date {
+	color:#d0d0d0;
+	font-size: 14px;
+	margin:0;
+}
+
+.card .item strong {
+	color:#444;
+}
+.card.type-c, .card.type-e {
+	min-height: 100px;
+}
+
+/*.item p:last-child*/
+.card .item .source {
+	font-size: 14px;
+	/*margin-top: 0;*/
+	/*position: absolute;
+	bottom: 5px;*/
+}
+.item-divider {
+/*	padding-top: 8px;
+	padding-bottom: 8px;
+	min-height: 30px;
+*/	background-color: inherit;
+/*	color: #222;
+	font-weight: 500;	
+*/}
+
+.card.type-d1, .card.type-d2 {
+	min-height: 265px
+}
+.double {
+	/*width: 40%;*/
+	/*min-height: 220px;*/
+}
+.type-d2 .item.item-divider {
+    position: absolute;
+	bottom: 0px;
+    width: 100%;
+}
+
+.card .item:first-child {
+    border-bottom: 0;
+}
+
+.double.inline > div {
+	display: inline-block
+}
+
+.screen{
+	position:relative;
+}
+
+.screen img{
+	display: inherit;
+}
+
+.screen .item{
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	margin: 0;
+	border: 0;
+	background: rgba(255,255,255, 0.6);
+}
 
 /* Media */
 video, audio { width:100%; max-width:100%; box-sizing: border-box; display: inline-block; }
@@ -82,3 +148,66 @@ audio { margin-top:10px; }
 
 /* Specify an height via CSS for the map container: */
 .angular-google-map-container { height: 100%; }
+
+
+
+/* transformation on load */
+.healtharticles.ng-enter-stagger {
+	-webkit-transition-delay: 0.2s;
+	transition-delay: 0.2s;
+}
+
+.healtharticles.ng-enter {
+	transition: 0.25s linear all;
+	transform: rotate(50deg);
+	opacity: 0;
+}
+.healtharticles.ng-enter.ng-enter-active {
+	transform: rotate(0deg);
+	opacity: 1;
+}
+
+/* all columns the same height */
+/*.col-a {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+*/
+
+body, a {
+	cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+
+.col-50, .col-33 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+.col-50 .card, .col-33 .card  {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	-ms-flex-direction: column;
+	flex-direction: column;
+	/*width: 100%;*/
+}
+/*.col-50, .col-33.item-avatar, .item.tabs {
+  -webkit-box-flex: 0;
+  -webkit-flex: 0 0 auto;
+	  -ms-flex: 0 0 auto;
+		  flex: 0 0 auto;
+		  }*/
+		  .col-50 .item-body, .col-33 .item-body {
+		  	-webkit-box-flex: 1;
+		  	-webkit-flex: 1 1 auto;
+		  	-ms-flex: 1 1 auto;
+		  	flex: 1 1 auto;
+		  }

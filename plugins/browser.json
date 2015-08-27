@@ -48,6 +48,15 @@
         },
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
         }
     },
     "dependent_plugins": {}

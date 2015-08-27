@@ -55,14 +55,18 @@ img { max-width: 100%; height:auto; }
 
 .card.col.home, .card.col.home .item-note { text-align: center; float:none; }
 
-.card { margin:7.5px 10px 7.5px; }
+.card { margin:7.5px 10px 7.5px; position:relative;}
 
 .card strong {
 	/*font-family: 'Roboto Condensed', sans-serif;*/
 }
-
+.inline {
+	position: relative;
+}
 .inline.half {
 	width: 50%;
+	height: 275px;
+	overflow: hidden;
 }
 
 .inline.full {
@@ -78,13 +82,41 @@ img { max-width: 100%; height:auto; }
 .card .item strong {
 	color:#444;
 }
-
-.card .item .source {
-	font-size: 14px;
+.card.type-c, .card.type-e {
+	min-height: 100px;
 }
 
+/*.item p:last-child*/
+.card .item .source {
+	font-size: 14px;
+	/*margin-top: 0;*/
+	/*position: absolute;
+	bottom: 5px;*/
+}
+.item-divider {
+/*	padding-top: 8px;
+	padding-bottom: 8px;
+	min-height: 30px;
+*/	background-color: inherit;
+/*	color: #222;
+	font-weight: 500;	
+*/}
+
+.card.type-d1, .card.type-d2 {
+	min-height: 265px
+}
 .double {
 	/*width: 40%;*/
+	/*min-height: 220px;*/
+}
+.type-d2 .item.item-divider {
+    position: absolute;
+	bottom: 0px;
+    width: 100%;
+}
+
+.card .item:first-child {
+    border-bottom: 0;
 }
 
 .double.inline > div {
@@ -179,3 +211,48 @@ body, a {
 		  	-ms-flex: 1 1 auto;
 		  	flex: 1 1 auto;
 		  }
+
+
+
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+.slider {
+  height: 100%;
+}
+.slider-slide {
+  padding-top: 80px;
+  color: #000;
+  background-color: #fff;
+  text-align: center;
+
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+
+#logo {
+  margin: 30px 0px;
+}
+
+#list {
+  width: 180px;
+  margin: 30px auto;
+  font-size: 20px;
+}
+#list ol {
+  margin-top: 30px;
+}
+#list ol li {
+  text-align: left;
+  list-style: decimal;
+  margin: 10px 0px;
+}
+
+.button.ng-hide{
+  display:none;
+}
+
+.item.item-divider {
+    border-top: 1px dashed #fff;
+}

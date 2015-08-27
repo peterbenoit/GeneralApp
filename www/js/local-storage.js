@@ -54,6 +54,24 @@ angular.module('cdcgeneralapp.storage', [])
 	}
 })
 
+.factory('StreamStorage', function() {
+	return {
+		all: function() {
+			var stream = window.localStorage['stream'];
+			if(stream) {
+				return angular.fromJson(stream);
+			}
+			return {};
+		},
+		save: function(stream) {
+			window.localStorage['stream'] = angular.toJson(stream);
+		},
+		clear: function() {
+			window.localStorage.removeItem('stream');
+		}
+	}
+})
+
 .factory('ProductsStorage', function() {
 	return {
 		all: function() {

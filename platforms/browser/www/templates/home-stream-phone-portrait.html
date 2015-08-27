@@ -1,19 +1,23 @@
 <ion-view title="">
-    <ion-nav-buttons side="left">
-    <img src="img/cdclogo.png">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button> 
-    </ion-nav-buttons>
-    <ion-nav-buttons side="right">
-    <a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
-    </ion-nav-buttons>
-    <ion-content class="has-header">
+	<ion-nav-buttons side="left">
+	<img src="img/cdclogo.png">
+	<button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button> 
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right">
+	<a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
+	</ion-nav-buttons>
+	<ion-content class="has-header">
 
-        <ion-refresher
-        pulling-text="Pull to refresh..."
-        on-refresh="doRefresh()">
-        </ion-refresher>
+		<ion-refresher
+		pulling-text="Pull to refresh..."
+		on-refresh="doRefresh()">
+		</ion-refresher>
 
-		<div ng-repeat="stream in homestream" class="inline" ng-class="stream.cardtype.indexOf('type-d') === 0 ? 'half' : 'full'">
+			<ion-item collection-repeat="stream in homestream" class="inlinez" item-height="400px" ng-class="stream.cardtype.indexOf('type-d') === 0 ? 'half' : 'full'">
+				<div ng-include src="getTemplateUrl()"></div>
+			</ion-item>
+
+<!-- 		<div ng-repeat="stream in homestream" class="inline" ng-class="stream.cardtype.indexOf('type-d') === 0 ? 'half' : 'full'">
 			<div ng-if="stream.cardtype === 'type-a1'">
 				<div ng-include="template.a1"></div>
 			</div>
@@ -52,8 +56,8 @@
 			</div>
 			<div ng-if="stream.cardtype === 'type-social'">
 				<div ng-include="template.social"></div>
-			</div>			
-		</div>
+			</div>
+		</div> -->
 
-    </ion-content>
+	</ion-content>
 </ion-view>

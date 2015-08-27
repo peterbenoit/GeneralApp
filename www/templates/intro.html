@@ -1,0 +1,77 @@
+<ion-nav-bar class="bar-light">
+	<ion-nav-buttons side="left">
+		<button class="button button-positive button-clear no-animation"
+			ng-click="startApp()" ng-show="!slideIndex">
+		Skip
+		</button>
+		<button class="button button-positive button-clear no-animation"
+			ng-click="previous()" ng-show="slideIndex > 0">
+		Previous
+		</button>
+	</ion-nav-buttons>
+	<ion-nav-buttons side="right"> 
+		<button class="button button-positive button-clear no-animation"
+			ng-click="next()" ng-show="slideIndex != 5">
+		Next
+		</button>
+		<button class="button button-positive button-clear no-animation"
+			ng-click="startApp()" ng-show="slideIndex == 5">
+		Start using MyCDC
+		</button>
+	</ion-nav-buttons>
+</ion-nav-bar>
+
+<ion-view view-title="Intro">
+
+	<ion-slide-box on-slide-changed="slideChanged(index)">
+		<ion-slide>
+			<h3>Thank you for choosing MyCDC!</h3>
+			<div id="logo">
+				<img src="img/cdc-icon175x175.png">
+			</div>
+			<p>
+				CDC Lingo.
+			</p>
+		</ion-slide>
+		<ion-slide>
+			<h3>Using MyCDC</h3>
+			<div id="list">
+				<h5>Just three steps:</h5>
+				<ol>
+					<li>Select Your Sources</li>
+					<li>Navigate the App</li>
+					<li>Using Cards</li>
+				</ol>
+			</div>
+		</ion-slide>
+		<ion-slide>
+			<h3>Select Sources</h3>
+
+			<p><img src="img/sources.png" alt="sources"></p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+			</p>
+		</ion-slide>
+		<ion-slide>
+			<h3>Navigate the App</h3>
+			<p><img src="img/learn-to-navigate.png" alt="learn to navigate"></p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod.
+			</p>			
+		</ion-slide>
+		<ion-slide>
+			<h3>Using Cards</h3>
+			<p><img src="img/card-example.png" alt="card example"></p>
+			<p>
+				Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+				cillum dolore eu fugiat nulla pariatur.
+			</p>			
+		</ion-slide>
+		<ion-slide>
+			<h3>Enjoy!</h3>
+			<p>Let us know what you think</p>
+		<ion-slide>
+	</ion-slide>
+	</ion-slide-box>
+</ion-view>

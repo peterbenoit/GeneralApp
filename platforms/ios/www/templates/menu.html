@@ -1,29 +1,45 @@
 <ion-side-menus>
+	<ion-pane ion-side-menu-content>
+		<ion-nav-bar class="bar-stable nav-title-slide-ios7">
+			<ion-nav-back-button class="button-clear"><i class="icon ion-ios-arrow-back"></i></i> Back</ion-nav-back-button>
+		</ion-nav-bar>
+		<ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
+	</ion-pane>
 
-  <ion-pane ion-side-menu-content>
-    <ion-nav-bar class="bar-stable nav-title-slide-ios7">
-      <ion-nav-back-button class="button-clear"><i class="icon ion-ios-arrow-back"></i></i> Back</ion-nav-back-button>
-    </ion-nav-bar>
-    <ion-nav-view name="menuContent" animation="slide-left-right"></ion-nav-view>
-  </ion-pane>
+	<ion-side-menu side="left">
+		<header class="bar bar-header bar-stable">
+			<h1 class="title">Sources</h1>
+		</header>
+		<ion-content class="has-header">
+			<ion-list can-swipe="listCanSwipe">
+				<ion-item ng-repeat="item in items" nav-clear menu-close href="{{item.url}}" nav-transition="ios">
+					<i class="icon {{item.icon}}"></i> {{item.title}}
+				</ion-item>
 
-  <ion-side-menu side="left">
-    <header class="bar bar-header bar-stable">
-    <h1 class="title">Sources</h1>
-    </header>
-    <ion-content class="has-header">
-      <ion-list>
-        <ion-item ng-repeat="item in items" nav-clear menu-close href="{{item.url}}" nav-transition="ios">
-        <i class="icon {{item.icon}}"></i> {{item.title}}
-        </ion-item>
-<!--         <ion-item nav-clear menu-close ng-click="login()">
-        <i class="icon ion-log-in"></i> Login
-        </ion-item>
--->        
-        <ion-item nav-clear menu-close ng-click="show()">
-        <i class="icon ion-arrow-swap"></i> Share This
-        </ion-item> 
-      </ion-list>
-    </ion-content>
-  </ion-side-menu>
+				<ion-item nav-clear menu-close ng-click="show()">
+					<i class="icon ion-arrow-swap"></i> Share This
+				</ion-item>
+
+				<ion-item><a href="#/">App Intro</a></ion-item>
+
+				<!-- This will all be dynamic? -->
+				<ion-item><strong>Articles</strong></ion-item>
+				<ion-checkbox ng-model="isHAChecked">Health Articles</ion-checkbox>
+				<ion-checkbox ng-model="isVSChecked">Vital Signs</ion-checkbox>
+				<ion-item><strong>Blogs</strong></ion-item>
+				<ion-checkbox ng-model="isDBChecked">CDC Directors Blog</ion-checkbox>
+				<ion-checkbox ng-model="isPHMBChecked">Public Health Matters Blog</ion-checkbox>
+				<ion-item><strong>Data &amp; Statistics</strong></ion-item>
+				<ion-checkbox ng-model="isFSChecked"><a href="#/app/settings">FastStats</a></ion-checkbox>
+				<ion-item><strong>Journals</strong></ion-item>
+				<ion-checkbox ng-model="isEIDChecked">Emerging Infectious Diseases (EID)</ion-checkbox>
+				<ion-checkbox ng-model="isMMWRChecked">MMWR</ion-checkbox>
+				<ion-item><strong>Links</strong></ion-item>
+
+				<ion-item><a href="http://www.cdc.gov/features/BackToSchool/">Open in App</a></ion-item>
+				<ion-item><a href="#" onclick="window.open('http://www.cdc.gov/features/BackToSchool/', '_system', 'location=yes'); return false;">Open in Browser</a></ion-item>
+
+			</ion-list>
+		</ion-content>
+	</ion-side-menu>
 </ion-side-menus>

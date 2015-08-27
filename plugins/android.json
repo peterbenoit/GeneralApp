@@ -17,6 +17,10 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"PushNotification\"><param name=\"android-package\" onload=\"true\" value=\"com.pushwoosh.plugin.pushnotifications.PushNotifications\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"EmailComposer\"><param name=\"android-package\" value=\"de.appplant.cordova.emailcomposer.EmailComposer\" /></feature>",
                             "count": 1
                         },
@@ -34,6 +38,18 @@
                         },
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"webView\" value=\"org.crosswalk.engine.XWalkWebViewEngine\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -53,6 +69,34 @@
                         {
                             "xml": "<activity android:label=\"@string/share_name\" android:name=\"com.google.zxing.client.android.HelpActivity\"><intent-filter><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /></intent-filter></activity>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<activity android:name=\"com.arellomobile.android.push.PushWebview\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:name=\"com.arellomobile.android.push.MessageActivity\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:name=\"com.arellomobile.android.push.PushHandlerActivity\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:name=\"com.google.android.gcm.GCMBroadcastReceiver\" android:permission=\"com.google.android.c2dm.permission.SEND\"><intent-filter><action android:name=\"com.google.android.c2dm.intent.RECEIVE\" /><action android:name=\"com.google.android.c2dm.intent.REGISTRATION\" /><category android:name=\"com.cdc.generalapp\" /></intent-filter></receiver>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:name=\"com.arellomobile.android.push.PushGCMIntentService\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<service android:name=\"com.arellomobile.android.push.GeoLocationService\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<receiver android:name=\"com.arellomobile.android.push.AlarmReceiver\" />",
+                            "count": 1
                         }
                     ],
                     "/manifest": [
@@ -67,9 +111,46 @@
                         {
                             "xml": "<uses-feature android:name=\"android.hardware.camera\" android:required=\"false\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.VIBRATE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WAKE_LOCK\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<permission android:name=\"com.cdc.generalapp.permission.C2D_MESSAGE\" android:protectionLevel=\"signature\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"com.cdc.generalapp.permission.C2D_MESSAGE\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />",
+                            "count": 1
                         }
                     ],
-                    "/manifest/application/activity": [],
+                    "/manifest/application/activity": [
+                        {
+                            "xml": "<intent-filter><action android:name=\"com.cdc.generalapp.MESSAGE\" /><category android:name=\"android.intent.category.DEFAULT\" /></intent-filter>",
+                            "count": 1
+                        }
+                    ],
                     "/*": [
                         {
                             "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
@@ -570,7 +651,12 @@
             },
             "undefined": {
                 "parents": {
-                    "undefined": []
+                    "undefined": [
+                        {
+                            "xml": "<access origin=\"*.pushwoosh.com\" />",
+                            "count": 1
+                        }
+                    ]
                 }
             }
         }
@@ -580,6 +666,9 @@
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
         "com.phonegap.plugins.barcodescanner": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "com.pushwoosh.plugins.pushwoosh": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
         "de.appplant.cordova.plugin.email-composer": {
@@ -601,6 +690,15 @@
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
         "org.apache.cordova.inappbrowser": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "cordova-plugin-crosswalk-webview": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         }
     },

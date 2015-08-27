@@ -65,6 +65,8 @@ img { max-width: 100%; height:auto; }
 }
 .inline.half {
 	width: 50%;
+	height: 275px;
+	overflow: hidden;
 }
 
 .inline.full {
@@ -84,10 +86,6 @@ img { max-width: 100%; height:auto; }
 	min-height: 100px;
 }
 
-.card.type-d {
-	min-height: 210px
-}
-
 /*.item p:last-child*/
 .card .item .source {
 	font-size: 14px;
@@ -104,9 +102,21 @@ img { max-width: 100%; height:auto; }
 	font-weight: 500;	
 */}
 
-
+.card.type-d1, .card.type-d2 {
+	min-height: 265px
+}
 .double {
 	/*width: 40%;*/
+	/*min-height: 220px;*/
+}
+.type-d2 .item.item-divider {
+    position: absolute;
+	bottom: 0px;
+    width: 100%;
+}
+
+.card .item:first-child {
+    border-bottom: 0;
 }
 
 .double.inline > div {

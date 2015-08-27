@@ -15,6 +15,13 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/com.pushwoosh.plugins.pushwoosh/www/PushNotification.js",
+        "id": "com.pushwoosh.plugins.pushwoosh.PushNotification",
+        "clobbers": [
+            "plugins.pushNotification"
+        ]
+    },
+    {
         "file": "plugins/de.appplant.cordova.plugin.email-composer/www/email_composer.js",
         "id": "de.appplant.cordova.plugin.email-composer.EmailComposer",
         "clobbers": [
@@ -56,6 +63,18 @@ module.exports = [
         "clobbers": [
             "window.open"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+        "id": "cordova-plugin-whitelist.whitelist",
+        "runs": true
+    },
+    {
+        "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+        "id": "cordova-plugin-splashscreen.SplashScreen",
+        "clobbers": [
+            "navigator.splashscreen"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -63,13 +82,17 @@ module.exports.metadata =
 {
     "com.ionic.keyboard": "1.0.4",
     "com.phonegap.plugins.barcodescanner": "2.0.1",
+    "com.pushwoosh.plugins.pushwoosh": "3.5.3",
     "de.appplant.cordova.plugin.email-composer": "0.8.2",
     "nl.x-services.plugins.socialsharing": "4.3.18",
     "org.apache.cordova.console": "0.2.13",
     "org.apache.cordova.device": "0.3.0",
     "org.apache.cordova.dialogs": "0.3.0",
     "org.apache.cordova.geolocation": "0.3.12",
-    "org.apache.cordova.inappbrowser": "0.6.0"
+    "org.apache.cordova.inappbrowser": "0.6.0",
+    "cordova-plugin-crosswalk-webview": "1.2.0",
+    "cordova-plugin-whitelist": "1.0.0",
+    "cordova-plugin-splashscreen": "2.1.0"
 }
 // BOTTOM OF METADATA
 });

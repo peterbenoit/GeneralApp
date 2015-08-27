@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="cdcgeneralapp">
 	<head>
 		<meta charset="utf-8">
 		<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; script-src 'self' http://maps.googleapis.com http://maps.gstatic.com; img-src 'self' http://lorempixel.com; style-src 'self' 'unsafe-inline'; media-src *"> -->
@@ -10,20 +10,24 @@
 
 		<title>CDC General App</title>
 
-
-
 		<link href="lib/ionic/css/ionic.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
 
-		<!-- Ionic/AngularjsJS -->
+		<!-- Ionic/AngularJS -->
 		<script src="lib/ionic/js/ionic.bundle.js"></script>
 		<script src="js/angular-sanitize.js"></script>
 
-		<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-		<script type="text/javascript" src="js/lodash.underscore.min.js"></script>
-		<script type="text/javascript" src="js/angular-google-maps.min.js"></script>
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script src="js/lodash.underscore.min.js"></script>
+		<script src="js/angular-google-maps.min.js"></script>
 
-		<!-- Cordova Script (this will be a 404 during development) -->
+		<script src="js/xml2json.js"></script>
+
+		<script src="js/moment-min.js"></script>
+		<script src="js/angular-moment-min.js"></script>
+		<script src="js/angular-filter-min.js"></script>		
+
+		<!-- Cordova Script (404 during development) -->
 		<script src="cordova.js"></script>
 
 		<!-- CDC General App JS -->
@@ -35,15 +39,10 @@
 		<script src="js/data.js"></script>
 		
 		<script src="js/jquery-1.11.3.min.js"></script>
-		<script src="js/xml2json.js"></script>
-
-		<!-- WARN: NOT REMOTE -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.6/moment.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/0.7.0/angular-moment.min.js"></script>
 		
 		<!-- push notifications -->
-		<script type="text/javascript" src="js/pushwoosh-android.js"></script>
-		<script type="text/javascript" src="js/pushwoosh-ios.js"></script>
+		<script src="js/pushwoosh-android.js"></script>
+		<script src="js/pushwoosh-ios.js"></script>
 
 		<!-- WARN: NOT REMOTE -->
 		<link href="http://fonts.googleapis.com/css?family=Open%20Sans" rel="stylesheet" type="text/css">
@@ -73,7 +72,7 @@
 		</style>
 	</head>
 
-	<body ng-app="cdcgeneralapp">
+	<body ng-cloak>
 		
 		<ion-nav-view></ion-nav-view>
 		

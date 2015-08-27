@@ -4,11 +4,8 @@
         
         <div class="list">
 
-
-
-            <a class="item" ng-class="{'item-thumbnail-left' : new.picture}" href="#/app/dotw/{{$index}}" ng-repeat="disease in diseases">
-
-                <h2>{{disease.name}}</h2>
+            <a class="item {{disease.cardtype}}" ng-class="{'item-thumbnail-left' : new.picture}" href="#/app/dotw/{{$index}}" ng-repeat="disease in diseases">
+                <h2>{{disease.name}} ({{disease.cardtype}})</h2>
                 <p>{{disease.shortDescription}}</p>
             </a>
 

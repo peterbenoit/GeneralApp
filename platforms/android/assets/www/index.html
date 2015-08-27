@@ -1,77 +1,81 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; script-src 'self' http://maps.googleapis.com http://maps.gstatic.com; img-src 'self' http://lorempixel.com; style-src 'self' 'unsafe-inline'; media-src *"> -->
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">        
+<html ng-app="cdcgeneralapp">
+	<head>
+		<meta charset="utf-8">
+		<!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; script-src 'self' http://maps.googleapis.com http://maps.gstatic.com; img-src 'self' http://lorempixel.com; style-src 'self' 'unsafe-inline'; media-src *"> -->
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
+		<!-- <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width"> -->
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">        
 
-        <title>CDC General App</title>
+		<title>CDC General App</title>
 
+		<link href="lib/ionic/css/ionic.css" rel="stylesheet">
+		<link href="css/style.css" rel="stylesheet">
 
+		<!-- Ionic/AngularJS -->
+		<script src="lib/ionic/js/ionic.bundle.js"></script>
+		<script src="js/angular-sanitize.js"></script>
 
-        <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-        <link href="css/style.css" rel="stylesheet">
+		<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+		<script src="js/lodash.underscore.min.js"></script>
+		<script src="js/angular-google-maps.min.js"></script>
 
-        <!-- Ionic/AngularjsJS -->
-        <script src="lib/ionic/js/ionic.bundle.js"></script>
-        <script src="js/angular-sanitize.js"></script>
+		<script src="js/xml2json.js"></script>
 
-        <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-        <script type="text/javascript" src="js/lodash.underscore.min.js"></script>
-        <script type="text/javascript" src="js/angular-google-maps.min.js"></script>
+		<script src="js/moment-min.js"></script>
+		<script src="js/angular-moment-min.js"></script>
+		<script src="js/angular-filter-min.js"></script>		
 
-        <!-- Cordova Script (this will be a 404 during development) -->
-        <script src="cordova.js"></script>
+		<!-- Cordova Script (404 during development) -->
+		<script src="cordova.js"></script>
 
-        <!-- CDC General App JS -->
-        <script src="js/app.js"></script>
-        <script src="js/controllers.js"></script>
-        <script src="js/directives.js"></script>
-        <script src="js/filters.js"></script>
-        <script src="js/local-storage.js"></script>
-        <script src="js/data.js"></script>
-        
-        <script src="js/jquery-1.11.3.min.js"></script>
-        <script src="js/xml2json.js"></script>
-        
-        <!-- push notifications -->
-        <script type="text/javascript" src="js/pushwoosh-android.js"></script>
-        <script type="text/javascript" src="js/pushwoosh-ios.js"></script>
+		<!-- CDC General App JS -->
+		<script src="js/app.js"></script>
+		<script src="js/controllers.js"></script>
+		<script src="js/directives.js"></script>
+		<script src="js/filters.js"></script>
+		<script src="js/local-storage.js"></script>
+		<script src="js/data.js"></script>
+		
+		<script src="js/jquery-1.11.3.min.js"></script>
+		
+		<!-- push notifications -->
+		<script src="js/pushwoosh-android.js"></script>
+		<script src="js/pushwoosh-ios.js"></script>
 
-        <link href="http://fonts.googleapis.com/css?family=Open%20Sans" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
-        <link href="http://fonts.googleapis.com/css?family=Roboto%20Condensed" rel="stylesheet" type="text/css">
+		<!-- WARN: NOT REMOTE -->
+		<link href="http://fonts.googleapis.com/css?family=Open%20Sans" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+		<link href="http://fonts.googleapis.com/css?family=Roboto%20Condensed" rel="stylesheet" type="text/css">
 
-        <style>
-            .opensans h1, .opensans h2, .opensans h3, .opensans h4, .opensans h5, .opensans h6, .opensans p, .opensans div, .opensans blockquote, .opensans i, .opensans em, .opensans address, .opensans a, .opensans li, .opensans strong, .opensans b {
-                font-family: 'Open Sans', sans-serif !important;
-            }
-            .roboto h1, .roboto h2, .roboto h3, .roboto h4, .roboto h5, .roboto h6, .roboto p, .roboto div, .roboto blockquote, .roboto i, .roboto em, .roboto address, .roboto a, .roboto li, .roboto strong, .roboto b {
-                font-family: 'Roboto', sans-serif !important;
-            }
-            .lato h1, .lato h2, .lato h3, .lato h4, .lato h5, .lato h6, .lato p, .lato div, .lato blockquote, .lato i, .lato em, .lato address, .lato a, .lato li, .lato strong, .lato b {
-                font-family: 'Lato', sans-serif !important;
-            }
-            .robotocondensed h1, .robotocondensed h2, .robotocondensed h3, .robotocondensed h4, .robotocondensed h5, .robotocondensed h6 {
-                font-family: 'Roboto Condensed', sans-serif !important;
-            }
-            .robotocondensed p, .robotocondensed div, .robotocondensed blockquote, .robotocondensed i, .robotocondensed em, .robotocondensed address, .robotocondensed a, .robotocondensed li, .robotocondensed strong, .robotocondensed b {
-                font-family: 'Open Sans', sans-serif !important;
-            }
-            .fonttest {
-                margin: 10px;
-            }
-        </style>
-    </head>
+		<style>
+			.opensans h1, .opensans h2, .opensans h3, .opensans h4, .opensans h5, .opensans h6, .opensans p, .opensans div, .opensans blockquote, .opensans i, .opensans em, .opensans address, .opensans a, .opensans li, .opensans strong, .opensans b {
+				font-family: 'Open Sans', sans-serif !important;
+			}
+			.roboto h1, .roboto h2, .roboto h3, .roboto h4, .roboto h5, .roboto h6, .roboto p, .roboto div, .roboto blockquote, .roboto i, .roboto em, .roboto address, .roboto a, .roboto li, .roboto strong, .roboto b {
+				font-family: 'Roboto', sans-serif !important;
+			}
+			.lato h1, .lato h2, .lato h3, .lato h4, .lato h5, .lato h6, .lato p, .lato div, .lato blockquote, .lato i, .lato em, .lato address, .lato a, .lato li, .lato strong, .lato b {
+				font-family: 'Lato', sans-serif !important;
+			}
+			.robotocondensed h1, .robotocondensed h2, .robotocondensed h3, .robotocondensed h4, .robotocondensed h5, .robotocondensed h6 {
+				font-family: 'Roboto Condensed', sans-serif !important;
+			}
+			.robotocondensed p, .robotocondensed div, .robotocondensed blockquote, .robotocondensed i, .robotocondensed em, .robotocondensed address, .robotocondensed a, .robotocondensed li, .robotocondensed strong, .robotocondensed b {
+				font-family: 'Open Sans', sans-serif !important;
+			}
+			.fonttest {
+				margin: 10px;
+			}
+		</style>
+	</head>
 
-    <body ng-app="cdcgeneralapp">
-        
-        <ion-nav-view></ion-nav-view>
-        
-    </body>
-    
+	<body ng-cloak="">
+		
+		<ion-nav-view></ion-nav-view>
+		
+	</body>
+	
 </html>
