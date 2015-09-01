@@ -4,11 +4,11 @@
 						<img src="{{substream.image}}">
 					</div>
 					<div class="item item-text-wrap item-body">
-						<strong>{{stream.name}}({{stream.cardtype}})</strong>
+						<strong class="line-clamp line-clamp-2">{{stream.title}}</strong>
 						<p class="date">{{substream.date | amDateFormat:'MMMM Do, YYYY'}}</p>
 					</div>
 					<div class="item item-divider">
-						<p class="source"><i class="ion-document"></i> <a href="#">{{stream.source}}</a></p>
+						<p class="source"><a href="#app/source/{{stream.source}}">{{stream.source}}</a></p>
 					</div>					
 				</div>
 			</div>			

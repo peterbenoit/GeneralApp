@@ -54,6 +54,24 @@ angular.module('cdcgeneralapp.storage', [])
 	}
 })
 
+.factory('StreamStorage', function() {
+	return {
+		all: function() {
+			var stream = window.localStorage['stream'];
+			if(stream) {
+				return angular.fromJson(stream);
+			}
+			return {};
+		},
+		save: function(stream) {
+			window.localStorage['stream'] = angular.toJson(stream);
+		},
+		clear: function() {
+			window.localStorage.removeItem('stream');
+		}
+	}
+})
+
 .factory('ProductsStorage', function() {
 	return {
 		all: function() {
@@ -90,6 +108,23 @@ angular.module('cdcgeneralapp.storage', [])
 	}
 })
 
+.factory('VitalSignsStorage', function() {
+	return {
+		all: function() {
+			var vitalsigns = window.localStorage['vitalsigns'];
+			if(vitalsigns) {
+				return angular.fromJson(vitalsigns);
+			}
+			return {};
+		},
+		save: function(vitalsigns) {
+			window.localStorage['vitalsigns'] = angular.toJson(vitalsigns);
+		},
+		clear: function() {
+			window.localStorage.removeItem('vitalsigns');
+		}
+	}
+})
 .factory('AboutStorage', function() {
 	return {
 		all: function() {

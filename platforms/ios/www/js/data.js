@@ -120,22 +120,52 @@ angular.module('cdcgeneralapp.data', [])
 	var card = "";
 	var dirty = false;
 	var facebookCard = {
-		"name": "Facebook",
-		"cardtype": "type-social",
+		"title": "Facebook",
+		"description": "CDC Gov",
+		"cardtype": "type-social-left",
 		"date": "2081-02-04T18:26:56.828Z",
-		"image": "img/facebook.png",
-		"templatetype": "c2"
+		"image": "img/Facebook2.png",
+		"templatetype": "c1",
+		"targetUrl": "http://www.facebook.com/CDC",
+		"size": "full"
 	};
 
 	var twitterCard = {
-		"name": "Twitter",
-		"cardtype": "type-social",
+		"title": "Twitter",
+		"description": "CDC Emergency",
+		"cardtype": "type-social-right",
 		"date": "2081-02-04T18:26:56.828Z",
-		"image": "img/twitter.png",
-		"templatetype": "c3"
+		"image": "img/Twitter2.png",
+		"templatetype": "c1",
+		"targetUrl": "https://twitter.com/CDCEmergency",
+		"size": "full"
+	};	
+	var facebookCard2 = {
+		"title": "Facebook",
+		"description": "CDC Gov",
+		"cardtype": "type-social-top",
+		"date": "2081-02-04T18:26:56.828Z",
+		"image": "img/Facebook2.png",
+		"templatetype": "c1",
+		"targetUrl": "http://www.facebook.com/CDC",
+		"size": "half"
 	};
 
-	var feed = 'http://www.filltext.com/?rows=10&name={firstName}~{lastName}&pretty=true&date={date}&description={lorem|20}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22]&cardtype=["type-a1","type-a1","type-a1","type-a2","type-a2","type-a3","type-a3","type-b1","type-b2","type-c1","type-c2","type-c3","type-d1","type-d2","type-e1","type-e2"]';
+	var twitterCard2 = {
+		"title": "Twitter",
+		"description": "CDC Emergency",
+		"cardtype": "type-social-top",
+		"date": "2081-02-04T18:26:56.828Z",
+		"image": "img/Twitter2.png",
+		"templatetype": "c1",
+		"targetUrl": "https://twitter.com/CDCEmergency",
+		"size": "half"
+	};
+
+
+	// currently, getting all data on first load instead of with each page
+	//var feed = 'http://www.filltext.com/?rows=30&title={firstName}~{lastName}&pretty=true&date={date}&description={lorem|20}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=["type-a1","type-a1","type-a1","type-a2","type-a2","type-a3","type-a3","type-b1","type-b2","type-c1","type-c2","type-c3","type-d1","type-d2","type-e1","type-e2"]';
+	var feed = 'http://www.filltext.com/?rows=30&title={lorem|10}&pretty=true&date={date}&description={lorem|40}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=[%22type-a1%22,%22type-a1%22,%22type-a1%22,%22type-a2%22,%22type-a2%22,%22type-a3%22,%22type-a3%22,%22type-b1%22,%22type-b2%22,%22type-c1%22,%22type-d1%22,%22type-d2%22,%22type-e1%22,%22type-e2%22]';
 
 	service.async = function() {
 		$http({
@@ -147,64 +177,96 @@ angular.module('cdcgeneralapp.data', [])
 		// when the response is available.
 		success(function(d) {
 			data = d;
-			var lastCardType = data[data.length - 1].cardtype;
+			// var lastCardType = data[data.length - 1].cardtype;
+			var page = 1,
+				pageitems = 10;
+
+			data.splice(0, 0, twitterCard2);
+			data.splice(1, 0, facebookCard2);
+
+			// TODO: where should social media items appear? Sporatically in entire feed, or within some constraints?
+
+			// TODO
+			// insert sources which aren't in aggregate feed into random spots, but not between type-ds
+			var position = Math.floor(Math.random() * (pageitems - 0 + 1)) + 0;
+			// console.log(data[position].cardtype);
+			// console.log(data[position - 1].cardtype);
+			// console.log(data[position + 1].cardtype);
+			// console.log(position, data.length);
+
+			// if(position === data.length) {
+
+			// }
+			data.splice(position, 0, facebookCard);
+
+			position = Math.floor(Math.random() * (pageitems - 0 + 1)) + 0;
+			// console.log(data[position].cardtype);
+			// console.log(data[position - 1].cardtype);
+			// console.log(data[position + 1].cardtype);
+			// console.log(position, data.length);
+
+			data.splice(position, 0, twitterCard);			
 
 			//The final card shouldn't be of type-d
-			if (lastCardType === 'type-d1') {
-				lastCardType = 'type-a1';
-			} else if (lastCardType === 'type-d2') {
-				lastCardType = 'type-a2';
-			}
+			// TODO: THIS IS AWFUL!
+			// if (lastCardType === 'type-d1') {
+			// 	lastCardType = 'type-a1';
+			// } else if (lastCardType === 'type-d2') {
+			// 	lastCardType = 'type-a2';
+			// }
+
+
+			// position = Math.floor(Math.random() * (pageitems - 0 + 1)) + 0;
 
 			for (var key in data) {
-				// if the previous card is set, and it's one of the D's
-				if (card !== '' && (card === 'type-d1' || card === 'type-d2') && !dirty) {
-					// set this card to match the previous
-					data[key].cardtype = 'type-d2';
-					data[key].modified = 'true';
-					dirty = true
-				} else {
-					dirty = false;
+
+				if(typeof data[key].size === 'undefined') {
+					data[key].size = 'full';	
 				}
+
+				
+
+				// DEMO: NOTE: randomly making the title(name) longer for demo
+				// if(key == position) {
+				// 	data[key].title = "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtempor incididunt ut labore et dolore magna aliqua.";
+				// }
+
+				// if the previous card is set, and it's one of the D's
+				// if (card !== '' && (card === 'type-d1' || card === 'type-d2') && !dirty) {
+				// 	// set this card to match the previous
+				// 	data[key].cardtype = 'type-d2';
+				// 	data[key].modified = 'true';
+				// 	dirty = true
+				// } 
+				// else {
+				// 	dirty = false;
+				// }
 
 				// set a new card
 				card = data[key].cardtype;
 
-				// quick and dirty, add a random image based on card type 
+				// quick and dirty, add a random image based on card type since the json source doesn't provide images
 				if (card.indexOf('type-a') === 0) {
 					// + key to randomize
 					data[key].image = 'http://placeimg.com/335/250/any/' + key;
-				} else if (card.indexOf('type-c') === 0) {
-					data[key].image = 'http://placeimg.com/80/80/any/' + key;
-				} else if (card.indexOf('type-d') === 0) {
-					data[key].image = 'http://placeimg.com/150/120/any/' + key;
+				} else 
+					if (card.indexOf('type-c') === 0) {
+						data[key].image = 'http://placeimg.com/80/80/any/' + key;
+				} else 
+					if (card.indexOf('type-d') === 0) {
+						data[key].image = 'http://placeimg.com/150/120/any/' + key;
+						data[key].size = 'half';
 				}
 
-				data[key].templatetype = "a2";
+				// data[key].templatetype = "a2";
 
-				// console.log(data[key])
+console.log(data[key])
 			}
 
-			// TODO
-			// insert sources which aren't in aggregate feed into random spots, but not between type-ds
-			var position = Math.floor(Math.random() * (data.length - 0 + 1)) + 0;
-			// console.log(data[position].cardtype);
-			// console.log(data[position - 1].cardtype);
-			// console.log(data[position + 1].cardtype);
-			// console.log(position, data.length);
+			// data.push(facebookCard2);
+			// data.push(twitterCard2);
 
-			if(position === data.length) {
-
-			}
-			data.splice(position, 0, facebookCard);
-
-			position = Math.floor(Math.random() * (data.length - 0 + 1)) + 0;
-			// console.log(data[position].cardtype);
-			// console.log(data[position - 1].cardtype);
-			// console.log(data[position + 1].cardtype);
-			// console.log(position, data.length);
-
-			data.splice(position, 0, twitterCard);
+// console.log(data);
 
 			HomeStreamStorage.save(data);
 			deferred.resolve();
@@ -228,6 +290,16 @@ angular.module('cdcgeneralapp.data', [])
 		return data[newId];
 	};
 
+	service.getBySource = function(source) {
+		var d, obj = [];
+		for (d in data) {
+			if (data[d].source === source) {
+				obj.push(data[d]);
+			}
+		}
+		return obj;
+	}
+	
 	return service;
 })
 
@@ -477,5 +549,5 @@ angular.module('cdcgeneralapp.data', [])
 })
 
 .factory('GalleryData', function(){
-
+	// newp
 })

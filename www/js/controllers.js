@@ -38,7 +38,7 @@ angular.module('cdcgeneralapp.controllers', [])
 })
 
 // Home Stream Controller
-.controller('HomeStreamCtrl', function($scope, $ionicLoading, HomeStreamData, HomeStreamStorage) {
+.controller('HomeStreamCtrl', function($scope, $rootScope, $ionicLoading, HomeStreamData, HomeStreamStorage) {
 	$scope.homestream = [];
 	$scope.storage = '';
 
@@ -47,20 +47,20 @@ angular.module('cdcgeneralapp.controllers', [])
 		return $scope.template[templateId];
 	};
 
-	$scope.template = {
+	$rootScope.template = {
 		"a1": "templates/cards/a1.html",
 		"a2": "templates/cards/a2.html",
 		"a3": "templates/cards/a3.html",
 		"b1": "templates/cards/b1.html",
 		"b2": "templates/cards/b2.html",
 		"c1": "templates/cards/c1.html",
-		"c2": "templates/cards/c2.html",
-		"c3": "templates/cards/c3.html",
 		"d1": "templates/cards/d1.html",
 		"d2": "templates/cards/d2.html",
 		"e1": "templates/cards/e1.html",
 		"e2": "templates/cards/e2.html",
-		"social": "templates/cards/social.html",
+		"social-left": "templates/cards/social-left.html",
+		"social-right": "templates/cards/social-right.html",
+		"social-top": "templates/cards/social-top.html"
 	}
 
 	$scope.loading = $ionicLoading.show({
@@ -116,39 +116,46 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.showMoreItems = function() {
 		page = page + 1;
 		// $scope.$apply();
-	};	
+	};
+
+	// $scope.goTo = function(url) {
+	// 	alert(url)
+	// 	// window.open(url, '_self', 'location=no');
+	// 	// window.open(t.attr('href'), target, 'location=no');
+	// }	
 })
 
 // Source Stream Controller
-.controller('StreamCtrl', function($scope, $stateParams, HomeStreamData, $sce) {
+// currently this only works off what was loaded in the Home Stream and not a fresh load
+// home stream may only load a limited set, whereas this view will need to try to display 10 at a time
+.controller('StreamCtrl', function($scope, $rootScope, $stateParams, HomeStreamData, $sce) {
 	$scope.sourcestream = [];
 	$scope.storage = '';
 
 	$scope.sourcestream = HomeStreamData.getBySource($stateParams.entryId);
-	
 
 	// $scope.content = $sce.trustAsHtml($scope.entry.content);	
 
 	$scope.selectTemplate = function(sourcestream) {
 		var templateId = sourcestream.cardtype.replace('type-', '');
-		return $scope.template[templateId];
+		return $rootScope.template[templateId];
 	};
 
-	$scope.template = {
-		"a1": "templates/cards/a1.html",
-		"a2": "templates/cards/a2.html",
-		"a3": "templates/cards/a3.html",
-		"b1": "templates/cards/b1.html",
-		"b2": "templates/cards/b2.html",
-		"c1": "templates/cards/c1.html",
-		"c2": "templates/cards/c2.html",
-		"c3": "templates/cards/c3.html",
-		"d1": "templates/cards/d1.html",
-		"d2": "templates/cards/d2.html",
-		"e1": "templates/cards/e1.html",
-		"e2": "templates/cards/e2.html",
-		"social": "templates/cards/social.html",
-	}
+	// $scope.template = {
+	// 	"a1": "templates/cards/a1.html",
+	// 	"a2": "templates/cards/a2.html",
+	// 	"a3": "templates/cards/a3.html",
+	// 	"b1": "templates/cards/b1.html",
+	// 	"b2": "templates/cards/b2.html",
+	// 	"c1": "templates/cards/c1.html",
+	// 	"c2": "templates/cards/c2.html",
+	// 	"c3": "templates/cards/c3.html",
+	// 	"d1": "templates/cards/d1.html",
+	// 	"d2": "templates/cards/d2.html",
+	// 	"e1": "templates/cards/e1.html",
+	// 	"e2": "templates/cards/e2.html",
+	// 	"social": "templates/cards/social.html",
+	// }
 
 	// $scope.loading = $ionicLoading.show({
 	// 	template: '<ion-spinner icon="spiral"></ion-spinner>',
@@ -188,6 +195,10 @@ angular.module('cdcgeneralapp.controllers', [])
 	// }
 })
 
+.controller('CardCtrl', function($scope){
+
+})
+
 // Typeface Controller
 .controller('TypefaceCtrl', function($scope, Data) {
 	// $scope.items = Data.items;
@@ -213,10 +224,10 @@ angular.module('cdcgeneralapp.controllers', [])
 		showDelay: 10
 	});
 
-	DotwData.async().then(
+	HomeStreamData.async().then(
 		// successCallback
 		function() {
-			$scope.diseases = DotwData.getAll();
+			$scope.diseases = HomeStreamData.getAll();
 			$ionicLoading.hide();
 		},
 		// errorCallback 
@@ -329,7 +340,41 @@ angular.module('cdcgeneralapp.controllers', [])
 		// notifyCallback
 		function() {}
 	);
+})
 
+// Vital Signs Controller
+.controller('VitalSignsCtrl', function($scope, $ionicLoading, VitalSignsData, VitalSignsStorage) {
+
+	$scope.vitalsigns = [];
+	$scope.storage = '';
+
+	$scope.loading = $ionicLoading.show({
+		template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+
+		//Will a dark overlay or backdrop cover the entire view
+		showBackdrop: false,
+
+		// The delay in showing the indicator
+		showDelay: 10
+	});
+
+	VitalSignsData.async().then(
+		// successCallback
+		function() {
+			$scope.vitalsigns = VitalSignsData.getAll();
+			$scope.letterLimit = VitalSignsData.getLetterLimit();
+			$ionicLoading.hide();
+		},
+		// errorCallback 
+		function() {
+			$scope.vitalsigns = VitalSignsStorage.all();
+			$scope.letterLimit = VitalSignsData.getLetterLimit();
+			$scope.storage = 'Data from local storage';
+			$ionicLoading.hide();
+		},
+		// notifyCallback
+		function() {}
+	);
 })
 
 // Plugins Controller

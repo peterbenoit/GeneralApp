@@ -25,14 +25,14 @@ angular.module('cdcgeneralapp', [
 		}
 
 		// Open any external link with InAppBrowser Plugin
-		$(document).on('click', 'a[href^=http], a[href^=https]', function(e) {
+		$(document).on('click', '[href^=http], [href^=https]', function(e) {
 			// window.open(‘http://example.com’, ‘_system’);	Loads in the system browser
 			// window.open(‘http://example.com’, ‘_blank’);		Loads in the InAppBrowser
 			// window.open(‘http://example.com’, ‘_blank’, ‘location=no’);	Loads in the InAppBrowser with no location bar
 			// window.open(‘http://example.com’, ‘_self’);	Loads in the Cordova web view
 			e.preventDefault();
 			var t = $(this),
-			target = t.data('inAppBrowser') || '_self';
+			target = t.data('inAppBrowser') || '_blank';	//TODO: self stopped working
 
 			window.open(t.attr('href'), target, 'location=no');
 
@@ -66,6 +66,12 @@ angular.module('cdcgeneralapp', [
 
 	$stateProvider
 
+	.state('intro', {
+		url: '/',
+		templateUrl: 'templates/intro.html',
+		controller: 'IntroCtrl'
+	})
+
 	.state('app', {
 		url: "/app",
 		abstract: true,
@@ -89,6 +95,16 @@ angular.module('cdcgeneralapp', [
 		}
 	})
 
+	.state('app.source', {
+		url: "/source/:entryId",
+		views: {
+			'menuContent' :{
+				templateUrl: "templates/source-stream.html",
+				controller: 'StreamCtrl'
+			}
+		}
+	})	
+
 	.state('app.typeface', {
 		url: "/typeface",
 		views: {
@@ -98,15 +114,43 @@ angular.module('cdcgeneralapp', [
 			}
 		}
 	})
-		.state('app.cards', {
-			url: "/cards",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/cards.html",
-					controller: 'CardsCtrl'
-				}
+
+	.state('app.galleryfour', {
+		url: "/galleryfour",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/gallery4.html",
+				controller: 'GalleryCtrl'
 			}
-		})
+		}
+	})
+	.state('app.gallerythree', {
+		url: "/gallerythree",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/gallery3.html",
+				controller: 'GalleryCtrl'
+			}
+		}
+	})
+	.state('app.gallerytwo', {
+		url: "/gallerytwo",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/gallery2.html",
+				controller: 'GalleryCtrl'
+			}
+		}
+	})
+	.state('app.cards', {
+		url: "/cards",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/cards.html",
+				controller: 'CardsCtrl'
+			}
+		}
+	})
 
 	.state('app.dotw', {
 		url: "/dotw",
@@ -152,8 +196,38 @@ angular.module('cdcgeneralapp', [
 		url: "/healtharticles",
 		views: {
 			'menuContent': {
-				templateUrl: "templates/healtharticles.html",
+				templateUrl: "templates/health-articles.html",
 				controller: 'HealthArticlesCtrl'
+			}
+		}
+	})
+
+	.state('app.healtharticle', {
+		url: "/healtharticle/:entryId",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/health-article.html",
+				controller: 'HealthArticlesCtrl'
+			}
+		}
+	})
+
+	.state('app.vitalsigns', {
+		url: "/vitalsigns",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/vital-signs.html",
+				controller: 'VitalSignsCtrl'
+			}
+		}
+	})
+
+	.state('app.vitalsign', {
+		url: "/vitalsign/:entryId",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/vital-sign.html",
+				controller: 'VitalSignsCtrl'
 			}
 		}
 	})
@@ -217,15 +291,16 @@ angular.module('cdcgeneralapp', [
 			}
 		}
 	})
-		.state('app.form-quiz', {
-			url: "/form-quiz",
-			views: {
-				'menuContent': {
-					templateUrl: "templates/form-quiz.html",
-					controller: 'FormQuizCtrl'
-				}
+
+	.state('app.form-quiz', {
+		url: "/form-quiz",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/form-quiz.html",
+				controller: 'FormQuizCtrl'
 			}
-		})
+		}
+	})
 	// if none of the above states are matched, use this as the fallback
-	$urlRouterProvider.otherwise('/app/home');
+	$urlRouterProvider.otherwise('/app/home');	// /app/home
 });

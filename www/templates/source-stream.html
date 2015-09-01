@@ -13,7 +13,7 @@
 		on-refresh="doRefresh()">
 		</ion-refresher>
 
-			<div ng-repeat="stream in sourcestream" class="inline" ng-class="stream.cardtype.indexOf('type-d') === 0 ? 'half' : 'full'">
+			<div ng-repeat="stream in sourcestream" class="inline sourcestream" ng-class="stream.cardtype.indexOf('type-d') === 0 ? 'half' : 'full'">
 				<div data-ng-include="selectTemplate(stream)"></div>
 			</div>
 

@@ -1,0 +1,25 @@
+<ion-view title="">
+    <ion-content class="has-header">
+        
+        {{storage}}
+
+        <div class="row healtharticles" ng-repeat="row in vitalsigns | partition:2">
+        {{row.category._term}}
+            <div class="col card {{field.cardtype}}" ng-repeat="field in row">
+                
+                <a href="#/app/vitalsign/{{(($parent.$index*row.length)+$index)}}">
+                    <h2>{{field.title.__cdata}}</h2>
+                    <p>{{field.summary.__cdata}}</p>
+                </a>
+          <!--   <a href="#/app/products/{{(($parent.$index*row.length)+$index)}}"><img ng-src="{{product.thumb}}"alt="{{product.title}}"/></a>
+            <a href="#/app/products/{{(($parent.$index*row.length)+$index)}}"><h2>{{product.title}}</h2></a>
+            <p ng-model="letterLimit">{{product.body | limitTo:letterLimit}}...</p>
+            <p class="tags"><i class="icon ion-pricetags"></i>
+            <span ng-repeat="tag in product.tags">{{tag}}{{$last ? '' : ', '}}</span>
+            </p>
+           -->  
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

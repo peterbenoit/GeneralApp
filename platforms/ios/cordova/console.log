@@ -69,3 +69,24 @@
 2015-08-24 10:53:09.195 CDC General App[20544:1087674] sending appOpen failed
 2015-08-24 10:53:09.395 CDC General App[20544:1087652] Finished load of: file:///Users/peterbenoit/Library/Developer/CoreSimulator/Devices/49617F5F-FB9D-4EE1-B13B-EDFF69E315DE/data/Containers/Bundle/Application/55E16602-D39E-4364-A930-CC173E313ED2/CDC%20General%20App.app/www/index.html#/app/home
 2015-08-24 10:53:18.351 CDC General App[20544:1087958] Terminating since there is no system app.
+2015-08-28 16:06:05.356 CDC General App[16982:687695] Pushwoosh: Initializing application runtime
+2015-08-28 16:06:05.456 CDC General App[16982:687695] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/peterbenoit/Library/Developer/CoreSimulator/Devices/49617F5F-FB9D-4EE1-B13B-EDFF69E315DE/data/Containers/Data/Application/A9815F02-7C70-4F63-9E8F-A91998F787BB/Library/Cookies/Cookies.binarycookies
+2015-08-28 16:06:05.714 CDC General App[16982:687695] You've implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
+2015-08-28 16:06:05.730 CDC General App[16982:687695] Apache Cordova native platform version 3.8.0 is starting.
+2015-08-28 16:06:05.731 CDC General App[16982:687695] Multi-tasking -> Device: YES, App: YES
+2015-08-28 16:06:05.748 CDC General App[16982:687695] Unlimited access to network resources
+2015-08-28 16:06:06.069 CDC General App[16982:687695] [CDVTimer][keyboard] 0.106037ms
+2015-08-28 16:06:06.124 CDC General App[16982:687695] [CDVTimer][socialsharing] 55.068016ms
+2015-08-28 16:06:06.249 CDC General App[16982:687695] [CDVTimer][splashscreen] 125.093997ms
+2015-08-28 16:06:06.250 CDC General App[16982:687695] [CDVTimer][TotalPluginStartup] 181.608975ms
+2015-08-28 16:06:06.260 CDC General App[16982:687695] Will show push notifications alert
+2015-08-28 16:06:06.296 CDC General App[16982:687695] location services authorization status has not been determined yet
+2015-08-28 16:06:06.320 CDC General App[16982:687695] Resetting plugins due to page load.
+2015-08-28 16:06:06.342 CDC General App[16982:688056] Sending request: {"request":{"hwid":"3964A2BA-73EA-47FB-ADB6-C16E697128EE","application":"","v":"2.5"}}
+2015-08-28 16:06:06.342 CDC General App[16982:688056] To urL https://cp.pushwoosh.com/json/1.3/applicationOpen
+2015-08-28 16:06:07.001 CDC General App[16982:688056] Response "200 no error": string: {"status_code":210,"status_message":"Application not found","response":null}
+2015-08-28 16:06:07.002 CDC General App[16982:688056] sending appOpen failed
+2015-08-28 16:06:07.462 CDC General App[16982:687695] Finished load of: file:///Users/peterbenoit/Library/Developer/CoreSimulator/Devices/49617F5F-FB9D-4EE1-B13B-EDFF69E315DE/data/Containers/Bundle/Application/A437A7DD-B792-4CFB-8F11-D87DAD73C95E/CDC%20General%20App.app/www/index.html#/app/home
+2015-08-28 16:06:32.784 CDC General App[16982:687695] Resetting plugins due to page load.
+2015-08-28 16:06:32.784 CDC General App[16982:687695] IAB.close() called but it was already closed.
+2015-08-28 16:06:33.686 CDC General App[16982:687695] Finished load of: https://mobile.twitter.com/CDCEmergency

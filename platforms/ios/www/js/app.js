@@ -25,14 +25,14 @@ angular.module('cdcgeneralapp', [
 		}
 
 		// Open any external link with InAppBrowser Plugin
-		$(document).on('click', 'a[href^=http], a[href^=https]', function(e) {
+		$(document).on('click', '[href^=http], [href^=https]', function(e) {
 			// window.open(‘http://example.com’, ‘_system’);	Loads in the system browser
 			// window.open(‘http://example.com’, ‘_blank’);		Loads in the InAppBrowser
 			// window.open(‘http://example.com’, ‘_blank’, ‘location=no’);	Loads in the InAppBrowser with no location bar
 			// window.open(‘http://example.com’, ‘_self’);	Loads in the Cordova web view
 			e.preventDefault();
 			var t = $(this),
-			target = t.data('inAppBrowser') || '_self';
+			target = t.data('inAppBrowser') || '_blank';	//TODO: self stopped working
 
 			window.open(t.attr('href'), target, 'location=no');
 
@@ -94,6 +94,16 @@ angular.module('cdcgeneralapp', [
 			}
 		}
 	})
+
+	.state('app.source', {
+		url: "/source/:entryId",
+		views: {
+			'menuContent' :{
+				templateUrl: "templates/source-stream.html",
+				controller: 'StreamCtrl'
+			}
+		}
+	})	
 
 	.state('app.typeface', {
 		url: "/typeface",

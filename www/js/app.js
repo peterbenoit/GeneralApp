@@ -25,17 +25,27 @@ angular.module('cdcgeneralapp', [
 		}
 
 		// Open any external link with InAppBrowser Plugin
-		$(document).on('click', 'a[href^=http], a[href^=https]', function(e) {
+		$(document).on('click', '[href^=http], [href^=https]', function(e) {
 			// window.open(‘http://example.com’, ‘_system’);	Loads in the system browser
 			// window.open(‘http://example.com’, ‘_blank’);		Loads in the InAppBrowser
 			// window.open(‘http://example.com’, ‘_blank’, ‘location=no’);	Loads in the InAppBrowser with no location bar
 			// window.open(‘http://example.com’, ‘_self’);	Loads in the Cordova web view
 			e.preventDefault();
 			var t = $(this),
-			target = t.data('inAppBrowser') || '_self';
+				href = t.attr('href');
 
-			window.open(t.attr('href'), target, 'location=no');
+			target = t.data('inAppBrowser') || '_blank';	//TODO: self stopped working
 
+			var ref = window.open(href, target, 'location=no');
+
+			//TODO: not working in iOS
+			if(href.indexOf('cdc.gov') >= 0) {
+				ref.addEventListener('loadstop', function() {
+					ref.insertCSS({
+						code: "header#header { display: none; }footer#footer {display:none} div#socialMediaShareContainer.dd {display:none}"
+					});
+				});
+			}
 		});
 
 		// Initialize Push Notifications
@@ -196,8 +206,38 @@ angular.module('cdcgeneralapp', [
 		url: "/healtharticles",
 		views: {
 			'menuContent': {
-				templateUrl: "templates/healtharticles.html",
+				templateUrl: "templates/health-articles.html",
 				controller: 'HealthArticlesCtrl'
+			}
+		}
+	})
+
+	.state('app.healtharticle', {
+		url: "/healtharticle/:entryId",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/health-article.html",
+				controller: 'HealthArticlesCtrl'
+			}
+		}
+	})
+
+	.state('app.vitalsigns', {
+		url: "/vitalsigns",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/vital-signs.html",
+				controller: 'VitalSignsCtrl'
+			}
+		}
+	})
+
+	.state('app.vitalsign', {
+		url: "/vitalsign/:entryId",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/vital-sign.html",
+				controller: 'VitalSignsCtrl'
 			}
 		}
 	})

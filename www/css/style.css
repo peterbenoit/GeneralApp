@@ -39,6 +39,11 @@
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Source Sans Pro', sans-serif; }
 
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Roboto', sans-serif; }
+.card strong { font-family: 'Roboto', sans-serif; font-weight: normal; }
+/*
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Open Sans', sans-serif; }
+.card strong { font-family: 'Open Sans', sans-serif; font-weight: normal; }*/
 a { text-decoration: none; }
 
 img { max-width: 100%; height:auto; }
@@ -57,15 +62,17 @@ img { max-width: 100%; height:auto; }
 
 .card { margin:7.5px 10px 7.5px; position:relative;}
 
-.card strong {
-	/*font-family: 'Roboto Condensed', sans-serif;*/
+.source a {
+	color:#444;
+	font-size: 14px;
 }
+
 .inline {
 	position: relative;
 }
 .inline.half {
 	width: 50%;
-	height: 275px;
+	/*height: 275px;*/
 	overflow: hidden;
 }
 
@@ -82,8 +89,26 @@ img { max-width: 100%; height:auto; }
 .card .item strong {
 	color:#444;
 }
+
+/* not working */
+.card p:first-letter, .card strong:first-letter {
+	text-transform: capitalize!important;
+}
+
+.item-body p {
+    margin-top: 6px;
+}
+
+.card.type-a .item:last-child, .list-inset .item:last-child {
+    top: -10px;
+}
+
 .card.type-c, .card.type-e {
 	min-height: 100px;
+}
+
+.sourcestream .source {
+	display: none;
 }
 
 /*.item p:last-child*/
@@ -103,16 +128,31 @@ img { max-width: 100%; height:auto; }
 */}
 
 .card.type-d1, .card.type-d2 {
-	min-height: 265px
+	/*min-height: 205px;*/
+	overflow:visible;
+	width: 90%;
 }
+
+.card.type-d1 p, .card.type-d2 p {
+	margin-top: 0;
+}
+
+.card.type-d1 img, .card.type-d2 img {
+	/*width: 50px;*/
+}
+
 .double {
 	/*width: 40%;*/
 	/*min-height: 220px;*/
 }
-.type-d2 .item.item-divider {
+/*.type-d2 .item.item-divider {
     position: absolute;
 	bottom: 0px;
     width: 100%;
+}*/
+
+.card .item.item-text-wrap.item-body {
+    border-bottom: 0;
 }
 
 .card .item:first-child {
@@ -176,10 +216,13 @@ audio { margin-top:10px; }
 }
 */
 
-body, a {
+/*body, a {
 	cursor: url('http://ionicframework.com/img/finger.png'), auto;
 }
-
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+*/
 
 .col-50, .col-33 {
 	display: -webkit-box;
@@ -211,12 +254,6 @@ body, a {
 		  	-ms-flex: 1 1 auto;
 		  	flex: 1 1 auto;
 		  }
-
-
-
-body {
-  cursor: url('http://ionicframework.com/img/finger.png'), auto;
-}
 
 .slider {
   height: 100%;
@@ -256,3 +293,63 @@ body {
 .item.item-divider {
     border-top: 1px dashed #fff;
 }
+
+
+/* Begin required CSS. */
+.line-clamp
+{
+	display            : block;
+	display            : -webkit-box;
+	-webkit-box-orient : vertical;
+	position           : relative;
+
+	line-height        : 1.2;
+	overflow           : hidden!important;
+	text-overflow      : ellipsis;
+	padding            : 0 !important;
+}
+.line-clamp:after
+{
+	content    : '...';
+	text-align : right;
+	bottom     : 0;
+	right      : 0;
+	width      : 25%;
+	display    : block;
+	position   : absolute;
+	height     : calc(1em * 1.2);
+	background : linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1) 75%);
+}
+@supports (-webkit-line-clamp: 1)
+{
+	.line-clamp:after
+	{
+		display : none !important;
+	}
+}
+.line-clamp-1
+{
+	-webkit-line-clamp : 1;
+	height             : calc(1em * 1.2 * 1);
+}
+.line-clamp-2
+{
+	-webkit-line-clamp : 2;
+	height             : calc(1em * 1.2 * 2);
+}
+.line-clamp-3
+{
+	-webkit-line-clamp : 3;
+	height             : calc(1em * 1.2 * 3);
+}
+.line-clamp-4
+{
+	-webkit-line-clamp : 4;
+	height             : calc(1em * 1.2 * 4);
+}
+.line-clamp-5
+{
+	-webkit-line-clamp : 5;
+	height             : calc(1em * 1.2 * 5);
+}
+/* End required CSS. */

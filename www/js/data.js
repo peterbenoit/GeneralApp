@@ -120,22 +120,55 @@ angular.module('cdcgeneralapp.data', [])
 	var card = "";
 	var dirty = false;
 	var facebookCard = {
-		"name": "Facebook",
-		"cardtype": "type-social",
+		"title": "Facebook",
+		"description": "CDC Gov",
+		"cardtype": "type-social-left",
 		"date": "2081-02-04T18:26:56.828Z",
-		"image": "img/facebook.png",
-		"templatetype": "c2"
+		"image": "img/Facebook.png",
+		"templatetype": "c1",
+		"targetUrl": "http://www.facebook.com/CDC",
+		"size": "full"
 	};
 
 	var twitterCard = {
-		"name": "Twitter",
-		"cardtype": "type-social",
+		"title": "Twitter",
+		"description": "CDC Emergency",
+		"cardtype": "type-social-right",
 		"date": "2081-02-04T18:26:56.828Z",
-		"image": "img/twitter.png",
-		"templatetype": "c3"
+		"image": "img/Twitter.png",
+		"templatetype": "c1",
+		"targetUrl": "https://twitter.com/CDCEmergency",
+		"size": "full"
+	};	
+	var facebookCard2 = {
+		"title": "Facebook",
+		"description": "CDC Gov",
+		"cardtype": "type-social-top",
+		"date": "2081-02-04T18:26:56.828Z",
+		"image": "img/Facebook.png",
+		"templatetype": "c1",
+		"targetUrl": "http://www.facebook.com/CDC",
+		"size": "half"
 	};
 
-	var feed = 'http://www.filltext.com/?rows=100&name={firstName}~{lastName}&pretty=true&date={date}&description={lorem|20}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22]&cardtype=["type-a1","type-a1","type-a1","type-a2","type-a2","type-a3","type-a3","type-b1","type-b2","type-c1","type-c2","type-c3","type-d1","type-d2","type-e1","type-e2"]';
+	var twitterCard2 = {
+		"title": "Twitter",
+		"description": "CDC Emergency",
+		"cardtype": "type-social-top",
+		"date": "2081-02-04T18:26:56.828Z",
+		"image": "img/Twitter.png",
+		"templatetype": "c1",
+		"targetUrl": "https://twitter.com/CDCEmergency",
+		"size": "half"
+	};
+
+	var getRandom = function(max, min) {
+		return Math.floor(Math.random() * (max - min + 1));	
+	}
+
+	// Getting all data on first load instead of with each page
+	//var feed = 'http://www.filltext.com/?rows=30&title={firstName}~{lastName}&pretty=true&date={date}&description={lorem|20}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=["type-a1","type-a1","type-a1","type-a2","type-a2","type-a3","type-a3","type-b1","type-b2","type-c1","type-c2","type-c3","type-d1","type-d2","type-e1","type-e2"]';
+	var feed = 'http://www.filltext.com/?rows=30&title={lorem|10}&pretty=true&date={date}&description={lorem|40}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=[%22type-a1%22,%22type-a1%22,%22type-a1%22,%22type-a2%22,%22type-a2%22,%22type-a3%22,%22type-a3%22,%22type-b1%22,%22type-b2%22,%22type-c1%22,%22type-d1%22,%22type-d2%22,%22type-e1%22,%22type-e2%22]';
 
 	service.async = function() {
 		$http({
@@ -147,64 +180,72 @@ angular.module('cdcgeneralapp.data', [])
 		// when the response is available.
 		success(function(d) {
 			data = d;
-			var lastCardType = data[data.length - 1].cardtype;
-
-			//The final card shouldn't be of type-d
-			if (lastCardType === 'type-d1') {
-				lastCardType = 'type-a1';
-			} else if (lastCardType === 'type-d2') {
-				lastCardType = 'type-a2';
-			}
+			// var lastCardType = data[data.length - 1].cardtype;
+			var page = 1,
+				pageitems = 10;
 
 			for (var key in data) {
-				// if the previous card is set, and it's one of the D's
-				if (card !== '' && (card === 'type-d1' || card === 'type-d2') && !dirty) {
-					// set this card to match the previous
-					data[key].cardtype = 'type-d2';
-					data[key].modified = 'true';
-					dirty = true
-				} else {
-					dirty = false;
+
+				if(typeof data[key].size === 'undefined') {
+					data[key].size = 'full';	
 				}
+
+				var previouscard = typeof data[key-1] !== 'undefined' ? data[key-1] : '';
+
+				if(previouscard && previouscard.cardtype.indexOf('type-d') === 0) {
+					if(!previouscard.modified) {
+						data[key].cardtype = 'type-d1';
+						data[key].modified = true;
+					}
+				}
+
+				// RULES for "D" cards
+				// 1. Always in pairs
+				// 2. if the very last card is a D card, and the previous card isn't, change it!
 
 				// set a new card
 				card = data[key].cardtype;
 
-				// quick and dirty, add a random image based on card type 
+				// quick and dirty, add a random image based on card type since the json source doesn't provide images
 				if (card.indexOf('type-a') === 0) {
 					// + key to randomize
 					data[key].image = 'http://placeimg.com/335/250/any/' + key;
-				} else if (card.indexOf('type-c') === 0) {
-					data[key].image = 'http://placeimg.com/80/80/any/' + key;
-				} else if (card.indexOf('type-d') === 0) {
-					data[key].image = 'http://placeimg.com/150/120/any/' + key;
+				} else 
+					if (card.indexOf('type-c') === 0) {
+						data[key].image = 'http://placeimg.com/80/80/any/' + key;
+				} else 
+					if (card.indexOf('type-d') === 0) {
+						data[key].image = 'http://placeimg.com/150/120/any/' + key;
+						data[key].size = 'half';
 				}
-
-				data[key].templatetype = "a2";
-
-				// console.log(data[key])
 			}
+
+			// insert FB and Twitter (top type) at the top
+			data.splice(0, 0, twitterCard2);
+			data.splice(1, 0, facebookCard2);
 
 			// TODO
 			// insert sources which aren't in aggregate feed into random spots, but not between type-ds
-			var position = Math.floor(Math.random() * (data.length - 0 + 1)) + 0;
-			// console.log(data[position].cardtype);
-			// console.log(data[position - 1].cardtype);
-			// console.log(data[position + 1].cardtype);
-			// console.log(position, data.length);
-
-			if(position === data.length) {
-
-			}
+			var position = getRandom(9,2);
 			data.splice(position, 0, facebookCard);
 
-			position = Math.floor(Math.random() * (data.length - 0 + 1)) + 0;
-			// console.log(data[position].cardtype);
-			// console.log(data[position - 1].cardtype);
-			// console.log(data[position + 1].cardtype);
-			// console.log(position, data.length);
+			// if(data[position].cardtype.indexOf('type-d') === 0) {
+			// 	data.splice(position + 1, 0, facebookCard);
+			// }
+			// else {
+			// 	data.splice(position, 0, facebookCard);	
+			// }
 
-			data.splice(position, 0, twitterCard);
+ 			position = getRandom(9,2);
+ 			data.splice(position, 0, twitterCard);
+
+			// if(data[position].cardtype.indexOf('type-d') === 0) {
+			// 	data.splice(position + 1, 0, twitterCard);
+			// }
+			// else {
+			// 	data.splice(position, 0, twitterCard);	
+			// }
+
 
 			HomeStreamStorage.save(data);
 			deferred.resolve();
@@ -321,7 +362,7 @@ angular.module('cdcgeneralapp.data', [])
 	service.async = function() {
 		$http({
 			method: 'GET',
-			url: 'http://www.cdc.gov/mobile/applications/cdcgeneral/l24_nometrics.xml',
+			url: 'json/health-articles.xml',
 			transformResponse: function(data) {
 				// convert the data to JSON and provide
 				// it to the success function below
@@ -386,6 +427,80 @@ angular.module('cdcgeneralapp.data', [])
 	return service;
 })
 
+// Health Articles Data: JSON
+.factory('VitalSignsData', function($http, $q, VitalSignsStorage) {
+	var deferred = $q.defer();
+	var promise = deferred.promise;
+	var data = [];
+	var service = {};
+
+	service.async = function() {
+		$http({
+			method: 'GET',
+			url: 'json/vital-signs.xml',
+			transformResponse: function(data) {
+				// convert the data to JSON and provide
+				// it to the success function below
+				var x2js = new X2JS();
+				var json = x2js.xml_str2json(data);
+				return json;
+			},
+			timeout: 5000
+		}).
+		// this callback will be called asynchronously
+		// when the response is available.
+		success(function(d) {
+			data = d.feed.entry;
+
+			var cardtypes = 'a,b,c,d,e'.split(','),
+				card = '';
+
+
+			for (var key in data) {
+				// if the selected card is a double
+				if (card === 'd') {
+					data[key].cardtype = 'type-' + card;
+					card = ''; // card is cached, reset it if we're using the previous value
+				} else {
+					// get the card for this item
+					card = cardtypes[Math.floor(Math.random() * cardtypes.length)];
+				}
+
+				// if one hasn't been applied already
+				if (typeof data[key].cardtype === 'undefined') {
+					data[key].cardtype = 'type-' + card;
+				}
+			}
+
+			console.log(data);
+			VitalSignsStorage.save(data);
+			deferred.resolve();
+		}).
+		// called asynchronously if an error occurs
+		// or server returns response with an error status.
+		error(function() {
+			data = VitalSignsStorage.all();
+			deferred.reject();
+		});
+
+		return promise;
+
+	};
+
+	service.getAll = function() {
+		return data;
+	};
+
+	service.get = function(productId) {
+		return data[productId];
+	};
+
+	service.getLetterLimit = function() {
+		return 100;
+	};
+
+	return service;
+})
 // Settings Data: Settings configuration
 .factory('SettingsData', function() {
 	var data = {};

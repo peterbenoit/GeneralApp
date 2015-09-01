@@ -38,7 +38,7 @@ angular.module('cdcgeneralapp.controllers', [])
 })
 
 // Home Stream Controller
-.controller('HomeStreamCtrl', function($scope, $ionicLoading, HomeStreamData, HomeStreamStorage) {
+.controller('HomeStreamCtrl', function($scope, $rootScope, $ionicLoading, HomeStreamData, HomeStreamStorage) {
 	$scope.homestream = [];
 	$scope.storage = '';
 
@@ -47,20 +47,20 @@ angular.module('cdcgeneralapp.controllers', [])
 		return $scope.template[templateId];
 	};
 
-	$scope.template = {
+	$rootScope.template = {
 		"a1": "templates/cards/a1.html",
 		"a2": "templates/cards/a2.html",
 		"a3": "templates/cards/a3.html",
 		"b1": "templates/cards/b1.html",
 		"b2": "templates/cards/b2.html",
 		"c1": "templates/cards/c1.html",
-		"c2": "templates/cards/c2.html",
-		"c3": "templates/cards/c3.html",
 		"d1": "templates/cards/d1.html",
 		"d2": "templates/cards/d2.html",
 		"e1": "templates/cards/e1.html",
 		"e2": "templates/cards/e2.html",
-		"social": "templates/cards/social.html",
+		"social-left": "templates/cards/social-left.html",
+		"social-right": "templates/cards/social-right.html",
+		"social-top": "templates/cards/social-top.html"
 	}
 
 	$scope.loading = $ionicLoading.show({
@@ -99,6 +99,104 @@ angular.module('cdcgeneralapp.controllers', [])
 		console.log('Home Stream Load');
 		getData();
 	}
+
+	var page = 1;
+	// Define the number of the posts in the page
+	var pageSize = 10;
+
+	$scope.paginationLimit = function(data) {
+		return pageSize * page;
+	};
+
+	$scope.hasMoreItems = function() {
+		// return page < ($scope.videos.length / pageSize);
+		return true;
+	};
+
+	$scope.showMoreItems = function() {
+		page = page + 1;
+		// $scope.$apply();
+	};
+
+	// $scope.goTo = function(url) {
+	// 	alert(url)
+	// 	// window.open(url, '_self', 'location=no');
+	// 	// window.open(t.attr('href'), target, 'location=no');
+	// }	
+})
+
+// Source Stream Controller
+// currently this only works off what was loaded in the Home Stream and not a fresh load
+// home stream may only load a limited set, whereas this view will need to try to display 10 at a time
+.controller('StreamCtrl', function($scope, $rootScope, $stateParams, HomeStreamData, $sce) {
+	$scope.sourcestream = [];
+	$scope.storage = '';
+
+	$scope.sourcestream = HomeStreamData.getBySource($stateParams.entryId);
+
+	// $scope.content = $sce.trustAsHtml($scope.entry.content);	
+
+	$scope.selectTemplate = function(sourcestream) {
+		var templateId = sourcestream.cardtype.replace('type-', '');
+		return $rootScope.template[templateId];
+	};
+
+	// $scope.template = {
+	// 	"a1": "templates/cards/a1.html",
+	// 	"a2": "templates/cards/a2.html",
+	// 	"a3": "templates/cards/a3.html",
+	// 	"b1": "templates/cards/b1.html",
+	// 	"b2": "templates/cards/b2.html",
+	// 	"c1": "templates/cards/c1.html",
+	// 	"c2": "templates/cards/c2.html",
+	// 	"c3": "templates/cards/c3.html",
+	// 	"d1": "templates/cards/d1.html",
+	// 	"d2": "templates/cards/d2.html",
+	// 	"e1": "templates/cards/e1.html",
+	// 	"e2": "templates/cards/e2.html",
+	// 	"social": "templates/cards/social.html",
+	// }
+
+	// $scope.loading = $ionicLoading.show({
+	// 	template: '<ion-spinner icon="spiral"></ion-spinner>',
+
+	// 	//Will a dark overlay or backdrop cover the entire view
+	// 	showBackdrop: false,
+
+	// 	// The delay in showing the indicator
+	// 	showDelay: 10
+	// });
+
+	// var getData = function() {
+	// 	StreamData.async().then(
+	// 		// successCallback
+	// 		function() {
+	// 			$scope.sourcestream = StreamData.getAll();
+	// 			$scope.$broadcast('scroll.refreshComplete');
+	// 			$ionicLoading.hide();
+	// 		},
+	// 		// errorCallback 
+	// 		function() {
+	// 			$scope.sourcestream = StreamStorage.all();
+	// 			$scope.storage = 'Data from local storage';
+	// 			$scope.$broadcast('scroll.refreshComplete');
+	// 			$ionicLoading.hide();
+	// 		},
+	// 		// notifyCallback
+	// 		function() {}
+	// 	);
+	// }
+
+	// getData();
+
+	// $scope.doRefresh = function() {
+	// 	console.log('Source Stream Load');
+	// 	getData();
+	// }
+})
+
+.controller('CardCtrl', function($scope){
+
 })
 
 // Typeface Controller
@@ -126,10 +224,10 @@ angular.module('cdcgeneralapp.controllers', [])
 		showDelay: 10
 	});
 
-	DotwData.async().then(
+	HomeStreamData.async().then(
 		// successCallback
 		function() {
-			$scope.diseases = DotwData.getAll();
+			$scope.diseases = HomeStreamData.getAll();
 			$ionicLoading.hide();
 		},
 		// errorCallback 
@@ -150,38 +248,63 @@ angular.module('cdcgeneralapp.controllers', [])
 
 })
 
-.controller("GalleryCtrl", function($scope) {
+.controller("GalleryCtrl", function($scope, $ionicLoading) {
+	var page = 1;
+	// Define the number of the feed results in the page
+	var pageSize = 10,
+		imageSize;
 
-	$scope.images = [];
+	$scope.images = [];	
+
+	$scope.loading = $ionicLoading.show({
+		template: '<ion-spinner icon="spiral"></ion-spinner>',
+
+		//Will a dark overlay or backdrop cover the entire view
+		showBackdrop: false,
+
+		// The delay in showing the indicator
+		showDelay: 10
+	});	
 
 	$scope.loadImages = function(size) {
 		if (!size) {
 			return;
 		}
-		for (var i = 0; i < 100; i++) {
+		imageSize = size;
+		for (var i = 0; i < pageSize; i++) {
 			$scope.images.push({
 				id: i,
-				src: "http://placeimg.com/" + size + "/any/" + i
+				src: "http://placeimg.com/" + imageSize + "/any/" + i
 			});
 		}
+		$ionicLoading.hide();
 	}
 
-    var page = 1;
-    // Define the number of the feed results in the page
-    var pageSize = 10;
+	$scope.loadMoreItems = function() {
+		$ionicLoading.show({template: '<ion-spinner icon="spiral"></ion-spinner>',showBackdrop: false,showDelay: 10});
+		
+		for (var i = 0; i < pageSize; i++) {
+			$scope.images.push({
+				id: i,
+				src: "http://placeimg.com/" + imageSize + "/any/" + i
+			});
+		}
+		showMoreItems();
+	}
 
-    $scope.paginationLimit = function(data) {
-    	return pageSize * page;
-    };
+	$scope.paginationLimit = function(data) {
+		return pageSize * page;
+	};
 
-    $scope.hasMoreItems = function() {
-    	return page < ($scope.feeds.length / pageSize);
-    };
+	$scope.hasMoreItems = function() {
+		return true; //page < ($scope.feeds.length / pageSize);
+	};
 
-    $scope.showMoreItems = function() {
-    	page = page + 1;
-    	$scope.$apply();
-    }; 	
+	var showMoreItems = function() {
+		page = page + 1;
+		// $scope.$apply();
+		$ionicLoading.hide();
+	}; 	
 })
 
 // Health Articles Controller
@@ -416,7 +539,6 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.showMoreItems = function() {
 		page = page + 1;
 	};
-
 })
 
 // YouTube Video Controller
