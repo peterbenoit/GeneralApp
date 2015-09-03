@@ -17,8 +17,15 @@
     -->
     <preference name="BackupWebStorage" value="none" />
 
+    <!-- the following causes the build to crash -->
+    <!-- <gap:plugin name="nl.x-services.plugins.socialsharing" /> -->
+
+    
+    
     <feature name="StatusBar">
         <param name="ios-package" value="CDVStatusBar" onload="true" />
     </feature>
-    
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>    
 </widget>

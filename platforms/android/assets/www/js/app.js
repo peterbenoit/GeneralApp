@@ -6,10 +6,13 @@ angular.module('cdcgeneralapp', [
 	'cdcgeneralapp.data',
 	'cdcgeneralapp.directives',
 	'cdcgeneralapp.filters',
+	'cdcgeneralapp.services',
 	'cdcgeneralapp.storage',
 	'ngSanitize',
 	'angular.filter',
-	'angularMoment'
+	'angularMoment',
+	'ngCordova',
+	'truncate'
 ])
 
 .run(function($ionicPlatform) {
@@ -24,6 +27,11 @@ angular.module('cdcgeneralapp', [
 			StatusBar.styleDefault();
 		}
 
+		// haven't figured out how to apply this to controllers yet
+		if(window.plugins) {
+			window.plugins.toast.showShortTop('Hello there!', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})
+		}
+
 		// Open any external link with InAppBrowser Plugin
 		$(document).on('click', '[href^=http], [href^=https]', function(e) {
 			// window.open(‘http://example.com’, ‘_system’);	Loads in the system browser
@@ -32,10 +40,20 @@ angular.module('cdcgeneralapp', [
 			// window.open(‘http://example.com’, ‘_self’);	Loads in the Cordova web view
 			e.preventDefault();
 			var t = $(this),
+				href = t.attr('href');
+
 			target = t.data('inAppBrowser') || '_blank';	//TODO: self stopped working
 
-			window.open(t.attr('href'), target, 'location=no');
+			var ref = window.open(href, target, 'location=no');
 
+			//TODO: not working in iOS
+			if(href.indexOf('cdc.gov') >= 0) {
+				ref.addEventListener('loadstop', function() {
+					ref.insertCSS({
+						code: "header#header { display: none; }footer#footer {display:none} div#socialMediaShareContainer.dd {display:none}"
+					});
+				});
+			}
 		});
 
 		// Initialize Push Notifications
@@ -50,11 +68,10 @@ angular.module('cdcgeneralapp', [
 			}
 		}
 
-		// Uncomment the following initialization when you have made the appropriate configuration for iOS - http://goo.gl/YKQL8k and for Android - http://goo.gl/SPGWDJ
-		// initPushwoosh();
-
+		if(window.plugins) {
+			initPushwoosh();	
+		}
 	});
-
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {

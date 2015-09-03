@@ -4,11 +4,11 @@
 						<img src="{{substream.image}}">
 					</div>
 					<div class="item item-text-wrap item-body">
-						<strong class="line-clamp line-clamp-2">{{stream.title}}</strong>
+						<strong class="line-clamp line-clamp-2">{{stream.title | words:8}}</strong>
 						<p class="date">{{substream.date | amDateFormat:'MMMM Do, YYYY'}}</p>
 					</div>
-					<div class="item item-divider">
-						<p class="source"><a href="#app/source/{{stream.source}}">{{stream.source}}</a></p>
+					<div class="item item-divider source">
+						<a href="#app/source/{{stream.source}}">{{stream.source}}</a>
 					</div>					
 				</div>
 			</div>			

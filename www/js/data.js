@@ -34,6 +34,58 @@ angular.module('cdcgeneralapp.data', [])
 	return data;
 })
 
+.factory('AppData', function($http, $q, AppDataStorage) {
+	var deferred = $q.defer(),
+		promise = deferred.promise,
+		data = [],
+		service = {},
+		feed = 'http://peterbenoit.com/dev/cdc.summary.feed.json';
+
+	service.async = function() {
+		$http({
+			method: 'GET',
+			url: feed,
+			timeout: 5000
+		}).
+		success(function(d) {
+			data = d;
+
+			console.log("data: ", data);
+
+			// do something with data
+
+			AppDataStorage.save(data);
+			deferred.resolve();
+		}).
+		error(function() {
+			data = AppDataStorage.all();
+			deferred.reject();
+		});
+
+		return promise;
+	}
+
+	service.getAll = function() {
+		return data;
+	};
+
+	service.get = function(newId) {
+		return data[newId];
+	};
+
+	service.getBySource = function(source) {
+		var d, obj = [];
+		for (d in data) {
+			if (data[d].source === source) {
+				obj.push(data[d]);
+			}
+		}
+		return obj;
+	}
+	
+	return service;	
+})
+
 // Menu Data: Menu configuration
 .factory('MenuData', function() {
 	var data = {};
@@ -168,7 +220,7 @@ angular.module('cdcgeneralapp.data', [])
 
 	// Getting all data on first load instead of with each page
 	//var feed = 'http://www.filltext.com/?rows=30&title={firstName}~{lastName}&pretty=true&date={date}&description={lorem|20}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=["type-a1","type-a1","type-a1","type-a2","type-a2","type-a3","type-a3","type-b1","type-b2","type-c1","type-c2","type-c3","type-d1","type-d2","type-e1","type-e2"]';
-	var feed = 'http://www.filltext.com/?rows=30&title={lorem|10}&pretty=true&date={date}&description={lorem|40}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=[%22type-a1%22,%22type-a1%22,%22type-a1%22,%22type-a2%22,%22type-a2%22,%22type-a3%22,%22type-a3%22,%22type-b1%22,%22type-b2%22,%22type-c1%22,%22type-d1%22,%22type-d2%22,%22type-e1%22,%22type-e2%22]';
+	var feed = 'http://www.filltext.com/?rows=30&id={index}&title={lorem|10}&pretty=true&date={date}&description={lorem|40}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=[%22type-a1%22,%22type-a2%22,%22type-b1%22,%22type-b2%22,%22type-b3%22,%22type-c1%22,%22type-d1%22,%22type-d2%22]';
 
 	service.async = function() {
 		$http({
@@ -501,6 +553,7 @@ angular.module('cdcgeneralapp.data', [])
 
 	return service;
 })
+
 // Settings Data: Settings configuration
 .factory('SettingsData', function() {
 	var data = {};
@@ -526,50 +579,88 @@ angular.module('cdcgeneralapp.data', [])
 // YouTube Data: YouTube Videos configuration
 .factory('YouTubeData', function($http, $q) {
 
-	var youtubeKey = 'AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc';
-	var apiUrl = 'https://www.googleapis.com/youtube/v3/';
-	var videosUrl = apiUrl + 'playlistItems?part=snippet&key=' + youtubeKey + '&maxResults=' + 20;
-	var playlistsUrl = apiUrl + 'channels?part=contentDetails&key=' + youtubeKey;
+	// CDC Directors Videos: https://www.youtube.com/playlist?list=PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL
 
-	var username = 'cdc';
+    var youtubeKey = 'AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc';
+    var apiUrl = 'https://www.googleapis.com/youtube/v3/';
+    var videosUrl    = apiUrl + 'playlistItems?part=snippet&key=' + youtubeKey + '&maxResults=' + 20;
+    var playlistsUrl = apiUrl + 'channels?part=contentDetails&key=' + youtubeKey;	
 
-	var data = [];
-	var result = [];
-	var videos = [];
-	var service = {};
+	// var youtubeKey = 'AIzaSyBBdZZvS5Jve2kkKzoj_qH8YanXtnuUWZ4',
+	// maxResults = 10,
+	var playlistId = 'PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL&';
+	// apiUrl = 'https://www.googleapis.com/youtube/v3/',
+	// // videosUrl = apiUrl + 'playlistItems?part=id,snippet&playlistId=' + playlistId + 'key=' + youtubeKey + '&maxResults=' + maxResults,
+	// videosUrl = apiUrl + 'playlistItems?part=id,snippet&key=' + youtubeKey + '&maxResults=' + maxResults,
+	// playlistsUrl = apiUrl + 'channels?part=contentDetails&key=' + youtubeKey;
+
+// console.log(videosUrl);	
+	//https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc&maxResults=20
+
+	//https://www.googleapis.com/youtube/v3/playlistItems?part=id,snippet&playlistId=PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL&key=AIzaSyBBdZZvS5Jve2kkKzoj_qH8YanXtnuUWZ4&maxResults=10
+	https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc&maxResults=20&playlistId=null
+	var username = 'cdc',
+	data = [],
+	result = [],
+	videos = [],
+	service = {};
 
 	service.async = function(categoryId, id) {
 
 		var deferred = $q.defer();
 		var promise = deferred.promise;
+		var url = videosUrl + '&playlistId=' + playlistId;
 
-		service.getPlaylistId().then(function(playlistId) {
+		if (!playlistId) {
+			deferred.reject();
+		}
 
-			if (!playlistId) {
-				deferred.reject();
-			}
-
-			var url = videosUrl + '&playlistId=' + playlistId;
-
-			$http({
-				method: 'GET',
-				url: url,
-				timeout: 5000
-			}).
-			// this callback will be called asynchronously
-			// when the response is available.
-			success(function(d) {
-				result = d;
-				data = result.items;
-				deferred.resolve();
-			}).
-			// called asynchronously if an error occurs
-			// or server returns response with an error status.
-			error(function() {
-				deferred.reject();
-			});
-
+		$http({
+			method: 'GET',
+			url: url,
+			timeout: 5000
+		}).
+		// this callback will be called asynchronously
+		// when the response is available.
+		success(function(d) {
+			result = d;
+			data = result.items;
+			deferred.resolve();
+		}).
+		// called asynchronously if an error occurs
+		// or server returns response with an error status.
+		error(function() {
+			deferred.reject();
 		});
+	
+
+		// service.getPlaylistId().then(function(playlistId) {
+
+		// 	if (!playlistId) {
+		// 		deferred.reject();
+		// 	}
+
+		// 	var url = videosUrl + '&playlistId=' + playlistId;
+
+		// 	$http({
+		// 		method: 'GET',
+		// 		url: url,
+		// 		timeout: 5000
+		// 	}).
+		// 	// this callback will be called asynchronously
+		// 	// when the response is available.
+		// 	success(function(d) {
+		// 		result = d;
+		// 		data = result.items;
+		// 		deferred.resolve();
+		// 	}).
+		// 	// called asynchronously if an error occurs
+		// 	// or server returns response with an error status.
+		// 	error(function() {
+		// 		deferred.reject();
+		// 	});
+
+		// });
 
 		return promise;
 
@@ -578,6 +669,8 @@ angular.module('cdcgeneralapp.data', [])
 	service.getPlaylistId = function() {
 
 		var url = playlistsUrl + '&forUsername=' + username;
+
+		console.log(url);
 
 		return $http.get(url).then(function(response) {
 			var items = response.data.items;

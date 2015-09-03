@@ -90,3 +90,29 @@
 2015-08-28 16:06:32.784 CDC General App[16982:687695] Resetting plugins due to page load.
 2015-08-28 16:06:32.784 CDC General App[16982:687695] IAB.close() called but it was already closed.
 2015-08-28 16:06:33.686 CDC General App[16982:687695] Finished load of: https://mobile.twitter.com/CDCEmergency
+2015-09-02 10:21:16.928 CDC General App[3335:118126] Pushwoosh: Initializing application runtime
+2015-09-02 10:21:17.138 CDC General App[3335:118126] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/peterbenoit/Library/Developer/CoreSimulator/Devices/49617F5F-FB9D-4EE1-B13B-EDFF69E315DE/data/Containers/Data/Application/4784B986-0084-4A16-8149-68891053CF93/Library/Cookies/Cookies.binarycookies
+2015-09-02 10:21:39.229 CDC General App[3744:119531] Pushwoosh: Initializing application runtime
+2015-09-02 10:21:39.262 CDC General App[3744:119531] DiskCookieStorage changing policy from 2 to 0, cookie file: file:///Users/peterbenoit/Library/Developer/CoreSimulator/Devices/49617F5F-FB9D-4EE1-B13B-EDFF69E315DE/data/Containers/Data/Application/19624B84-58B9-4B66-B284-6BEA8DC08D51/Library/Cookies/Cookies.binarycookies
+2015-09-02 10:21:39.425 CDC General App[3744:119531] You've implemented -[<UIApplicationDelegate> application:didReceiveRemoteNotification:fetchCompletionHandler:], but you still need to add "remote-notification" to the list of your supported UIBackgroundModes in your Info.plist.
+2015-09-02 10:21:39.445 CDC General App[3744:119531] Apache Cordova native platform version 3.8.0 is starting.
+2015-09-02 10:21:39.445 CDC General App[3744:119531] Multi-tasking -> Device: YES, App: YES
+2015-09-02 10:21:39.458 CDC General App[3744:119531] Unlimited access to network resources
+2015-09-02 10:21:39.750 CDC General App[3744:119531] [CDVTimer][keyboard] 0.056982ms
+2015-09-02 10:21:39.801 CDC General App[3744:119531] [CDVTimer][socialsharing] 50.595999ms
+2015-09-02 10:21:39.901 CDC General App[3744:119531] [CDVTimer][splashscreen] 100.039959ms
+2015-09-02 10:21:39.901 CDC General App[3744:119531] [CDVTimer][TotalPluginStartup] 151.573002ms
+2015-09-02 10:21:39.911 CDC General App[3744:119531] Will show push notifications alert
+2015-09-02 10:21:39.939 CDC General App[3744:119531] location services authorization status has not been determined yet
+2015-09-02 10:21:39.973 CDC General App[3744:119531] Resetting plugins due to page load.
+2015-09-02 10:21:39.973 CDC General App[3744:119559] Sending request: {"request":{"hwid":"3964A2BA-73EA-47FB-ADB6-C16E697128EE","application":"","v":"2.5"}}
+2015-09-02 10:21:39.973 CDC General App[3744:119559] To urL https://cp.pushwoosh.com/json/1.3/applicationOpen
+2015-09-02 10:21:40.646 CDC General App[3744:119531] Finished load of: file:///Users/peterbenoit/Library/Developer/CoreSimulator/Devices/49617F5F-FB9D-4EE1-B13B-EDFF69E315DE/data/Containers/Bundle/Application/DF57C96D-5FCC-4CA9-92D4-DE944659E89A/CDC%20General%20App.app/www/index.html#/app/home
+2015-09-02 10:21:40.691 CDC General App[3744:119559] Response "200 no error": string: {"status_code":210,"status_message":"Application not found","response":null}
+2015-09-02 10:21:40.692 CDC General App[3744:119559] sending appOpen failed
+2015-09-02 10:21:40.693 CDC General App[3744:119531] THREAD WARNING: ['PushNotification'] took '39.567871' ms. Plugin should use a background thread.
+2015-09-02 10:21:40.725 CDC General App[3744:119531] Attempting to badge the application icon but haven't received permission from the user to badge the application
+2015-09-02 10:21:40.725 CDC General App[3744:119531] THREAD WARNING: ['PushNotification'] took '31.812012' ms. Plugin should use a background thread.
+2015-09-02 10:21:40.793 CDC General App[3744:119531] Error registering for push notifications. Error: Error Domain=NSCocoaErrorDomain Code=3010 "remote notifications are not supported in the simulator" UserInfo=0x798f4c30 {NSLocalizedDescription=remote notifications are not supported in the simulator}
+2015-09-02 10:21:40.868 CDC General App[3744:119531] toast success: null
+2015-09-02 10:21:40.868 CDC General App[3744:119531] WARN: failed to register : {"error":"Error Domain=NSCocoaErrorDomain Code=3010 \"remote notifications are not supported in the simulator\" UserInfo=0x798f4c30 {NSLocalizedDescription=remote notifications are not supported in the simulator}"}

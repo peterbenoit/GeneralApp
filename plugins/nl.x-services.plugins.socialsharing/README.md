@@ -194,7 +194,7 @@ Facebook
 <button onclick="window.plugins.socialsharing.shareViaFacebook('Message via Facebook', null /* img */, null /* url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via Facebook (with errcallback)</button>
 ```
 
-Facebook with prefilled message - as a workaround for [this Facebook Android bug](https://developers.facebook.com/x/bugs/332619626816423/).
+Facebook with prefilled message - as a workaround for [this Facebook (Android) bug](https://developers.facebook.com/x/bugs/332619626816423/). BEWARE: it's against Facebooks policy to prefil the message, or even hint the user to prefill a message for them. [See this page for details.](https://developers.facebook.com/docs/apps/review/prefill)
 
 * On Android the user will see a Toast message with a message you control (default: "If you like you can paste a message from your clipboard").
 * On iOS this function used to behave the same as `shareViaFacebook`, but since 4.3.18 a short message is shown prompting the user to paste a message (like Android). This message is not shown in case the Fb app is not installed since the internal iOS Fb share widget still supports prefilling the message.
@@ -293,7 +293,7 @@ If you can't get the plugin to work, have a look at [this demo project](https://
 
 #### Notes about the successCallback (you can just ignore the callbacks if you like)
 Since version 3.8 the plugin passes a boolean to the successCallback to let the app know whether or not content was actually shared, or the share widget was closed by the user.
-On iOS this works as expected, but on Android some sharing targets may return false, even though sharing succeeded. This is not a limitation of the plugin, it's the target app which doesn't play nice.
+On iOS this works as expected (except for Facebook, in case the app is installed), but on Android some sharing targets may return false, even though sharing succeeded. This is not a limitation of the plugin, it's the target app which doesn't play nice.
 To make it more confusing, when sharing via SMS on Android, you'll likely always have the successCallback invoked. Thanks Google.
 
 #### Sharing multiple images (or other files)

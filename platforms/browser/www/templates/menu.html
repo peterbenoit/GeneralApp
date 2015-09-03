@@ -22,21 +22,26 @@
 
 				<!-- This will all be dynamic? -->
 				<ion-item><strong>Articles</strong></ion-item>
-				<ion-checkbox class="item-checkbox-right" ng-model="isHAChecked">Health Articles</ion-checkbox>
-				<ion-checkbox class="item-checkbox-right" ng-model="isVSChecked">Vital Signs</ion-checkbox>
+				<ion-checkbox ng-model="isHAChecked">Health Articles</ion-checkbox>
+				<ion-checkbox ng-model="isVSChecked">Vital Signs</ion-checkbox>
 				<ion-item><strong>Blogs</strong></ion-item>
 				<ion-checkbox ng-model="isDBChecked">CDC Directors Blog</ion-checkbox>
 				<ion-checkbox ng-model="isPHMBChecked">Public Health Matters Blog</ion-checkbox>
 				<ion-item><strong>Data &amp; Statistics</strong></ion-item>
-				<ion-checkbox class="item-checkbox-right" ng-model="isFSChecked"><a href="#/app/settings">FastStats</a></ion-checkbox>
+				<ion-checkbox ng-model="isFSChecked"><a href="#/app/settings">FastStats</a></ion-checkbox>
 				<ion-item><strong>Journals</strong></ion-item>
-				<ion-checkbox class="item-checkbox-right" ng-model="isEIDChecked">Emerging Infectious Diseases (EID)</ion-checkbox>
-				<ion-checkbox class="item-checkbox-right" ng-model="isMMWRChecked">MMWR</ion-checkbox>
+				<ion-checkbox ng-model="isEIDChecked">Emerging Infectious Diseases (EID)</ion-checkbox>
+				<ion-checkbox ng-model="isMMWRChecked">MMWR</ion-checkbox>
 				<ion-item><strong>Links</strong></ion-item>
 
-            	<ion-item><a href="http://www.cdc.gov/features/BackToSchool/">Open in App</a></ion-item>
-            	<ion-item><a href="#" onclick="window.open('http://www.cdc.gov/features/BackToSchool/', '_system', 'location=yes'); return false;">Open in Browser</a></ion-item>
-
+				<ion-item><strong>Other</strong></ion-item>
+				<ion-item><a href="http://www.cdc.gov/features/BackToSchool/">Open in App</a></ion-item>
+				<ion-item><a href="#" onclick="window.open('http://www.cdc.gov/features/BackToSchool/', '_system', 'location=yes'); return false;">Open in Browser</a></ion-item>
+				<ion-item><a href="#/">App Intro</a></ion-item>
+				<ion-item><a href="#/app/dotw" nav-clear menu-close>DOTW</a></ion-item>
+				<ion-item><a href="#/app/healtharticles" nav-clear menu-close>Health Articles</a></ion-item>
+				<ion-item><a href="#/app/vitalsigns" nav-clear menu-close>Vital Signs</a></ion-item>
+				<ion-item><a href="#/app/youtubevideos" nav-clear menu-close>CDC Directors Videos</a></ion-item>
 			</ion-list>
 		</ion-content>
 	</ion-side-menu>

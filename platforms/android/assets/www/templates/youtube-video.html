@@ -1,7 +1,7 @@
 <ion-view title="{{video.snippet.title}}">
     
     <ion-nav-buttons side="right">
-    <a class="button button-clear" ng-click="shareVideo()"><i class="icon ion-share"></i></a>
+    <!-- <a class="button button-clear" ng-click="shareVideo()"><i class="icon ion-share"></i></a> -->
     </ion-nav-buttons>
     
     <ion-content class="has-header">
@@ -17,7 +17,8 @@
 
             <p ng-bind-html="content"></p>
             
-            <p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareVideo()">Share this</button></p>
+            <p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareVideo()">Share</button>
+            <button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC TV</button></p>
             
         </div>
 

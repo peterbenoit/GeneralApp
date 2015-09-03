@@ -39,6 +39,11 @@
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Source Sans Pro', sans-serif; }
 
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Roboto', sans-serif; }
+.card strong { font-family: 'Roboto', sans-serif; font-weight: normal; }
+/*
+body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Open Sans', sans-serif; }
+.card strong { font-family: 'Open Sans', sans-serif; font-weight: normal; }*/
 a { text-decoration: none; }
 
 img { max-width: 100%; height:auto; }
@@ -57,9 +62,11 @@ img { max-width: 100%; height:auto; }
 
 .card { margin:7.5px 10px 7.5px; position:relative;}
 
-.card strong {
-	/*font-family: 'Roboto Condensed', sans-serif;*/
+.source a {
+	color:#444;
+	font-size: 14px;
 }
+
 .inline {
 	position: relative;
 }
@@ -82,8 +89,26 @@ img { max-width: 100%; height:auto; }
 .card .item strong {
 	color:#444;
 }
+
+/* not working */
+.card p:first-letter, .card strong:first-letter {
+	text-transform: capitalize!important;
+}
+
+.item-body p {
+    margin-top: 6px;
+}
+
+.card.type-a .item:last-child, .list-inset .item:last-child {
+    top: -10px;
+}
+
 .card.type-c, .card.type-e {
 	min-height: 100px;
+}
+
+.sourcestream .source {
+	display: none;
 }
 
 /*.item p:last-child*/
@@ -103,7 +128,7 @@ img { max-width: 100%; height:auto; }
 */}
 
 .card.type-d1, .card.type-d2 {
-	min-height: 205px;
+	/*min-height: 205px;*/
 	overflow:visible;
 	width: 90%;
 }
@@ -120,11 +145,11 @@ img { max-width: 100%; height:auto; }
 	/*width: 40%;*/
 	/*min-height: 220px;*/
 }
-.type-d2 .item.item-divider {
+/*.type-d2 .item.item-divider {
     position: absolute;
 	bottom: 0px;
     width: 100%;
-}
+}*/
 
 .card .item.item-text-wrap.item-body {
     border-bottom: 0;

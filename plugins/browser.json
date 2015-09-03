@@ -9,10 +9,6 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"browser-package\" value=\"BarcodeScanner\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
                             "count": 1
                         }
@@ -23,9 +19,6 @@
     },
     "installed_plugins": {
         "com.ionic.keyboard": {
-            "PACKAGE_NAME": "com.cdc.generalapp"
-        },
-        "com.phonegap.plugins.barcodescanner": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
         "de.appplant.cordova.plugin.email-composer": {
@@ -56,6 +49,12 @@
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
         "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "cordova-plugin-x-toast": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "io.litehelpers.cordova.sqlite": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         }
     },

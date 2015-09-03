@@ -6,10 +6,13 @@ angular.module('cdcgeneralapp', [
 	'cdcgeneralapp.data',
 	'cdcgeneralapp.directives',
 	'cdcgeneralapp.filters',
+	'cdcgeneralapp.services',
 	'cdcgeneralapp.storage',
 	'ngSanitize',
 	'angular.filter',
-	'angularMoment'
+	'angularMoment',
+	'ngCordova',
+	'truncate'
 ])
 
 .run(function($ionicPlatform) {
@@ -22,6 +25,11 @@ angular.module('cdcgeneralapp', [
 		if (window.StatusBar) {
 			// org.apache.cordova.statusbar required
 			StatusBar.styleDefault();
+		}
+
+		// haven't figured out how to apply this to controllers yet
+		if(window.plugins) {
+			window.plugins.toast.showShortTop('Hello there!', function(a){console.log('toast success: ' + a)}, function(b){alert('toast error: ' + b)})
 		}
 
 		// Open any external link with InAppBrowser Plugin
@@ -60,11 +68,10 @@ angular.module('cdcgeneralapp', [
 			}
 		}
 
-		// Uncomment the following initialization when you have made the appropriate configuration for iOS - http://goo.gl/YKQL8k and for Android - http://goo.gl/SPGWDJ
-		// initPushwoosh();
-
+		if(window.plugins) {
+			initPushwoosh();	
+		}
 	});
-
 })
 
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {

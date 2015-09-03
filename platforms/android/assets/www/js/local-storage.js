@@ -1,5 +1,23 @@
 angular.module('cdcgeneralapp.storage', [])
 
+.factory('AppDataStorage', function() {
+	return {
+		all: function() {
+			var appdatastorage = window.localStorage['appdatastorage'];
+			if(appdatastorage) {
+				return angular.fromJson(appdatastorage);
+			}
+			return {};
+		},
+		save: function(appdatastorage) {
+			window.localStorage['appdatastorage'] = angular.toJson(appdatastorage);
+		},
+		clear: function() {
+			window.localStorage.removeItem('appdatastorage');
+		}
+	}
+})
+
 .factory('NewsStorage', function() {
 	return {
 		all: function() {

@@ -308,7 +308,7 @@ body {
 	text-overflow      : ellipsis;
 	padding            : 0 !important;
 }
-.line-clamp:after
+/*.line-clamp:after
 {
 	content    : '...';
 	text-align : right;
@@ -351,5 +351,5 @@ body {
 {
 	-webkit-line-clamp : 5;
 	height             : calc(1em * 1.2 * 5);
-}
+}*/
 /* End required CSS. */

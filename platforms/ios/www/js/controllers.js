@@ -340,7 +340,41 @@ angular.module('cdcgeneralapp.controllers', [])
 		// notifyCallback
 		function() {}
 	);
+})
 
+// Vital Signs Controller
+.controller('VitalSignsCtrl', function($scope, $ionicLoading, VitalSignsData, VitalSignsStorage) {
+
+	$scope.vitalsigns = [];
+	$scope.storage = '';
+
+	$scope.loading = $ionicLoading.show({
+		template: '<ion-spinner icon="spiral"></ion-spinner> Loading Data',
+
+		//Will a dark overlay or backdrop cover the entire view
+		showBackdrop: false,
+
+		// The delay in showing the indicator
+		showDelay: 10
+	});
+
+	VitalSignsData.async().then(
+		// successCallback
+		function() {
+			$scope.vitalsigns = VitalSignsData.getAll();
+			$scope.letterLimit = VitalSignsData.getLetterLimit();
+			$ionicLoading.hide();
+		},
+		// errorCallback 
+		function() {
+			$scope.vitalsigns = VitalSignsStorage.all();
+			$scope.letterLimit = VitalSignsData.getLetterLimit();
+			$scope.storage = 'Data from local storage';
+			$ionicLoading.hide();
+		},
+		// notifyCallback
+		function() {}
+	);
 })
 
 // Plugins Controller
@@ -423,7 +457,7 @@ angular.module('cdcgeneralapp.controllers', [])
 })
 
 // Menu Controller (amongst other things...)
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, MenuData, $ionicActionSheet) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, MenuData, AppData, $ionicActionSheet, $ionicLoading) {
 
 	$scope.items = MenuData.items;
 
@@ -436,6 +470,22 @@ angular.module('cdcgeneralapp.controllers', [])
 	// }).then(function(modal) {
 	// 	$scope.modal = modal;
 	// });
+
+	AppData.async().then(
+		// successCallback
+		function() {
+			console.log("new data: ", AppData.getAll());
+			$ionicLoading.hide();
+		},
+		// errorCallback 
+		function() {
+			console.log("old data: ", AppDataStorage.all());
+			$scope.storage = 'Data from local storage';
+			$ionicLoading.hide();
+		},
+		// notifyCallback
+		function() {}
+	);
 
 	// Triggered in the login modal to close it
 	$scope.closeLogin = function() {
@@ -542,11 +592,34 @@ angular.module('cdcgeneralapp.controllers', [])
 })
 
 // YouTube Video Controller
-.controller('YouTubeVideoCtrl', function($scope, $stateParams, YouTubeData, $sce) {
+.controller('YouTubeVideoCtrl', function($scope, $ionicPlatform, $stateParams, YouTubeData, $sce, FindAllURLsInText) {
 	$scope.video = {};
 	$scope.video = YouTubeData.getVideo($stateParams.videoId);
 
 	$scope.content = $sce.trustAsHtml($scope.video.snippet.description);
+
+	console.log(FindAllURLsInText($scope.video.snippet.description));
+
+	$scope.viewOnCDC = function() {
+		// var urlarray = findAllURLsInText($scope.video.snippet.description),
+		// cdcVideos = 'http://streaming.cdc.gov/vod.php';
+
+		// if(urlarray.length) {
+		// 	urlarray.forEach(function(entry){
+		// 		if(entry.indexOf(cdcVideos) > -1) {
+		// 			window.open(entry, '_blank', 'location=no');
+		// 			return;
+		// 		}
+		// 	});			
+		// }
+
+		// if for some reason there isn't a CDC TV url in the description
+		window.open('http://www.cdc.gov/cdctv/', '_blank', 'location=no');
+	}
+
+	$scope.swipeLeft = function() {
+		alert('left');
+	}
 
 	$scope.getVideoUrl = function() {
 		var videoUrl = 'http://www.youtube.com/embed/' + $scope.video.snippet.resourceId.videoId;
@@ -563,9 +636,14 @@ angular.module('cdcgeneralapp.controllers', [])
 
 		//Documentation: https://github.com/EddyVerbruggen/SocialSharing-PhoneGap-Plugin
 		//window.plugins.socialsharing.share('Message', 'Subject', 'Image', 'Link');
-		window.plugins.socialsharing.share(message, subject, null, link);
+		// as with most plugins, does not work in browser
+		if(window.plugins) {
+			window.plugins.socialsharing.share(message, subject, null, link);	
+		}
+		else {
+			alert('Only available in an App installed on a Device');
+		}
 	}
-
 })
 
 .controller('FormQuizCtrl', function($scope, Data, $window) {

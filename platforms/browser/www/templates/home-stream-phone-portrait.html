@@ -13,51 +13,12 @@
 		on-refresh="doRefresh()">
 		</ion-refresher>
 
-			<ion-item collection-repeat="stream in homestream" class="inlinez" item-height="400px" ng-class="stream.cardtype.indexOf('type-d') === 0 ? 'half' : 'full'">
-				<div ng-include src="getTemplateUrl()"></div>
-			</ion-item>
+			<div ng-repeat="stream in homestream | limitTo: paginationLimit()" class="inline" ng-class="stream.size">
+				<div data-ng-include="selectTemplate(stream)"></div>
+			</div>
 
-<!-- 		<div ng-repeat="stream in homestream" class="inline" ng-class="stream.cardtype.indexOf('type-d') === 0 ? 'half' : 'full'">
-			<div ng-if="stream.cardtype === 'type-a1'">
-				<div ng-include="template.a1"></div>
-			</div>
-			<div ng-if="stream.cardtype === 'type-a2'">
-				<div ng-include="template.a2"></div>
-			</div>
-			<div ng-if="stream.cardtype === 'type-a3'">
-				<div ng-include="template.a3"></div>
-			</div>
-			<div ng-if="stream.cardtype === 'type-b1'">
-				<div ng-include="template.b1"></div>		
-			</div>
-			<div ng-if="stream.cardtype === 'type-b2'">
-				<div ng-include="template.b2"></div>		
-			</div>
-			<div ng-if="stream.cardtype === 'type-c1'">
-				<div ng-include="template.c1"></div>		
-			</div>
-			<div ng-if="stream.cardtype === 'type-c2'">
-				<div ng-include="template.c2"></div>		
-			</div>
-			<div ng-if="stream.cardtype === 'type-c3'">
-				<div ng-include="template.c3"></div>
-			</div>
-			<div ng-if="stream.cardtype === 'type-d1'" class="colz double inline">
-				<div ng-include="template.d1" class="inline"></div>
-			</div>
-			<div ng-if="stream.cardtype === 'type-d2'" class="colz double inline">
-				<div ng-include="template.d2" class="inline"></div>
-			</div>
-			<div ng-if="stream.cardtype === 'type-e1'">
-				<div ng-include="template.e1"></div>
-			</div>
-			<div ng-if="stream.cardtype === 'type-e2'">
-				<div ng-include="template.e2"></div>
-			</div>
-			<div ng-if="stream.cardtype === 'type-social'">
-				<div ng-include="template.social"></div>
-			</div>
-		</div> -->
-
+        	<button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()" >
+        		Show more
+        	</button>
 	</ion-content>
 </ion-view>
