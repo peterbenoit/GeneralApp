@@ -95,6 +95,16 @@ angular.module('cdcgeneralapp', [
 		controller: 'AppCtrl'
 	})
 
+	.state('app.external', {
+		url: "/external:url",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/external.html",
+				controller: 'ExternalCtrl'
+			}
+		}
+	})
+
 	.state('app.home', {
 		url: "/home",
 		views: {

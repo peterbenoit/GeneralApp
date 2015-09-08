@@ -1,5 +1,14 @@
 angular.module('cdcgeneralapp.directives', [])
 
+.directive('nailThumb', ['$compile', function($compile) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            $(element).nailthumb().show();
+        }
+    }
+}])
+
 //https://github.com/doukasd/AngularJS-Components
 .directive('textCollapse', ['$compile', function($compile) {
     return {

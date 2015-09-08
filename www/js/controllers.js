@@ -18,10 +18,11 @@ angular.module('cdcgeneralapp.controllers', [])
 
 })
 
-.controller('ExternalCtrl', function($scope, $stateParams, $sce){
-	console.log($stateParams.url);
-	
-	$scope.frameUrl= $sce.trustAsResourceUrl($stateParams.url);
+.controller('ExternalCtrl', function($scope, $routeParams, $stateParams, $sce){
+	console.log($stateParams);
+	console.log('here')
+
+	$scope.frameUrl= $sce.trustAsResourceUrl($routeParams.urlId);
 })
 
 .controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
