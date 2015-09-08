@@ -7,16 +7,19 @@
 	<a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
 	</ion-nav-buttons>
 	<ion-content class="has-header">
-        {{storage}}
-        
-        <div class="list">
+		{{storage}}
+		
+		<div class="list">
+			<div class="nailthumb-container" nail-thumb>
+				<img src="http://www.cdc.gov/mobile/applications/cdcgeneral/dotw/diseases/westnilevirus/WestNileVirus_Header_740px.jpg" />
+			</div>
 
-            <a class="item {{disease.cardtype}}" ng-class="{'item-thumbnail-left' : new.picture}" href="#/app/dotw/{{$index}}" ng-repeat="disease in diseases">
-                <h2>{{disease.name}} ({{disease.cardtype}})</h2>
-                <p>{{disease.shortDescription}}</p>
-            </a>
+			<a class="item {{disease.cardtype}}" ng-class="{'item-thumbnail-left' : new.picture}" href="#/app/dotw/{{$index}}" ng-repeat="disease in diseases">
+				<h2>{{disease.name}} ({{disease.cardtype}})</h2>
+				<p>{{disease.shortDescription}}</p>
+			</a>
 
-        </div>
-       
-    </ion-content>
+		</div>
+	   
+	</ion-content>
 </ion-view>

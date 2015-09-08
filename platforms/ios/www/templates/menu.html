@@ -35,8 +35,12 @@
 				<ion-item><strong>Links</strong></ion-item>
 
 				<ion-item><strong>Other</strong></ion-item>
-				<ion-item><a href="http://www.cdc.gov/features/BackToSchool/">Open in App</a></ion-item>
-				<ion-item><a href="#" onclick="window.open('http://www.cdc.gov/features/BackToSchool/', '_system', 'location=yes'); return false;">Open in Browser</a></ion-item>
+				<ion-item><a href="http://www.cdc.gov/features/BackToSchool/">Open in App (standard link)</a></ion-item>
+				<ion-item><a href="#" onclick="window.open('http://www.cdc.gov/features/BackToSchool/', '_system'); return false;">Open in System Browser (_system)</a></ion-item>
+				<ion-item><a href="#" onclick="window.open('http://www.cdc.gov/features/BackToSchool/', '_system', 'location=no'); return false;">Open in System Browser (_system/no)</a></ion-item>
+				<ion-item><a href="#" onclick="window.open('http://www.cdc.gov/features/BackToSchool/', '_blank'); return false;">Open in InAppBrowser (_blank)</a></ion-item>
+				<ion-item><a href="#" onclick="window.open('http://www.cdc.gov/features/BackToSchool/', '_blank', 'location=no'); return false;">Open in InAppBrowser (_blank/no)</a></ion-item>
+				<ion-item><a href="#" onclick="window.open('http://www.cdc.gov/features/BackToSchool/', '_self'); return false;">Open in InAppBrowser (_self)</a></ion-item>				
 				<ion-item><a href="#/">App Intro</a></ion-item>
 				<ion-item><a href="#/app/dotw" nav-clear menu-close>DOTW</a></ion-item>
 				<ion-item><a href="#/app/healtharticles" nav-clear menu-close>Health Articles</a></ion-item>

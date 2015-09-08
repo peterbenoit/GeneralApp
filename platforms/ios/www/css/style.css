@@ -294,9 +294,24 @@ body {
     border-top: 1px dashed #fff;
 }
 
+.collapse-text-toggle {
+    font-size: 0.9em;
+    color: #666666;
+    cursor: pointer;
+}
+.collapse-text-toggle:hover {
+    color: #222222;
+}
+/*.collapse-text-toggle:before {
+    content: '\00a0(';
+}
+.collapse-text-toggle:after {
+    content: ')';
+}*/
+
 
 /* Begin required CSS. */
-.line-clamp
+/*.line-clamp
 {
 	display            : block;
 	display            : -webkit-box;
@@ -307,8 +322,8 @@ body {
 	overflow           : hidden!important;
 	text-overflow      : ellipsis;
 	padding            : 0 !important;
-}
-.line-clamp:after
+}*/
+/*.line-clamp:after
 {
 	content    : '...';
 	text-align : right;
@@ -351,5 +366,5 @@ body {
 {
 	-webkit-line-clamp : 5;
 	height             : calc(1em * 1.2 * 5);
-}
+}*/
 /* End required CSS. */

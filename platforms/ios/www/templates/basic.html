@@ -1,0 +1,29 @@
+<ion-view title="{{}}">
+	
+	<ion-nav-buttons side="right">
+	<!-- <a class="button button-clear" ng-click="share()"><i class="icon ion-share"></i></a> -->
+	</ion-nav-buttons>
+	
+	<ion-content class="has-header">
+				
+		<div class="padding">
+			<h2 class="title">Content Item Title</h2>
+			<div>
+			<div style="padding:0 0 20px 0;">
+			Published
+			</div>
+			<div style="padding:0 0 20px 0;">
+			Optional Source Link
+			</div>
+			
+			<img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150" />
+
+			<p ng-bind-html="content"></p>
+			
+			<p><button class="button icon-left ion-share button-outline button-positive" ng-click="share()">Share</button>
+			<button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC</button></p>
+			
+		</div>
+
+	</ion-content>
+</ion-view>

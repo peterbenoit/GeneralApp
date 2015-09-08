@@ -261,7 +261,7 @@ angular.module('cdcgeneralapp.data', [])
 				// quick and dirty, add a random image based on card type since the json source doesn't provide images
 				if (card.indexOf('type-a') === 0) {
 					// + key to randomize
-					data[key].image = 'http://placeimg.com/335/250/any/' + key;
+					data[key].image = 'http://placeimg.com/300/200/any/' + key;
 				} else 
 					if (card.indexOf('type-c') === 0) {
 						data[key].image = 'http://placeimg.com/80/80/any/' + key;

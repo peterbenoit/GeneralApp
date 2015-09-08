@@ -3,7 +3,7 @@
 						<img src="{{stream.image}}">
 					</div>
 					<div class="item item-text-wrap item-body">
-						<strong>A1: {{stream.title | lines:10:this}}</strong>
+						<strong>A1: {{stream.title | words:10}}</strong>
 						<p class="date">{{stream.date | amDateFormat:'MMMM Do, YYYY'}}</p>
 						<p text-collapse text-collapse-max-length="110" text-collapse-text="{{stream.description}}"></p>
 					</div>

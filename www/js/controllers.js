@@ -18,6 +18,12 @@ angular.module('cdcgeneralapp.controllers', [])
 
 })
 
+.controller('ExternalCtrl', function($scope, $stateParams, $sce){
+	console.log($stateParams.url);
+	
+	$scope.frameUrl= $sce.trustAsResourceUrl($stateParams.url);
+})
+
 .controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
 
 	// Called to navigate to the main app
