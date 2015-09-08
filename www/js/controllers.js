@@ -457,7 +457,7 @@ angular.module('cdcgeneralapp.controllers', [])
 })
 
 // Menu Controller (amongst other things...)
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, MenuData, AppData, $ionicActionSheet, $ionicLoading) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, MenuData, AppData, AppDataStorage, $ionicActionSheet, $ionicLoading) {
 
 	$scope.items = MenuData.items;
 
@@ -474,7 +474,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	AppData.async().then(
 		// successCallback
 		function() {
-			console.log("new data: ", AppData.getAll());
+			console.log("new data: ", AppDataStorage.getAll());
 			$ionicLoading.hide();
 		},
 		// errorCallback 

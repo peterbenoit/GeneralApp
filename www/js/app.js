@@ -11,8 +11,7 @@ angular.module('cdcgeneralapp', [
 	'ngSanitize',
 	'angular.filter',
 	'angularMoment',
-	'ngCordova',
-	'truncate'
+	'ngCordova'
 ])
 
 .run(function($ionicPlatform) {
