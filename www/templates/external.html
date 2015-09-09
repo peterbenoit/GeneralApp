@@ -1,12 +1,14 @@
-<ion-view title="{{}}">
-	
-	<ion-nav-buttons side="right">
-	<!-- <a class="button button-clear" ng-click="share()"><i class="icon ion-share"></i></a> -->
+<ion-view title="">
+	<ion-nav-buttons side="left">
+	<img src="img/cdclogo.png">
+	<button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button> 
 	</ion-nav-buttons>
-	
+	<ion-nav-buttons side="right">
+	<a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
+	</ion-nav-buttons>
 	<ion-content class="has-header">
 
-	<iframe src="{{frameUrl}}"></iframe>
+	<iframe src="{{frameUrl}}" class="fullheight"></iframe>
 
 	</ion-content>
 </ion-view>

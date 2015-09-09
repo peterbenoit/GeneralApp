@@ -18,11 +18,10 @@ angular.module('cdcgeneralapp.controllers', [])
 
 })
 
-.controller('ExternalCtrl', function($scope, $routeParams, $stateParams, $sce){
-	console.log($stateParams);
-	console.log('here')
+.controller('ExternalCtrl', function($scope, $routeParams, $stateParams, $sce) {
+	var url = '//' + $stateParams.entryId;
 
-	$scope.frameUrl= $sce.trustAsResourceUrl($routeParams.urlId);
+	$scope.frameUrl= $sce.trustAsResourceUrl(url);
 })
 
 .controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
@@ -125,6 +124,10 @@ angular.module('cdcgeneralapp.controllers', [])
 		// $scope.$apply();
 	};
 
+	$scope.clickControl = function(type) {
+		alert(type);
+	}
+
 	// $scope.goTo = function(url) {
 	// 	alert(url)
 	// 	// window.open(url, '_self', 'location=no');
@@ -140,6 +143,10 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.storage = '';
 
 	$scope.sourcestream = HomeStreamData.getBySource($stateParams.entryId);
+
+	$scope.title = function() {
+		return $stateParams.entryId;
+	};
 
 	// $scope.content = $sce.trustAsHtml($scope.entry.content);	
 
@@ -526,7 +533,7 @@ angular.module('cdcgeneralapp.controllers', [])
 				text: 'Move'
 			}],
 			destructiveText: 'Delete',
-			titleText: 'Modify your album',
+			titleText: '',
 			cancelText: 'Cancel',
 			cancel: function() {
 				// add cancel code..

@@ -106,7 +106,7 @@ angular.module('cdcgeneralapp', [
 	})
 
 	.state('app.external', {
-		url: "/external:urlId",
+		url: "/external/:entryId",
 		views: {
 			'menuContent': {
 				templateUrl: "templates/external.html",
@@ -187,7 +187,15 @@ angular.module('cdcgeneralapp', [
 			}
 		}
 	})
-
+	.state('app.thumbnails', {
+		url: "/thumbnails",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/thumbnails.html",
+				controller: 'CardsCtrl'
+			}
+		}
+	})
 	.state('app.dotw', {
 		url: "/dotw",
 		views: {
