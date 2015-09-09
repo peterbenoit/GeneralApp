@@ -95,6 +95,10 @@ angular.module('cdcgeneralapp.data', [])
 			icon: 'ion-home',
 			url: '#/app'
 		}, {
+			title: 'App Intro',
+			icon: 'ion-speedometer',
+			url: '#/'
+		}, {
 			title: 'Typeface',
 			icon: 'ion-code',
 			url: '#/app/typeface'
@@ -102,6 +106,10 @@ angular.module('cdcgeneralapp.data', [])
 			title: 'Cards',
 			icon: 'ion-code',
 			url: '#/app/cards'
+		}, {
+			title: 'Thumbnails',
+			icon: 'ion-code',
+			url: '#/app/thumbnails'
 		}, {
 			title: 'Guided Quiz',
 			icon: 'ion-university',
@@ -118,18 +126,22 @@ angular.module('cdcgeneralapp.data', [])
 			title: '2 Column Gallery',
 			icon: 'ion-code',
 			url: '#/app/gallerytwo'
-		},
-		// { 
-		// 	title: 'Form Quiz',
-		// 	icon: 'ion-university',
-		// 	url: '#/app/form-quiz'
-		// },
-		{
+		}, {
 			title: 'Grid',
 			icon: 'ion-grid',
 			url: '#/app/grid'
-		}
+		}, {
+			title: 'External (CDC)',
+			icon: 'ion-android-globe',
+			url: '#/app/external/www.cdc.gov'
+		}, {
+			title: 'External (HHS)',
+			icon: 'ion-android-globe',
+			url: '#/app/external/www.hhs.gov'
+		}			
 	];
+
+
 
 	return data;
 })
@@ -177,7 +189,7 @@ angular.module('cdcgeneralapp.data', [])
 		"cardtype": "type-social-left",
 		"date": "2081-02-04T18:26:56.828Z",
 		"image": "img/Facebook.png",
-		"templatetype": "c1",
+		"sourcetype": "social",
 		"targetUrl": "http://www.facebook.com/CDC",
 		"size": "full"
 	};
@@ -188,17 +200,40 @@ angular.module('cdcgeneralapp.data', [])
 		"cardtype": "type-social-right",
 		"date": "2081-02-04T18:26:56.828Z",
 		"image": "img/Twitter.png",
-		"templatetype": "c1",
+		"sourcetype": "social",
 		"targetUrl": "https://twitter.com/CDCEmergency",
 		"size": "full"
 	};	
+
+	var pinterestCard = {
+		"title": "Pinterest",
+		"description": "CDC",
+		"cardtype": "type-social-left",
+		"date": "2081-02-04T18:26:56.828Z",
+		"image": "img/Pinterest.png",
+		"sourcetype": "social",
+		"targetUrl": "https://pinterest.com/cdcgov",
+		"size": "full"
+	};
+
+	var instagramCard = {
+		"title": "Instragram",
+		"description": "CDC",
+		"cardtype": "type-social-right",
+		"date": "2081-02-04T18:26:56.828Z",
+		"image": "img/Instagram.png",
+		"sourcetype": "social",
+		"targetUrl": "https://instagram.com/cdcgov/",
+		"size": "full"
+	};
+
 	var facebookCard2 = {
 		"title": "Facebook",
 		"description": "CDC Gov",
 		"cardtype": "type-social-top",
 		"date": "2081-02-04T18:26:56.828Z",
 		"image": "img/Facebook.png",
-		"templatetype": "c1",
+		"sourcetype": "social",
 		"targetUrl": "http://www.facebook.com/CDC",
 		"size": "half"
 	};
@@ -209,10 +244,20 @@ angular.module('cdcgeneralapp.data', [])
 		"cardtype": "type-social-top",
 		"date": "2081-02-04T18:26:56.828Z",
 		"image": "img/Twitter.png",
-		"templatetype": "c1",
+		"sourcetype": "social",
 		"targetUrl": "https://twitter.com/CDCEmergency",
 		"size": "half"
 	};
+	var pinterestCard2 = {
+		"title": "Pinterest",
+		"description": "CDC",
+		"cardtype": "type-social-top",
+		"date": "2081-02-04T18:26:56.828Z",
+		"image": "img/Pinterest.png",
+		"sourcetype": "social",
+		"targetUrl": "https://pinterest.com/cdcgov",
+		"size": "full"
+	};	
 
 	var getRandom = function(max, min) {
 		return Math.floor(Math.random() * (max - min + 1));	
@@ -220,7 +265,7 @@ angular.module('cdcgeneralapp.data', [])
 
 	// Getting all data on first load instead of with each page
 	//var feed = 'http://www.filltext.com/?rows=30&title={firstName}~{lastName}&pretty=true&date={date}&description={lorem|20}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=["type-a1","type-a1","type-a1","type-a2","type-a2","type-a3","type-a3","type-b1","type-b2","type-c1","type-c2","type-c3","type-d1","type-d2","type-e1","type-e2"]';
-	var feed = 'http://www.filltext.com/?rows=30&id={index}&title={lorem|10}&pretty=true&date={date}&description={lorem|40}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=[%22type-a1%22,%22type-a2%22,%22type-b1%22,%22type-b2%22,%22type-b3%22,%22type-c1%22,%22type-d1%22,%22type-d2%22]';
+	var feed = 'http://www.filltext.com/?rows=30&id={index}&title={lorem|10}&pretty=true&date={date}&description={lorem|40}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22,%22CDC Director%22,%22CDC Works for You 24-7%22,%22Public Health Matters%22,%22Weekly Disease Case Counts%22,%22Did You Know?%22,%22Fact of the Week%22,%22EID%22,%22MMWR%22,%22PCD%22,%22Outbreaks%22,%22Travel Notices%22,%22Image Library%22,%22Instagram%22,%22Flickr%22,%22Podcasts%22,%22YouTube CDC Director Briefing%22,%22YouTube CDC TV%22,%22YouTube All Other%22]&cardtype=[%22type-a1%22,%22type-a2%22,%22type-b1%22,%22type-b2%22,%22type-b3%22,%22type-c1%22,%22type-d1%22,%22type-d2%22,%22type-t1%22,%22type-t2%22,%22type-t3%22]';
 
 	service.async = function() {
 		$http({
@@ -234,12 +279,67 @@ angular.module('cdcgeneralapp.data', [])
 			data = d;
 			// var lastCardType = data[data.length - 1].cardtype;
 			var page = 1,
-				pageitems = 10;
+				pageitems = 10,
+				source;
 
 			for (var key in data) {
 
 				if(typeof data[key].size === 'undefined') {
 					data[key].size = 'full';	
+				}
+
+				source = data[key].source;
+
+				// WARN: don't really match like this
+				if(typeof source !== 'undefined') {
+					switch(source) {
+						case "Disease of the Week":
+						case "FluView":
+						case "Health Articles":
+						case "Vital Signs":
+							data[key].sourcetype = 'article';
+							break;
+						case "CDC Director":
+						case "CDC Works for You 24-7":
+						case "Public Health Matters":
+							data[key].sourcetype = 'blog';
+							break;
+						case "FastStats":
+						case "Weekly Disease Case Counts":
+							data[key].sourcetype = 'data';
+							break;
+						case "Did You Know?":
+						case "Fact of the Week":
+							data[key].sourcetype = 'fact';
+							break;
+						case "EID":
+						case "MMWR":
+						case "PCD":
+							data[key].sourcetype = 'journal';
+							break;
+						case "Newsroom":
+						case "Outbreaks":
+						case "Travel Notices":
+							data[key].sourcetype = 'news';
+							break;
+						case "Image Library":
+						case "Instagram":
+						case "Flickr":
+							data[key].sourcetype = 'photo';
+							break;
+						case "Facebook":
+						case "Google+":
+						case "Pinterest":
+						case "Twitter":
+							data[key].sourcetype = 'social';
+							break;
+						case "Podcasts":
+						case "YouTube CDC Director Briefing":
+						case "YouTube CDC TV":
+						case "YouTube All Other":
+							data[key].sourcetype = 'video';
+							break;
+					}
 				}
 
 				var previouscard = typeof data[key-1] !== 'undefined' ? data[key-1] : '';
@@ -261,7 +361,7 @@ angular.module('cdcgeneralapp.data', [])
 				// quick and dirty, add a random image based on card type since the json source doesn't provide images
 				if (card.indexOf('type-a') === 0) {
 					// + key to randomize
-					data[key].image = 'http://placeimg.com/335/250/any/' + key;
+					data[key].image = 'http://placeimg.com/300/200/any/' + key;
 				} else 
 					if (card.indexOf('type-c') === 0) {
 						data[key].image = 'http://placeimg.com/80/80/any/' + key;
@@ -278,26 +378,17 @@ angular.module('cdcgeneralapp.data', [])
 
 			// TODO
 			// insert sources which aren't in aggregate feed into random spots, but not between type-ds
-			var position = getRandom(9,2);
+			var position = getRandom(9,4);
 			data.splice(position, 0, facebookCard);
 
-			// if(data[position].cardtype.indexOf('type-d') === 0) {
-			// 	data.splice(position + 1, 0, facebookCard);
-			// }
-			// else {
-			// 	data.splice(position, 0, facebookCard);	
-			// }
-
- 			position = getRandom(9,2);
+			position = getRandom(9,4);
  			data.splice(position, 0, twitterCard);
 
-			// if(data[position].cardtype.indexOf('type-d') === 0) {
-			// 	data.splice(position + 1, 0, twitterCard);
-			// }
-			// else {
-			// 	data.splice(position, 0, twitterCard);	
-			// }
+ 			position = getRandom(20,8);
+ 			data.splice(position, 0, pinterestCard);
 
+ 			position = getRandom(20,8);
+ 			data.splice(position, 0, instagramCard);
 
 			HomeStreamStorage.save(data);
 			deferred.resolve();

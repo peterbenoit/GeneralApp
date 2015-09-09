@@ -390,8 +390,6 @@ angular.module('cdcgeneralapp.data', [])
  			position = getRandom(20,8);
  			data.splice(position, 0, instagramCard);
 
-console.log(data);
-
 			HomeStreamStorage.save(data);
 			deferred.resolve();
 		}).

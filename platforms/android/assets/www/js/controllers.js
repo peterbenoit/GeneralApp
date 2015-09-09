@@ -18,6 +18,12 @@ angular.module('cdcgeneralapp.controllers', [])
 
 })
 
+.controller('ExternalCtrl', function($scope, $routeParams, $stateParams, $sce) {
+	var url = '//' + $stateParams.entryId;
+
+	$scope.frameUrl= $sce.trustAsResourceUrl(url);
+})
+
 .controller('IntroCtrl', function($scope, $state, $ionicSlideBoxDelegate) {
 
 	// Called to navigate to the main app
@@ -118,6 +124,10 @@ angular.module('cdcgeneralapp.controllers', [])
 		// $scope.$apply();
 	};
 
+	$scope.clickControl = function(type) {
+		alert(type);
+	}
+
 	// $scope.goTo = function(url) {
 	// 	alert(url)
 	// 	// window.open(url, '_self', 'location=no');
@@ -133,6 +143,10 @@ angular.module('cdcgeneralapp.controllers', [])
 	$scope.storage = '';
 
 	$scope.sourcestream = HomeStreamData.getBySource($stateParams.entryId);
+
+	$scope.title = function() {
+		return $stateParams.entryId;
+	};
 
 	// $scope.content = $sce.trustAsHtml($scope.entry.content);	
 
@@ -457,7 +471,7 @@ angular.module('cdcgeneralapp.controllers', [])
 })
 
 // Menu Controller (amongst other things...)
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, MenuData, AppData, $ionicActionSheet, $ionicLoading) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, MenuData, AppData, AppDataStorage, $ionicActionSheet, $ionicLoading) {
 
 	$scope.items = MenuData.items;
 
@@ -474,7 +488,7 @@ angular.module('cdcgeneralapp.controllers', [])
 	AppData.async().then(
 		// successCallback
 		function() {
-			console.log("new data: ", AppData.getAll());
+			console.log("new data: ", AppDataStorage.getAll());
 			$ionicLoading.hide();
 		},
 		// errorCallback 
@@ -519,7 +533,7 @@ angular.module('cdcgeneralapp.controllers', [])
 				text: 'Move'
 			}],
 			destructiveText: 'Delete',
-			titleText: 'Modify your album',
+			titleText: '',
 			cancelText: 'Cancel',
 			cancel: function() {
 				// add cancel code..

@@ -12,7 +12,7 @@ angular.module('cdcgeneralapp', [
 	'angular.filter',
 	'angularMoment',
 	'ngCordova',
-	'truncate'
+	'ngRoute'
 ])
 
 .run(function($ionicPlatform) {
@@ -74,6 +74,15 @@ angular.module('cdcgeneralapp', [
 	});
 })
 
+
+
+// .config(['$routeProvider', function($routeProvider) {
+// 	$routeProvider.when('/external/:param1', {
+// 		templateUrl: 'templates/external.html',
+// 		controller: 'ExternalCtrl'
+// 	})
+// }])
+
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 
 	// $ionicConfigProvider
@@ -94,6 +103,16 @@ angular.module('cdcgeneralapp', [
 		abstract: true,
 		templateUrl: "templates/menu.html",
 		controller: 'AppCtrl'
+	})
+
+	.state('app.external', {
+		url: "/external/:entryId",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/external.html",
+				controller: 'ExternalCtrl'
+			}
+		}
 	})
 
 	.state('app.home', {
@@ -168,7 +187,15 @@ angular.module('cdcgeneralapp', [
 			}
 		}
 	})
-
+	.state('app.thumbnails', {
+		url: "/thumbnails",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/thumbnails.html",
+				controller: 'CardsCtrl'
+			}
+		}
+	})
 	.state('app.dotw', {
 		url: "/dotw",
 		views: {

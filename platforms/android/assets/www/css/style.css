@@ -39,8 +39,8 @@
 
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Source Sans Pro', sans-serif; }
 
-body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Roboto', sans-serif; }
-.card strong { font-family: 'Roboto', sans-serif; font-weight: normal; }
+/*body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Roboto', sans-serif; }
+.card strong { font-family: 'Roboto', sans-serif; font-weight: normal; }*/
 /*
 body, h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6, .button, input, textarea { font-family: 'Open Sans', sans-serif; }
 .card strong { font-family: 'Open Sans', sans-serif; font-weight: normal; }*/
@@ -294,9 +294,87 @@ body {
     border-top: 1px dashed #fff;
 }
 
+.collapse-text-toggle {
+    font-size: 0.9em;
+    color: #666666;
+    cursor: pointer;
+}
+.collapse-text-toggle:hover {
+    color: #222222;
+}
+
+iframe:not(src*="youtube") {
+	width: 100%; min-height: 100%
+}
+
+iframe.fullheight {
+	width: 100%; min-height: 100%	
+}
+
+.nailthumb-container{width:auto;height:auto;margin:0 0 11px;padding:0;overflow:hidden;position:relative;text-align:left}.nailthumb-container img.nailthumb-image{margin:0;padding:0;max-width:none;text-align:left;float:left}.nailthumb-container span.nailthumb-title{background:none repeat scroll 0 0 rgba(0,0,0,0.5);bottom:0;color:White;display:block;font-size:9px;height:20px;left:0;margin-top:2px;line-height:20px;position:relative;text-align:center;width:100%;overflow:hidden;float:left}.nailthumb-container span.nailthumb-title .nailthumb-title-scroller{padding-left:2px}.nailthumb-container img{max-width:none;text-align:left}
+.nailthumb-image{display: none}
+
+.image-type-a {
+	width: 350px;
+	height: 200px;
+}
+
+.image-type-a img {
+	border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.image-type-c {
+	width: 80px;
+	height: 80px;
+}
+
+.item-thumbnail-left .image-type-c {
+	position: absolute;
+	left:10px;
+	top:10px;
+}
+
+.item-thumbnail-right .image-type-c {
+	position: absolute;
+	right:10px;
+	top:10px;
+}
+
+.image-type-d {
+	width: 170px;
+	height: 120px;
+}
+
+.image-type-d img {
+	border-top-left-radius: 2px;
+    border-top-right-radius: 2px;
+}
+
+.type-t3 .item-notice {
+	background: pink;
+	border-top: 2px solid red!important;
+}
+
+.type-t2 .item-notice {
+	background: lightyellow;
+	border-top: 2px solid orange!important;
+}
+
+.type-t1 .item-notice {
+	background: lightgreen;
+	border-top: 2px solid green!important;
+}
+/*.collapse-text-toggle:before {
+    content: '\00a0(';
+}
+.collapse-text-toggle:after {
+    content: ')';
+}*/
+
 
 /* Begin required CSS. */
-.line-clamp
+/*.line-clamp
 {
 	display            : block;
 	display            : -webkit-box;
@@ -307,7 +385,7 @@ body {
 	overflow           : hidden!important;
 	text-overflow      : ellipsis;
 	padding            : 0 !important;
-}
+}*/
 /*.line-clamp:after
 {
 	content    : '...';

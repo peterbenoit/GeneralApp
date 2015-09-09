@@ -40,8 +40,8 @@
     </feature>
     <name>CDC General App</name>
     <description>
-    The CDC General App is a PhoneGap / Cordova Full Hybrid App with AngularJS + Ionic Framework.
-    </description>
+	The CDC General App is a PhoneGap / Cordova Full Hybrid App with AngularJS + Ionic Framework.
+	</description>
     <content src="index.html" />
     <access origin="*" />
     <preference name="webviewbounce" value="false" />
