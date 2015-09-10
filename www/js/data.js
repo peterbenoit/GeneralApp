@@ -183,6 +183,7 @@ angular.module('cdcgeneralapp.data', [])
     var service = {};
     var card = '';
     var dirty = false;
+
     var facebookCard = {
         'title': 'Facebook',
         'description': 'CDC Gov',
@@ -275,9 +276,9 @@ angular.module('cdcgeneralapp.data', [])
         }).
         // this callback will be called asynchronously
         // when the response is available.
-        success(function(d) {
-            data = d;
-            // var lastCardType = data[data.length - 1].cardtype;
+        then(function(d) {
+            data = d.data;  // was previously just d, the datasource changed
+
             var page = 1,
                 pageitems = 10,
                 source;
@@ -395,9 +396,14 @@ angular.module('cdcgeneralapp.data', [])
         }).
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        error(function() {
+        catch(function(response) {
+            console.error('Homestream Error: ', response.status, response.data);
             data = HomeStreamStorage.all();
             deferred.reject();
+        }).
+        finally(function(){
+            console.log('finally');
+            console.log(data);
         });
 
         return promise;
@@ -446,7 +452,7 @@ angular.module('cdcgeneralapp.data', [])
         }).
         // this callback will be called asynchronously
         // when the response is available.
-        success(function(d) {
+        then(function(d) {
             data = d.diseases.disease;
 
             var cardtypes = 'a,b,c,d,e'.split(','),
@@ -474,9 +480,13 @@ angular.module('cdcgeneralapp.data', [])
         }).
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        error(function() {
+        catch(function(response) {
+            console.error('Response Error: ', response.status, response.data);
             data = DotwStorage.all();
             deferred.reject();
+        }).
+        finally(function() {
+            console.log('finally');
         });
 
         return promise;
@@ -516,7 +526,7 @@ angular.module('cdcgeneralapp.data', [])
         }).
         // this callback will be called asynchronously
         // when the response is available.
-        success(function(d) {
+        then(function(d) {
             data = d.feed.entry;
 
             var cardtypes = 'a,b,c,d,e'.split(','),
@@ -545,9 +555,13 @@ angular.module('cdcgeneralapp.data', [])
         }).
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        error(function() {
+        catch(function(response) {
+            console.error('Response Error: ', response.status, response.data);
             data = HealthArticlesStorage.all();
             deferred.reject();
+        }).
+        finally(function() {
+            console.log('finally');
         });
 
         return promise;
@@ -591,7 +605,7 @@ angular.module('cdcgeneralapp.data', [])
         }).
         // this callback will be called asynchronously
         // when the response is available.
-        success(function(d) {
+        then(function(d) {
             data = d.feed.entry;
 
             var cardtypes = 'a,b,c,d,e'.split(','),
@@ -614,15 +628,18 @@ angular.module('cdcgeneralapp.data', [])
                 }
             }
 
-            console.log(data);
             VitalSignsStorage.save(data);
             deferred.resolve();
         }).
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        error(function() {
+        catch(function(response) {
+            console.error('Response Error: ', response.status, response.data);
             data = VitalSignsStorage.all();
             deferred.reject();
+        }).
+        finally(function() {
+            console.log('finally');
         });
 
         return promise;
@@ -712,55 +729,27 @@ angular.module('cdcgeneralapp.data', [])
         }).
         // this callback will be called asynchronously
         // when the response is available.
-        success(function(d) {
+        then(function(d) {
             result = d;
             data = result.items;
             deferred.resolve();
         }).
         // called asynchronously if an error occurs
         // or server returns response with an error status.
-        error(function() {
+        catch(function(response) {
+            console.error('Response Error: ', response.status, response.data);
             deferred.reject();
+        }).
+        finally(function() {
+            console.log('finally');
         });
-
-
-        // service.getPlaylistId().then(function(playlistId) {
-
-        //  if (!playlistId) {
-        //      deferred.reject();
-        //  }
-
-        //  var url = videosUrl + '&playlistId=' + playlistId;
-
-        //  $http({
-        //      method: 'GET',
-        //      url: url,
-        //      timeout: 5000
-        //  }).
-        //  // this callback will be called asynchronously
-        //  // when the response is available.
-        //  success(function(d) {
-        //      result = d;
-        //      data = result.items;
-        //      deferred.resolve();
-        //  }).
-        //  // called asynchronously if an error occurs
-        //  // or server returns response with an error status.
-        //  error(function() {
-        //      deferred.reject();
-        //  });
-
-        // });
 
         return promise;
 
     };
 
     service.getPlaylistId = function() {
-
         var url = playlistsUrl + '&forUsername=' + username;
-
-        console.log(url);
 
         return $http.get(url).then(function(response) {
             var items = response.data.items;

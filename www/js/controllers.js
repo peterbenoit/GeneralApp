@@ -56,9 +56,9 @@ angular.module('cdcgeneralapp.controllers', [])
     $rootScope.template = {
         'a1': 'templates/cards/a1.html',
         'a2': 'templates/cards/a2.html',
-        'a3': 'templates/cards/a3.html',
         'b1': 'templates/cards/b1.html',
         'b2': 'templates/cards/b2.html',
+        'b3': 'templates/cards/b3.html',
         'c1': 'templates/cards/c1.html',
         'd1': 'templates/cards/d1.html',
         'd2': 'templates/cards/d2.html',
@@ -66,7 +66,10 @@ angular.module('cdcgeneralapp.controllers', [])
         'e2': 'templates/cards/e2.html',
         'social-left': 'templates/cards/social-left.html',
         'social-right': 'templates/cards/social-right.html',
-        'social-top': 'templates/cards/social-top.html'
+        'social-top': 'templates/cards/social-top.html',
+        't1': 'templates/cards/t1a.html',
+        't2': 'templates/cards/t2a.html',
+        't3': 'templates/cards/t3a.html'
     };
 
     $scope.loading = $ionicLoading.show({
@@ -427,7 +430,7 @@ angular.module('cdcgeneralapp.controllers', [])
 })
 
 // Settings Controller
-.controller('SettingsCtrl', function($scope, SettingsStorage, NewsStorage, ProductsStorage, AboutStorage, FeedsStorage, PostsStorage, ServerPostsStorage) {
+.controller('SettingsCtrl', function($scope, SettingsStorage, NewsStorage, AboutStorage, FeedsStorage, PostsStorage, ServerPostsStorage) {
 
     $scope.settings = SettingsStorage.all();
 
@@ -446,10 +449,6 @@ angular.module('cdcgeneralapp.controllers', [])
 
     $scope.resetNewsStorage = function() {
         NewsStorage.clear();
-    };
-
-    $scope.resetProductsStorage = function() {
-        ProductsStorage.clear();
     };
 
     $scope.resetAboutStorage = function() {
