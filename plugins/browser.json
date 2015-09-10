@@ -21,40 +21,43 @@
         "com.ionic.keyboard": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
-        "de.appplant.cordova.plugin.email-composer": {
+        "com.pushwoosh.plugins.pushwoosh": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
-        "nl.x-services.plugins.socialsharing": {
-            "PACKAGE_NAME": "com.cdc.generalapp"
-        },
-        "org.apache.cordova.console": {
-            "PACKAGE_NAME": "com.cdc.generalapp"
-        },
-        "org.apache.cordova.device": {
-            "PACKAGE_NAME": "com.cdc.generalapp"
-        },
-        "org.apache.cordova.dialogs": {
-            "PACKAGE_NAME": "com.cdc.generalapp"
-        },
-        "org.apache.cordova.geolocation": {
-            "PACKAGE_NAME": "com.cdc.generalapp"
-        },
-        "org.apache.cordova.inappbrowser": {
+        "cordova-plugin-console": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
         "cordova-plugin-crosswalk-webview": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "cordova-plugin-inappbrowser": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
         "cordova-plugin-x-toast": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
+        "de.appplant.cordova.plugin.email-composer": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
         "io.litehelpers.cordova.sqlite": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "nl.x-services.plugins.socialsharing": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         }
     },

@@ -15,80 +15,66 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/de.appplant.cordova.plugin.email-composer/www/email_composer.js",
-        "id": "de.appplant.cordova.plugin.email-composer.EmailComposer",
-        "clobbers": [
-            "cordova.plugins.email",
-            "plugin.email"
-        ]
-    },
-    {
-        "file": "plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js",
-        "id": "nl.x-services.plugins.socialsharing.SocialSharing",
-        "clobbers": [
-            "window.plugins.socialsharing"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.console/www/console-via-logger.js",
-        "id": "org.apache.cordova.console.console",
-        "clobbers": [
-            "console"
-        ]
-    },
-    {
-        "file": "plugins/org.apache.cordova.console/www/logger.js",
-        "id": "org.apache.cordova.console.logger",
+        "file": "plugins/cordova-plugin-console/www/logger.js",
+        "id": "cordova-plugin-console.logger",
         "clobbers": [
             "cordova.logger"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.device/www/device.js",
-        "id": "org.apache.cordova.device.device",
+        "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
+        "id": "cordova-plugin-console.console",
+        "clobbers": [
+            "console"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "id": "cordova-plugin-device.device",
         "clobbers": [
             "device"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.dialogs/www/notification.js",
-        "id": "org.apache.cordova.dialogs.notification",
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "id": "cordova-plugin-dialogs.notification",
         "merges": [
             "navigator.notification"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.geolocation/www/Coordinates.js",
-        "id": "org.apache.cordova.geolocation.Coordinates",
+        "file": "plugins/cordova-plugin-geolocation/www/Coordinates.js",
+        "id": "cordova-plugin-geolocation.Coordinates",
         "clobbers": [
             "Coordinates"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.geolocation/www/PositionError.js",
-        "id": "org.apache.cordova.geolocation.PositionError",
+        "file": "plugins/cordova-plugin-geolocation/www/PositionError.js",
+        "id": "cordova-plugin-geolocation.PositionError",
         "clobbers": [
             "PositionError"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.geolocation/www/Position.js",
-        "id": "org.apache.cordova.geolocation.Position",
+        "file": "plugins/cordova-plugin-geolocation/www/Position.js",
+        "id": "cordova-plugin-geolocation.Position",
         "clobbers": [
             "Position"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.geolocation/www/geolocation.js",
-        "id": "org.apache.cordova.geolocation.geolocation",
+        "file": "plugins/cordova-plugin-geolocation/www/geolocation.js",
+        "id": "cordova-plugin-geolocation.geolocation",
         "clobbers": [
             "navigator.geolocation"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.inappbrowser/www/inappbrowser.js",
-        "id": "org.apache.cordova.inappbrowser.inappbrowser",
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
         "clobbers": [
+            "cordova.InAppBrowser.open",
             "window.open"
         ]
     },
@@ -111,10 +97,25 @@ module.exports = [
         "id": "cordova-plugin-x-toast.tests"
     },
     {
+        "file": "plugins/de.appplant.cordova.plugin.email-composer/www/email_composer.js",
+        "id": "de.appplant.cordova.plugin.email-composer.EmailComposer",
+        "clobbers": [
+            "cordova.plugins.email",
+            "plugin.email"
+        ]
+    },
+    {
         "file": "plugins/io.litehelpers.cordova.sqlite/www/SQLitePlugin.js",
         "id": "io.litehelpers.cordova.sqlite.SQLitePlugin",
         "clobbers": [
             "SQLitePlugin"
+        ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js",
+        "id": "nl.x-services.plugins.socialsharing.SocialSharing",
+        "clobbers": [
+            "window.plugins.socialsharing"
         ]
     }
 ];
@@ -122,19 +123,19 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "com.ionic.keyboard": "1.0.4",
-    "com.pushwoosh.plugins.pushwoosh": "3.5.3",
-    "de.appplant.cordova.plugin.email-composer": "0.8.2",
-    "nl.x-services.plugins.socialsharing": "4.3.19",
-    "org.apache.cordova.console": "0.2.13",
-    "org.apache.cordova.device": "0.3.0",
-    "org.apache.cordova.dialogs": "0.3.0",
-    "org.apache.cordova.geolocation": "0.3.12",
-    "org.apache.cordova.inappbrowser": "0.6.0",
+    "com.pushwoosh.plugins.pushwoosh": "3.5.4",
+    "cordova-plugin-console": "1.0.1",
     "cordova-plugin-crosswalk-webview": "1.2.0",
-    "cordova-plugin-whitelist": "1.0.0",
+    "cordova-plugin-device": "1.0.1",
+    "cordova-plugin-dialogs": "1.1.1",
+    "cordova-plugin-geolocation": "1.0.1",
+    "cordova-plugin-inappbrowser": "1.0.1",
     "cordova-plugin-splashscreen": "2.1.0",
+    "cordova-plugin-whitelist": "1.0.0",
     "cordova-plugin-x-toast": "2.2.0",
-    "io.litehelpers.cordova.sqlite": "0.7.10"
+    "de.appplant.cordova.plugin.email-composer": "0.8.2",
+    "io.litehelpers.cordova.sqlite": "0.7.7",
+    "nl.x-services.plugins.socialsharing": "4.3.19"
 }
 // BOTTOM OF METADATA
 });

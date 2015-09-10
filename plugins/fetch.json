@@ -1,59 +1,35 @@
 {
+    "org.apache.cordova.splashscreen": {
+        "source": {
+            "type": "registry",
+            "id": "org.apache.cordova.splashscreen"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
     "com.ionic.keyboard": {
         "source": {
             "type": "registry",
             "id": "com.ionic.keyboard"
-        }
+        },
+        "is_top_level": true,
+        "variables": {}
     },
     "com.pushwoosh.plugins.pushwoosh": {
         "source": {
             "type": "registry",
             "id": "com.pushwoosh.plugins.pushwoosh"
-        }
-    },
-    "de.appplant.cordova.plugin.email-composer": {
-        "source": {
-            "type": "registry",
-            "id": "de.appplant.cordova.plugin.email-composer"
-        }
-    },
-    "nl.x-services.plugins.socialsharing": {
-        "source": {
-            "type": "registry",
-            "id": "nl.x-services.plugins.socialsharing"
         },
         "is_top_level": true,
         "variables": {}
     },
-    "org.apache.cordova.console": {
+    "cordova-plugin-console": {
         "source": {
             "type": "registry",
-            "id": "org.apache.cordova.console"
-        }
-    },
-    "org.apache.cordova.device": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.device"
-        }
-    },
-    "org.apache.cordova.dialogs": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.dialogs"
-        }
-    },
-    "org.apache.cordova.geolocation": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.geolocation"
-        }
-    },
-    "org.apache.cordova.inappbrowser": {
-        "source": {
-            "type": "registry",
-            "id": "org.apache.cordova.inappbrowser"
-        }
+            "id": "cordova-plugin-console"
+        },
+        "is_top_level": true,
+        "variables": {}
     },
     "cordova-plugin-crosswalk-webview": {
         "source": {
@@ -63,10 +39,34 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-whitelist": {
+    "cordova-plugin-device": {
         "source": {
             "type": "registry",
-            "id": "cordova-plugin-whitelist"
+            "id": "cordova-plugin-device"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-dialogs": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-dialogs"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-geolocation": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-geolocation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-inappbrowser": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-inappbrowser"
         },
         "is_top_level": true,
         "variables": {}
@@ -79,28 +79,42 @@
         "is_top_level": true,
         "variables": {}
     },
-    "org.apache.cordova.splashscreen": {
+    "cordova-plugin-whitelist": {
         "source": {
             "type": "registry",
-            "id": "org.apache.cordova.splashscreen"
+            "id": "cordova-plugin-whitelist"
         },
         "is_top_level": true,
         "variables": {}
     },
     "cordova-plugin-x-toast": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/EddyVerbruggen/Toast-PhoneGap-Plugin.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "cordova-plugin-x-toast"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "de.appplant.cordova.plugin.email-composer": {
+        "source": {
+            "type": "registry",
+            "id": "de.appplant.cordova.plugin.email-composer"
         },
         "is_top_level": true,
         "variables": {}
     },
     "io.litehelpers.cordova.sqlite": {
         "source": {
-            "type": "git",
-            "url": "https://github.com/litehelpers/Cordova-sqlite-storage.git",
-            "subdir": "."
+            "type": "registry",
+            "id": "io.litehelpers.cordova.sqlite"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "nl.x-services.plugins.socialsharing": {
+        "source": {
+            "type": "registry",
+            "id": "nl.x-services.plugins.socialsharing"
         },
         "is_top_level": true,
         "variables": {}

@@ -8,44 +8,65 @@ module.exports = [
         ]
     },
     {
-        "file": "plugins/de.appplant.cordova.plugin.email-composer/www/email_composer.js",
-        "id": "de.appplant.cordova.plugin.email-composer.EmailComposer",
+        "file": "plugins/com.pushwoosh.plugins.pushwoosh/www/PushNotification.js",
+        "id": "com.pushwoosh.plugins.pushwoosh.PushNotification",
         "clobbers": [
-            "cordova.plugins.email",
-            "plugin.email"
+            "plugins.pushNotification"
         ]
     },
     {
-        "file": "plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js",
-        "id": "nl.x-services.plugins.socialsharing.SocialSharing",
+        "file": "plugins/cordova-plugin-console/www/logger.js",
+        "id": "cordova-plugin-console.logger",
         "clobbers": [
-            "window.plugins.socialsharing"
+            "cordova.logger"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.device/www/device.js",
-        "id": "org.apache.cordova.device.device",
+        "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
+        "id": "cordova-plugin-console.console",
+        "clobbers": [
+            "console"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-device/www/device.js",
+        "id": "cordova-plugin-device.device",
         "clobbers": [
             "device"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.device/src/browser/DeviceProxy.js",
-        "id": "org.apache.cordova.device.DeviceProxy",
+        "file": "plugins/cordova-plugin-device/src/browser/DeviceProxy.js",
+        "id": "cordova-plugin-device.DeviceProxy",
         "runs": true
     },
     {
-        "file": "plugins/org.apache.cordova.dialogs/www/notification.js",
-        "id": "org.apache.cordova.dialogs.notification",
+        "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+        "id": "cordova-plugin-dialogs.notification",
         "merges": [
             "navigator.notification"
         ]
     },
     {
-        "file": "plugins/org.apache.cordova.dialogs/www/browser/notification.js",
-        "id": "org.apache.cordova.dialogs.notification_browser",
+        "file": "plugins/cordova-plugin-dialogs/www/browser/notification.js",
+        "id": "cordova-plugin-dialogs.notification_browser",
         "merges": [
             "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-inappbrowser/www/inappbrowser.js",
+        "id": "cordova-plugin-inappbrowser.inappbrowser",
+        "clobbers": [
+            "cordova.InAppBrowser.open",
+            "window.open"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-inappbrowser/src/browser/InAppBrowserProxy.js",
+        "id": "cordova-plugin-inappbrowser.InAppBrowserProxy",
+        "merges": [
+            ""
         ]
     },
     {
@@ -72,10 +93,25 @@ module.exports = [
         "id": "cordova-plugin-x-toast.tests"
     },
     {
+        "file": "plugins/de.appplant.cordova.plugin.email-composer/www/email_composer.js",
+        "id": "de.appplant.cordova.plugin.email-composer.EmailComposer",
+        "clobbers": [
+            "cordova.plugins.email",
+            "plugin.email"
+        ]
+    },
+    {
         "file": "plugins/io.litehelpers.cordova.sqlite/www/SQLitePlugin.js",
         "id": "io.litehelpers.cordova.sqlite.SQLitePlugin",
         "clobbers": [
             "SQLitePlugin"
+        ]
+    },
+    {
+        "file": "plugins/nl.x-services.plugins.socialsharing/www/SocialSharing.js",
+        "id": "nl.x-services.plugins.socialsharing.SocialSharing",
+        "clobbers": [
+            "window.plugins.socialsharing"
         ]
     }
 ];
@@ -83,18 +119,19 @@ module.exports.metadata =
 // TOP OF METADATA
 {
     "com.ionic.keyboard": "1.0.4",
-    "de.appplant.cordova.plugin.email-composer": "0.8.2",
-    "nl.x-services.plugins.socialsharing": "4.3.19",
-    "org.apache.cordova.console": "0.2.13",
-    "org.apache.cordova.device": "0.3.0",
-    "org.apache.cordova.dialogs": "0.3.0",
-    "org.apache.cordova.geolocation": "0.3.12",
-    "org.apache.cordova.inappbrowser": "0.6.0",
+    "com.pushwoosh.plugins.pushwoosh": "3.5.4",
+    "cordova-plugin-console": "1.0.1",
     "cordova-plugin-crosswalk-webview": "1.2.0",
-    "cordova-plugin-whitelist": "1.0.0",
+    "cordova-plugin-device": "1.0.1",
+    "cordova-plugin-dialogs": "1.1.1",
+    "cordova-plugin-geolocation": "1.0.1",
+    "cordova-plugin-inappbrowser": "1.0.1",
     "cordova-plugin-splashscreen": "2.1.0",
+    "cordova-plugin-whitelist": "1.0.0",
     "cordova-plugin-x-toast": "2.2.0",
-    "io.litehelpers.cordova.sqlite": "0.7.10"
+    "de.appplant.cordova.plugin.email-composer": "0.8.2",
+    "io.litehelpers.cordova.sqlite": "0.7.7",
+    "nl.x-services.plugins.socialsharing": "4.3.19"
 }
 // BOTTOM OF METADATA
 });
