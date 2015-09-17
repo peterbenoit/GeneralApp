@@ -1,7 +1,7 @@
 <ion-view title="">
 	<ion-nav-buttons side="left">
 	<img src="img/cdclogo.png">
-	<button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button> 
+	<button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button>
 	</ion-nav-buttons>
 	<ion-nav-buttons side="right">
 	<a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
@@ -14,6 +14,7 @@
 		</ion-refresher>
 
 			<div ng-repeat="stream in homestream | limitTo: paginationLimit()" class="inline" ng-class="stream.size">
+				<!-- {{$index}} -->
 				<div data-ng-include="selectTemplate(stream)"></div>
 			</div>
 

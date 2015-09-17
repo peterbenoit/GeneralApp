@@ -11,6 +11,10 @@
                         {
                             "xml": "<feature name=\"Device\"><param name=\"browser-package\" value=\"Device\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<preference name=\"AndroidPersistentFileLocation\" value=\"Internal\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -58,6 +62,9 @@
             "PACKAGE_NAME": "com.cdc.generalapp"
         },
         "nl.x-services.plugins.socialsharing": {
+            "PACKAGE_NAME": "com.cdc.generalapp"
+        },
+        "cordova-plugin-file": {
             "PACKAGE_NAME": "com.cdc.generalapp"
         }
     },

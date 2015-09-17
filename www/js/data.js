@@ -2,36 +2,36 @@ angular.module('cdcgeneralapp.data', [])
 
 // Home Data: Home page configuration
 .factory('Data', function() {
-    var data = {};
+    // var data = {};
 
-    data.items = [{
-        title: 'DOTW',
-        icon: 'ion-calendar',
-        note: 'Disease of the Week',
-        url: '#/app/dotw'
-    }, {
-        title: 'Health Articles',
-        icon: 'ion-android-bicycle',
-        note: 'Health Articles',
-        url: '#/app/healtharticles'
-    }, {
-        title: 'Gallery',
-        icon: 'ion-images',
-        note: 'Our Photos',
-        url: '#/app/gallery'
-    }, {
-        title: 'YouTube',
-        icon: 'ion-social-youtube',
-        note: 'YouTube Videos',
-        url: '#/app/youtubevideos'
-    }, {
-        title: 'Quiz',
-        icon: 'ion-university',
-        note: 'CDC Quiz Module',
-        url: '#/app/quiz'
-    }];
+    // data.items = [{
+    //     title: 'DOTW',
+    //     icon: 'ion-calendar',
+    //     note: 'Disease of the Week',
+    //     url: '#/app/dotw'
+    // }, {
+    //     title: 'Health Articles',
+    //     icon: 'ion-android-bicycle',
+    //     note: 'Health Articles',
+    //     url: '#/app/healtharticles'
+    // }, {
+    //     title: 'Gallery',
+    //     icon: 'ion-images',
+    //     note: 'Our Photos',
+    //     url: '#/app/gallery'
+    // }, {
+    //     title: 'YouTube',
+    //     icon: 'ion-social-youtube',
+    //     note: 'YouTube Videos',
+    //     url: '#/app/youtubevideos'
+    // }, {
+    //     title: 'Quiz',
+    //     icon: 'ion-university',
+    //     note: 'CDC Quiz Module',
+    //     url: '#/app/quiz'
+    // }];
 
-    return data;
+    // return data;
 })
 
 .factory('AppData', function($http, $q, AppDataStorage) {
@@ -50,10 +50,7 @@ angular.module('cdcgeneralapp.data', [])
         success(function(d) {
             data = d;
 
-            console.log('data: ', data);
-
             // do something with data
-
             AppDataStorage.save(data);
             deferred.resolve();
         }).
@@ -87,63 +84,39 @@ angular.module('cdcgeneralapp.data', [])
 })
 
 // Menu Data: Menu configuration
-.factory('MenuData', function() {
-    var data = {};
+.factory('MenuData', function($http, $q) {
+    var json = 'json/menu.json',
+    deferred = $q.defer(),
+    promise = deferred.promise,
+    data = [],
+    service = {};
 
-    data.items = [{
-            title: 'Home',
-            icon: 'ion-home',
-            url: '#/app'
-        }, {
-            title: 'App Intro',
-            icon: 'ion-speedometer',
-            url: '#/'
-        }, {
-            title: 'Typeface',
-            icon: 'ion-code',
-            url: '#/app/typeface'
-        }, {
-            title: 'Cards',
-            icon: 'ion-code',
-            url: '#/app/cards'
-        }, {
-            title: 'Thumbnails',
-            icon: 'ion-code',
-            url: '#/app/thumbnails'
-        }, {
-            title: 'Guided Quiz',
-            icon: 'ion-university',
-            url: '#/app/guided-quiz'
-        }, {
-            title: '4 Column Gallery',
-            icon: 'ion-code',
-            url: '#/app/galleryfour'
-        }, {
-            title: '3 Column Gallery',
-            icon: 'ion-code',
-            url: '#/app/gallerythree'
-        }, {
-            title: '2 Column Gallery',
-            icon: 'ion-code',
-            url: '#/app/gallerytwo'
-        }, {
-            title: 'Grid',
-            icon: 'ion-grid',
-            url: '#/app/grid'
-        }, {
-            title: 'External (CDC)',
-            icon: 'ion-android-globe',
-            url: '#/app/external/www.cdc.gov'
-        }, {
-            title: 'External (HHS)',
-            icon: 'ion-android-globe',
-            url: '#/app/external/www.hhs.gov'
-        }
-    ];
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: json,
+            timeout: 5000
+        })
+        .then(function(d) {
+            data = d.data.result;
+            deferred.resolve();
+        })
+        .catch(function(response) {
+            console.error('Response Error: ', response.status, response.data);
+            deferred.reject();
+        })
+        .finally(function() {
+            console.log('Menu Loaded');
+        });
 
+        return promise;
+    };
 
+    service.getAll = function() { return data; };
 
-    return data;
+    service.get = function(newId) { return data[newId]; };
+
+    return service;
 })
 
 // Plugins Data: Mobile Plugins configuration
@@ -218,7 +191,7 @@ angular.module('cdcgeneralapp.data', [])
     };
 
     var instagramCard = {
-        'title': 'Instragram',
+        'title': 'Instagram',
         'description': 'CDC',
         'cardtype': 'type-social-right',
         'date': '2081-02-04T18:26:56.828Z',
@@ -401,7 +374,7 @@ angular.module('cdcgeneralapp.data', [])
             data = HomeStreamStorage.all();
             deferred.reject();
         }).
-        finally(function(){
+        finally(function() {
             console.log('finally');
             console.log(data);
         });
@@ -688,14 +661,25 @@ angular.module('cdcgeneralapp.data', [])
 
     // CDC Directors Videos: https://www.youtube.com/playlist?list=PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL
 
-    var youtubeKey = 'AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc';
-    var apiUrl = 'https://www.googleapis.com/youtube/v3/';
-    var videosUrl = apiUrl + 'playlistItems?part=snippet&key=' + youtubeKey + '&maxResults=' + 20;
-    var playlistsUrl = apiUrl + 'channels?part=contentDetails&key=' + youtubeKey;
+    var youtubeKey = 'AIzaSyBBdZZvS5Jve2kkKzoj_qH8YanXtnuUWZ4',
+        apiUrl = 'https://www.googleapis.com/youtube/v3/',
+        videosUrl = apiUrl + 'playlistItems?part=id,snippet&key=' + youtubeKey + '&maxResults=' + 20,
+        playlistsUrl = apiUrl + 'channels?part=contentDetails&key=' + youtubeKey;
 
+
+videosUrl = 'https://www.googleapis.com/youtube/v3/playlistItems?part=id,snippet&playlistId=PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL&key=AIzaSyBBdZZvS5Jve2kkKzoj_qH8YanXtnuUWZ4&maxResults=10&cc_lang_pref=fr&cc_load_policy=1';
+
+// https://www.googleapis.com/youtube/v3/playlistItems?
+// part=id,snippet
+// playlistId=PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL
+// key=AIzaSyBBdZZvS5Jve2kkKzoj_qH8YanXtnuUWZ4
+// maxResults=10
+
+// https://www.googleapis.com/youtube/v3/playlistItems?
+// part=snippet&key=AIzaSyBBdZZvS5Jve2kkKzoj_qH8YanXtnuUWZ4&maxResults=20
     // var youtubeKey = 'AIzaSyBBdZZvS5Jve2kkKzoj_qH8YanXtnuUWZ4',
     // maxResults = 10,
-    var playlistId = 'PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL&';
+    var playlistId = 'PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL';
     // apiUrl = 'https://www.googleapis.com/youtube/v3/',
     // // videosUrl = apiUrl + 'playlistItems?part=id,snippet&playlistId=' + playlistId + 'key=' + youtubeKey + '&maxResults=' + maxResults,
     // videosUrl = apiUrl + 'playlistItems?part=id,snippet&key=' + youtubeKey + '&maxResults=' + maxResults,
@@ -705,18 +689,18 @@ angular.module('cdcgeneralapp.data', [])
     //https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc&maxResults=20
 
     //https://www.googleapis.com/youtube/v3/playlistItems?part=id,snippet&playlistId=PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL&key=AIzaSyBBdZZvS5Jve2kkKzoj_qH8YanXtnuUWZ4&maxResults=10
-    https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc&maxResults=20&playlistId=null
+    // https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc&maxResults=20&playlistId=null
     var username = 'cdc',
-    data = [],
-    result = [],
-    videos = [],
-    service = {};
+        data = [],
+        result = [],
+        videos = [],
+        service = {};
 
     service.async = function(categoryId, id) {
 
-        var deferred = $q.defer();
-        var promise = deferred.promise;
-        var url = videosUrl + '&playlistId=' + playlistId;
+        var deferred = $q.defer(),
+            promise = deferred.promise,
+            url = videosUrl; // + '&playlistId=' + playlistId;
 
         if (!playlistId) {
             deferred.reject();
@@ -731,7 +715,7 @@ angular.module('cdcgeneralapp.data', [])
         // when the response is available.
         then(function(d) {
             result = d;
-            data = result.items;
+            data = result.data.items;
             deferred.resolve();
         }).
         // called asynchronously if an error occurs

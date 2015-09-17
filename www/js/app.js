@@ -1,5 +1,9 @@
 // CDCGeneralApp: Mobile Ionic Framework
 
+window.ionic.Platform.ready(function() {
+    angular.bootstrap(document, ['cdcgeneralapp']);
+});
+
 angular.module('cdcgeneralapp', [
     'ionic',
     'cdcgeneralapp.controllers',
@@ -29,7 +33,7 @@ angular.module('cdcgeneralapp', [
 
         // haven't figured out how to apply this to controllers yet
         if (window.plugins) {
-            window.plugins.toast.showShortTop('Hello there!', function(a) {
+            window.plugins.toast.showShortTop('App Loaded', function(a) {
                 console.log('toast success: ' + a)}, function(b) {
                     alert('toast error: ' + b)});
         }

@@ -6,7 +6,7 @@ angular.module('cdcgeneralapp.directives', [])
         link: function(scope, element, attrs) {
             $(element).nailthumb().show();
         }
-    }
+    };
 }])
 
 //https://github.com/doukasd/AngularJS-Components

@@ -1,7 +1,7 @@
 angular.module('cdcgeneralapp.controllers', [])
 
 // Home Controller
-.controller('HomeCtrl', function($scope, Data) {
+.controller('HomeCtrl', function($scope, Data, $cordovaFile) {
     $scope.items = Data.items;
 
     $scope.isNews = function(title) {
@@ -44,7 +44,7 @@ angular.module('cdcgeneralapp.controllers', [])
 })
 
 // Home Stream Controller
-.controller('HomeStreamCtrl', function($scope, $rootScope, $ionicLoading, HomeStreamData, HomeStreamStorage) {
+.controller('HomeStreamCtrl', function($scope, $rootScope, $ionicLoading, HomeStreamData, HomeStreamStorage, $cordovaFile) {
     $scope.homestream = [];
     $scope.storage = '';
 
@@ -52,6 +52,15 @@ angular.module('cdcgeneralapp.controllers', [])
         var templateId = stream.cardtype.replace('type-', '');
         return $scope.template[templateId];
     };
+
+    if(window.cordova) {
+        $cordovaFile.getFreeDiskSpace()
+            .then(function (success) {
+                console.log("free space: ", success);
+            }, function (error) {
+                console.log("getFreeDiskSpace error: ", error);
+        });
+    }
 
     $rootScope.template = {
         'a1': 'templates/cards/a1.html',
@@ -472,22 +481,26 @@ angular.module('cdcgeneralapp.controllers', [])
 // Menu Controller (amongst other things...)
 .controller('AppCtrl', function($scope, $ionicModal, $timeout, MenuData, AppData, AppDataStorage, $ionicActionSheet, $ionicLoading) {
 
-    $scope.items = MenuData.items;
+    // $scope.items = MenuData.items;
 
-    // Form data for the login modal
-    $scope.loginData = {};
+    MenuData.async().then(
+        // successCallback
+        function() {
+            $scope.items = MenuData.getAll();
+        },
+        // errorCallback
+        function() {
+            $ionicLoading.hide();
+        },
+        // notifyCallback
+        function() {}
+    );
 
-    // Create the login modal that we will use later
-    // $ionicModal.fromTemplateUrl('templates/login.html', {
-    //  scope: $scope
-    // }).then(function(modal) {
-    //  $scope.modal = modal;
-    // });
 
     AppData.async().then(
         // successCallback
         function() {
-            console.log('new data: ', AppDataStorage.getAll());
+            console.log('new data: ', AppData.getAll());
             $ionicLoading.hide();
         },
         // errorCallback
@@ -499,27 +512,6 @@ angular.module('cdcgeneralapp.controllers', [])
         // notifyCallback
         function() {}
     );
-
-    // Triggered in the login modal to close it
-    $scope.closeLogin = function() {
-        $scope.modal.hide();
-    };
-
-    // Open the login modal
-    $scope.login = function() {
-        $scope.modal.show();
-    };
-
-    // Perform the login action when the user submits the login form
-    $scope.doLogin = function() {
-        console.log('Doing login', $scope.loginData);
-
-        // Simulate a login delay. Remove this and replace with your login
-        // code if using a login system
-        $timeout(function() {
-            $scope.closeLogin();
-        }, 1000);
-    };
 
     // Triggered on a button click, or some other target
     $scope.show = function() {
@@ -543,7 +535,6 @@ angular.module('cdcgeneralapp.controllers', [])
         });
 
     };
-
 })
 
 // YouTube Videos Controller
@@ -567,7 +558,7 @@ angular.module('cdcgeneralapp.controllers', [])
             // successCallback
             function() {
                 $scope.videos = YouTubeData.getVideos();
-                console.log($scope.videos);
+                console.log("Videos: ", $scope.videos);
                 $ionicLoading.hide();
                 $scope.$broadcast('scroll.refreshComplete');
             },
