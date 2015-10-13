@@ -1,0 +1,26 @@
+<ion-view title="{{podcast.name}}">
+
+	<ion-nav-buttons side="right">
+	<!-- <a class="button button-clear" ng-click="shareVideo()"><i class="icon ion-share"></i></a> -->
+	</ion-nav-buttons>
+
+	<ion-content class="has-header">
+
+	<img>
+
+	<div class="padding">
+		<h2 class="title">{{podcast.name}}</h2>
+
+		<div style="padding:0 0 20px 0;">
+		Published {{podcast.datePublished | date:'fullDate'}}
+		</div>
+
+		<p ng-bind-html="content"></p>
+
+		<p><button class="button icon-left ion-share button-outline button-positive" ng-click="sharePodcast()">Share</button>
+		<button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC</button></p>
+
+	</div>
+
+	</ion-content>
+</ion-view>

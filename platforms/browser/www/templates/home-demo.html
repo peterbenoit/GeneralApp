@@ -1,0 +1,66 @@
+<ion-view title="">
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button>
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <img src="img/mycdc.png">
+    </ion-nav-title>
+    <ion-nav-buttons side="right">
+        <a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
+    </ion-nav-buttons>
+    <ion-content class="has-header">
+
+        <div class="row">
+            <div class="card col home" ng-if="othervideos">
+                <a class="item item-text-wrap" href="#/app/youtubevideos">
+                    <h1><i class="icon ion-ios-videocam"></i></h1>
+                    <h2>YouTube</h2>
+                    <span class="item-note">Other Videos</span>
+                </a>
+            </div>
+
+            <div class="card col home" ng-if="dotw">
+                <a class="item item-text-wrap" href="#/app/dotw">
+                    <h1><i class="icon ion-ios-flask-outline"></i></h1>
+                    <h2>DOTW</h2>
+                    <span class="item-note">Disease of the Week</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card col home">
+                <a class="item item-text-wrap" href="#/app/podcasts">
+                    <h1><i class="icon ion-ipod"></i></h1>
+                    <h2>Podcasts</h2>
+                    <span class="item-note">Podcasts</span>
+                </a>
+            </div>
+            <div class="card col home">
+                <a class="item item-text-wrap" href="http://www.cdc.gov/listeria/outbreaks/soft-cheeses-09-15/index.html">
+                    <h1><i class="icon ion-map"></i></h1>
+                    <h2>Outbreak Page</h2>
+                    <span class="item-note">Outbreak Page</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="card col home">
+                <a class="item item-text-wrap" data-browser="_blank" href="http://www.cdc.gov/ncbddd/fasd/women.html">
+                    <h1><i class="icon ion-android-globe"></i></h1>
+                    <h2>RD Page</h2>
+                    <span class="item-note">RD Page</span>
+                </a>
+            </div>
+            <div class="card col home">
+                <a class="item item-text-wrap" href="#/app/external/http:||www.cdc.gov|ncbddd|fasd|women_nochrome.html">
+                    <h1><i class="icon ion-android-globe"></i></h1>
+                    <h2>No Chrome Page</h2>
+                    <span class="item-note">No Chrome Page</span>
+                </a>
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

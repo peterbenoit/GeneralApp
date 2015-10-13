@@ -1,12 +1,26 @@
-<ion-view title="{{new.title}}">
-    <ion-content class="has-header">
-        <img ng-src="{{new.picture}}" alt="{{new.title}}"/>
-        
-        <div class="padding">
-        <h2 class="title">{{new.title}}</h2>
-        <p>{{new.body}}</p>
-        <p><i class="icon ion-pricetags"></i> <span ng-repeat="tag in new.tags">{{tag}}{{$last ? '' : ', '}}</span></p>
-        </div>
+<ion-view title="{{disease.name}}">
 
-    </ion-content>
+	<ion-nav-buttons side="right">
+	<!-- <a class="button button-clear" ng-click="sharedisease()"><i class="icon ion-share"></i></a> -->
+	</ion-nav-buttons>
+
+	<ion-content class="has-header">
+
+	<img src="{{disease.enclosures[0].resourceUrl}}">
+
+	<div class="padding">
+		<h2 class="title">{{disease.name}}</h2>
+
+		<div style="padding:0 0 20px 0;">
+		Published {{disease.datePublished | date:'fullDate'}}
+		</div>
+
+		<p ng-bind-html="content"></p>
+
+		<p><button class="button icon-left ion-share button-outline button-positive" ng-click="shareDisease()">Share</button>
+		<button class="button icon-left ion-share button-outline button-positive" ng-click="viewOnCDC()">View on CDC</button></p>
+
+	</div>
+
+	</ion-content>
 </ion-view>

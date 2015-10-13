@@ -1,0 +1,482 @@
+{
+    "version": 1,
+    "lastUpdate": "092415",
+    "settings": [
+        {
+            "id": 1,
+            "title": "Disease of the Week",
+            "contenttype": "Articles",
+            "url": "#/app/dotw",
+            "content": "sourceUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": true,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 2,
+            "title": "FluView Weekly Report Summary",
+            "contenttype": "Articles",
+            "url": "#/app/fluview",
+            "content": "syndicateUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": false,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "b1",
+                "b2"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 3,
+            "title": "Health Articles",
+            "contenttype": "Articles",
+            "url": "#/app/healtharticles",
+            "content": "sourceUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": true,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 4,
+            "title": "Vital Signs",
+            "contenttype": "Articles",
+            "url": "#/app/vitalsigns",
+            "content": "syndicateUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": true,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 5,
+            "title": "CDC Directors Blog",
+            "contenttype": "Blogs",
+            "url": "#/app/directorsblog",
+            "content": "syndicateUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": false,
+            "readonly": false,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 6,
+            "title": "CDC Works for You 24/7 Blog",
+            "contenttype": "Blogs",
+            "url": "#/app/cdcworksblog",
+            "content": "syndicateUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": false,
+            "readonly": false,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 7,
+            "title": "Public Health Matters",
+            "contenttype": "Blogs",
+            "url": "#/app/phmblog",
+            "content": "syndicateUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": false,
+            "readonly": false,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 8,
+            "title": "FastStats",
+            "contenttype": "Data",
+            "url": "#/app/faststats",
+            "content": "syndicateUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": false,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 9,
+            "title": "Weekly Disease Case Counts",
+            "contenttype": "Data",
+            "url": "#/app/casecounts",
+            "content": "sourceUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 10,
+            "title": "Did You Know?",
+            "contenttype": "Facts",
+            "url": "#/app/didyouknow",
+            "content": "syndicateUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 11,
+            "title": "Fact of the Week",
+            "contenttype": "Facts",
+            "url": "#/app/factoftheweek",
+            "content": "syndicateUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": false,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 12,
+            "title": "Emerging Infectious Diseases (EID)",
+            "contenttype": "Journals",
+            "url": "#/app/eid",
+            "content": "syndicateUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 13,
+            "title": "Morbidity and Mortality Weekly Report (MMWR)",
+            "contenttype": "Journals",
+            "url": "#/app/mmwr",
+            "content": "syndicateUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 14,
+            "title": "Preventing Chronic Disease (PCD)",
+            "contenttype": "Journals",
+            "url": "#/app/pcd",
+            "content": "syndicateUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 15,
+            "title": "Newsroom",
+            "contenttype": "News",
+            "url": "#/app/newsroom",
+            "content": "sourceUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 16,
+            "title": "Outbreaks",
+            "contenttype": "News",
+            "url": "#/app/outbreaks",
+            "content": "sourceUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": true,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 17,
+            "title": "Travel Notices",
+            "contenttype": "News",
+            "url": "#/app/travelnotices",
+            "content": "sourceUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 18,
+            "title": "Image Library",
+            "contenttype": "Photos",
+            "url": "#/app/imagelibrary",
+            "content": "",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 19,
+            "title": "Instagram",
+            "contenttype": "Photos",
+            "url": "#/app/instagram",
+            "content": "",
+            "icon": "",
+            "enabled": true,
+            "checked": false,
+            "readonly": false,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 20,
+            "title": "Flickr",
+            "contenttype": "Photos",
+            "url": "#/app/flickr",
+            "content": "",
+            "icon": "",
+            "enabled": true,
+            "checked": false,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 21,
+            "title": "Facebook",
+            "contenttype": "Social",
+            "url": "#/app/facebook",
+            "content": "",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 22,
+            "title": "Twitter",
+            "contenttype": "Social",
+            "url": "#/app/twitter",
+            "content": "",
+            "icon": "",
+            "enabled": true,
+            "checked": false,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 23,
+            "title": "Google +",
+            "contenttype": "Social",
+            "url": "#/app/googleplus",
+            "content": "",
+            "icon": "",
+            "enabled": true,
+            "checked": false,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 24,
+            "title": "Pinterest",
+            "contenttype": "Social",
+            "url": "#/app/pinterest",
+            "content": "",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 25,
+            "title": "Podcasts",
+            "contenttype": "AudioVideo",
+            "url": "#/app/podcasts",
+            "content": "sourceUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": false,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 26,
+            "title": "CDC Director Briefing",
+            "contenttype": "AudioVideo",
+            "url": "#/app/cdcdirectorbriefing",
+            "content": "sourceUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 27,
+            "title": "CDC-TV",
+            "contenttype": "AudioVideo",
+            "url": "#/app/cdctv",
+            "content": "sourceUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        },
+        {
+            "id": 28,
+            "title": "Other Videos",
+            "contenttype": "AudioVideo",
+            "url": "#/app/othervideos",
+            "content": "sourceUrl",
+            "icon": "",
+            "enabled": true,
+            "checked": true,
+            "readonly": false,
+            "hasimage": true,
+            "cardtypes": [
+                "a1",
+                "b1"
+            ],
+            "contentDisplayRules": ""
+        }
+    ]
+}

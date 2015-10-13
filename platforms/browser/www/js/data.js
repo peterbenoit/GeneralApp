@@ -2,645 +2,660 @@ angular.module('cdcgeneralapp.data', [])
 
 // Home Data: Home page configuration
 .factory('Data', function() {
-	var data = {};
+    var data = {};
 
-	data.items = [{
-		title: 'DOTW',
-		icon: 'ion-calendar',
-		note: 'Disease of the Week',
-		url: '#/app/dotw'
-	}, {
-		title: 'Health Articles',
-		icon: 'ion-android-bicycle',
-		note: 'Health Articles',
-		url: '#/app/healtharticles'
-	}, {
-		title: 'Gallery',
-		icon: 'ion-images',
-		note: 'Our Photos',
-		url: '#/app/gallery'
-	}, {
-		title: 'YouTube',
-		icon: 'ion-social-youtube',
-		note: 'YouTube Videos',
-		url: '#/app/youtubevideos'
-	}, {
-		title: 'Quiz',
-		icon: 'ion-university',
-		note: 'CDC Quiz Module',
-		url: '#/app/quiz'
-	}];
+    data.items = [{
+        "title": 'DOTW',
+        "icon": 'ion-calendar',
+        "note": 'Disease of the Week',
+        "url": '#/app/dotw'
+    }, {
+        "title": 'Health Articles',
+        "icon": 'ion-android-bicycle',
+        "note": 'Health Articles',
+        "url": '#/app/healtharticles'
+    }, {
+        "title": 'Gallery',
+        "icon": 'ion-images',
+        "note": 'Our Photos',
+        "url": '#/app/gallery'
+    }, {
+        "title": 'YouTube',
+        "icon": 'ion-social-youtube',
+        "note": 'YouTube Videos',
+        "url": '#/app/youtubevideos'
+    }, {
+        "title": 'Quiz',
+        "icon": 'ion-university',
+        "note": 'CDC Quiz Module',
+        "url": '#/app/quiz'
+    }];
 
-	return data;
+    return data;
 })
 
-// Menu Data: Menu configuration
-.factory('MenuData', function() {
-	var data = {};
+.factory('AppData', function($http, $q, AppDataStorage) {
+    var deferred = $q.defer(),
+        promise = deferred.promise,
+        data = [],
+        service = {},
+        feed = 'http://codepen.io/peterbenoit/pen/MajGzE.js';
 
-	data.items = [{
-			title: 'Home',
-			icon: 'ion-home',
-			url: '#/app'
-		}, {
-			title: 'Typeface',
-			icon: 'ion-code',
-			url: '#/app/typeface'
-		}, {
-			title: 'Cards',
-			icon: 'ion-code',
-			url: '#/app/cards'
-		}, {
-			title: 'Guided Quiz',
-			icon: 'ion-university',
-			url: '#/app/guided-quiz'
-		}, {
-			title: '4 Column Gallery',
-			icon: 'ion-code',
-			url: '#/app/galleryfour'
-		}, {
-			title: '3 Column Gallery',
-			icon: 'ion-code',
-			url: '#/app/gallerythree'
-		}, {
-			title: '2 Column Gallery',
-			icon: 'ion-code',
-			url: '#/app/gallerytwo'
-		},
-		// { 
-		// 	title: 'Form Quiz',
-		// 	icon: 'ion-university',
-		// 	url: '#/app/form-quiz'
-		// },
-		{
-			title: 'Grid',
-			icon: 'ion-grid',
-			url: '#/app/grid'
-		}
-	];
+    // service.async = function() {
+    //     $http({
+    //         method: 'GET',
+    //         url: feed,
+    //         timeout: 5000
+    //     }).
+    //     success(function(d) {
+    //         data = d;
 
-	return data;
+    //         console.log("data from codepen: ", data);
+
+    //         // do something with data
+    //         AppDataStorage.save(data);
+    //         deferred.resolve();
+    //     }).
+    //     error(function() {
+    //         data = AppDataStorage.all();
+    //         deferred.reject();
+    //     });
+
+    //     return promise;
+    // };
+
+    // service.getAll = function() {
+    //     return data;
+    // };
+
+    // service.get = function(newId) {
+    //     return data[newId];
+    // };
+
+    // service.getBySource = function(source) {
+    //     var d, obj = [];
+    //     for (d in data) {
+    //         if (data[d].source === source) {
+    //             obj.push(data[d]);
+    //         }
+    //     }
+    //     return obj;
+    // };
+
+    return service;
 })
 
 // Plugins Data: Mobile Plugins configuration
 .factory('PluginsData', function() {
-	var data = {};
+    var data = {};
 
-	data.items = [{
-		title: 'Device',
-		icon: 'ion-ipad',
-		note: 'Device API',
-		url: '#/app/plugins/device'
-	}, {
-		title: 'Geolocation',
-		icon: 'ion-location',
-		note: 'Geolocation API',
-		url: '#/app/plugins/geolocation'
-	}, {
-		title: 'Notifications',
-		icon: 'ion-alert',
-		note: 'Dialogs API',
-		url: '#/app/plugins/notifications'
-	}, {
-		title: 'Barcode',
-		icon: 'ion-qr-scanner',
-		note: 'Barcode Scanner',
-		url: '#/app/plugins/barcodescanner'
-	}];
+    data.items = [{
+        title: 'Device',
+        icon: 'ion-ipad',
+        note: 'Device API',
+        url: '#/app/plugins/device'
+    }, {
+        title: 'Geolocation',
+        icon: 'ion-location',
+        note: 'Geolocation API',
+        url: '#/app/plugins/geolocation'
+    }, {
+        title: 'Notifications',
+        icon: 'ion-alert',
+        note: 'Dialogs API',
+        url: '#/app/plugins/notifications'
+    }, {
+        title: 'Barcode',
+        icon: 'ion-qr-scanner',
+        note: 'Barcode Scanner',
+        url: '#/app/plugins/barcodescanner'
+    }];
 
-	return data;
+    return data;
 })
 
 // Home Stream Data: JSON
 .factory('HomeStreamData', function($http, $q, HomeStreamStorage) {
-	var deferred = $q.defer();
-	var promise = deferred.promise;
-	var data = [];
-	var service = {};
-	var card = "";
-	var dirty = false;
-	var facebookCard = {
-		"title": "Facebook",
-		"description": "CDC Gov",
-		"cardtype": "type-social-left",
-		"date": "2081-02-04T18:26:56.828Z",
-		"image": "img/Facebook.png",
-		"templatetype": "c1",
-		"targetUrl": "http://www.facebook.com/CDC",
-		"size": "full"
-	};
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+    var data = [];
+    var service = {};
+    var card = '';
+    var dirty = false;
 
-	var twitterCard = {
-		"title": "Twitter",
-		"description": "CDC Emergency",
-		"cardtype": "type-social-right",
-		"date": "2081-02-04T18:26:56.828Z",
-		"image": "img/Twitter.png",
-		"templatetype": "c1",
-		"targetUrl": "https://twitter.com/CDCEmergency",
-		"size": "full"
-	};	
-	var facebookCard2 = {
-		"title": "Facebook",
-		"description": "CDC Gov",
-		"cardtype": "type-social-top",
-		"date": "2081-02-04T18:26:56.828Z",
-		"image": "img/Facebook.png",
-		"templatetype": "c1",
-		"targetUrl": "http://www.facebook.com/CDC",
-		"size": "half"
-	};
+    var facebookCard = {
+        'title': 'Facebook',
+        'description': 'CDC Gov',
+        'cardtype': 'type-social-left',
+        'date': '2081-02-04T18:26:56.828Z',
+        'image': 'img/Facebook.png',
+        'sourcetype': 'social',
+        'targetUrl': 'http://www.facebook.com/CDC',
+        'size': 'full'
+    };
 
-	var twitterCard2 = {
-		"title": "Twitter",
-		"description": "CDC Emergency",
-		"cardtype": "type-social-top",
-		"date": "2081-02-04T18:26:56.828Z",
-		"image": "img/Twitter.png",
-		"templatetype": "c1",
-		"targetUrl": "https://twitter.com/CDCEmergency",
-		"size": "half"
-	};
+    var twitterCard = {
+        'title': 'Twitter',
+        'description': 'CDC Emergency',
+        'cardtype': 'type-social-right',
+        'date': '2081-02-04T18:26:56.828Z',
+        'image': 'img/Twitter.png',
+        'sourcetype': 'social',
+        'targetUrl': 'https://twitter.com/CDCEmergency',
+        'size': 'full'
+    };
 
-	var getRandom = function(max, min) {
-		return Math.floor(Math.random() * (max - min + 1));	
-	}
+    var pinterestCard = {
+        'title': 'Pinterest',
+        'description': 'CDC',
+        'cardtype': 'type-social-left',
+        'date': '2081-02-04T18:26:56.828Z',
+        'image': 'img/Pinterest.png',
+        'sourcetype': 'social',
+        'targetUrl': 'https://pinterest.com/cdcgov',
+        'size': 'full'
+    };
 
-	// Getting all data on first load instead of with each page
-	//var feed = 'http://www.filltext.com/?rows=30&title={firstName}~{lastName}&pretty=true&date={date}&description={lorem|20}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=["type-a1","type-a1","type-a1","type-a2","type-a2","type-a3","type-a3","type-b1","type-b2","type-c1","type-c2","type-c3","type-d1","type-d2","type-e1","type-e2"]';
-	var feed = 'http://www.filltext.com/?rows=30&id={index}&title={lorem|10}&pretty=true&date={date}&description={lorem|40}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=[%22type-a1%22,%22type-a1%22,%22type-a1%22,%22type-a2%22,%22type-a2%22,%22type-a3%22,%22type-a3%22,%22type-b1%22,%22type-b2%22,%22type-c1%22,%22type-d1%22,%22type-d2%22,%22type-e1%22,%22type-e2%22]';
+    var instagramCard = {
+        'title': 'Instagram',
+        'description': 'CDC',
+        'cardtype': 'type-social-right',
+        'date': '2081-02-04T18:26:56.828Z',
+        'image': 'img/Instagram.png',
+        'sourcetype': 'social',
+        'targetUrl': 'https://instagram.com/cdcgov/',
+        'size': 'full'
+    };
 
-	service.async = function() {
-		$http({
-			method: 'GET',
-			url: feed,
-			timeout: 5000
-		}).
-		// this callback will be called asynchronously
-		// when the response is available.
-		success(function(d) {
-			data = d;
-			// var lastCardType = data[data.length - 1].cardtype;
-			var page = 1,
-				pageitems = 10;
+    var facebookCard2 = {
+        'title': 'Facebook',
+        'description': 'CDC Gov',
+        'cardtype': 'type-social-top',
+        'date': '2081-02-04T18:26:56.828Z',
+        'image': 'img/Facebook.png',
+        'sourcetype': 'social',
+        'targetUrl': 'http://www.facebook.com/CDC',
+        'size': 'half'
+    };
 
-			for (var key in data) {
+    var twitterCard2 = {
+        'title': 'Twitter',
+        'description': 'CDC Emergency',
+        'cardtype': 'type-social-top',
+        'date': '2081-02-04T18:26:56.828Z',
+        'image': 'img/Twitter.png',
+        'sourcetype': 'social',
+        'targetUrl': 'https://twitter.com/CDCEmergency',
+        'size': 'half'
+    };
+    var pinterestCard2 = {
+        'title': 'Pinterest',
+        'description': 'CDC',
+        'cardtype': 'type-social-top',
+        'date': '2081-02-04T18:26:56.828Z',
+        'image': 'img/Pinterest.png',
+        'sourcetype': 'social',
+        'targetUrl': 'https://pinterest.com/cdcgov',
+        'size': 'full'
+    };
 
-				if(typeof data[key].size === 'undefined') {
-					data[key].size = 'full';	
-				}
+    var getRandom = function(max, min) {
+        return Math.floor(Math.random() * (max - min + 1));
+    };
 
-				var previouscard = typeof data[key-1] !== 'undefined' ? data[key-1] : '';
+    // Getting all data on first load instead of with each page
+    //var feed = 'http://www.filltext.com/?rows=30&title={firstName}~{lastName}&pretty=true&date={date}&description={lorem|20}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%20Summary%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22]&cardtype=["type-a1","type-a1","type-a1","type-a2","type-a2","type-a3","type-a3","type-b1","type-b2","type-c1","type-c2","type-c3","type-d1","type-d2","type-e1","type-e2"]';
+    // var feed = 'http://www.filltext.com/?rows=30&id={index}&title={lorem|10}&pretty=true&date={date}&description={lorem|40}&source=[%22Health%20Articles%22,%22Disease%20of%20the%20Week%22,%22FluView%22,%22Vital%20Signs%22,%22Blogs%22,%22FastStats%22,%22Newsroom%22,%22CDC Director%22,%22CDC Works for You 24-7%22,%22Public Health Matters%22,%22Weekly Disease Case Counts%22,%22Did You Know?%22,%22Fact of the Week%22,%22EID%22,%22MMWR%22,%22PCD%22,%22Outbreaks%22,%22Travel Notices%22,%22Image Library%22,%22Instagram%22,%22Flickr%22,%22Podcasts%22,%22YouTube CDC Director Briefing%22,%22YouTube CDC TV%22,%22YouTube All Other%22]&cardtype=[%22type-a1%22,%22type-a2%22,%22type-b1%22,%22type-b2%22,%22type-b3%22,%22type-c1%22,%22type-d1%22,%22type-d2%22,%22type-t1%22,%22type-t2%22,%22type-t3%22]';
 
-				if(previouscard && previouscard.cardtype.indexOf('type-d') === 0) {
-					if(!previouscard.modified) {
-						data[key].cardtype = 'type-d1';
-						data[key].modified = true;
-					}
-				}
+    service.async = function() {
+        // $http({
+        //     method: 'GET',
+        //     url: feed,
+        //     timeout: 5000
+        // }).
+        // // this callback will be called asynchronously
+        // // when the response is available.
+        // then(function(d) {
+        //     data = d.data;  // was previously just d, the datasource changed
 
-				// RULES for "D" cards
-				// 1. Always in pairs
-				// 2. if the very last card is a D card, and the previous card isn't, change it!
+        //     var page = 1,
+        //         pageitems = 10,
+        //         source;
 
-				// set a new card
-				card = data[key].cardtype;
+        //     for (var key in data) {
 
-				// quick and dirty, add a random image based on card type since the json source doesn't provide images
-				if (card.indexOf('type-a') === 0) {
-					// + key to randomize
-					data[key].image = 'http://placeimg.com/335/250/any/' + key;
-				} else 
-					if (card.indexOf('type-c') === 0) {
-						data[key].image = 'http://placeimg.com/80/80/any/' + key;
-				} else 
-					if (card.indexOf('type-d') === 0) {
-						data[key].image = 'http://placeimg.com/150/120/any/' + key;
-						data[key].size = 'half';
-				}
-			}
+        //         if (typeof data[key].size === 'undefined') {
+        //             data[key].size = 'full';
+        //         }
 
-			// insert FB and Twitter (top type) at the top
-			data.splice(0, 0, twitterCard2);
-			data.splice(1, 0, facebookCard2);
+        //         source = data[key].source;
 
-			// TODO
-			// insert sources which aren't in aggregate feed into random spots, but not between type-ds
-			var position = getRandom(9,2);
-			data.splice(position, 0, facebookCard);
+        //         // WARN: don't really match like this
+        //         if (typeof source !== 'undefined') {
+        //             switch (source) {
+        //                 case 'Disease of the Week':
+        //                 case 'FluView':
+        //                 case 'Health Articles':
+        //                 case 'Vital Signs':
+        //                     data[key].sourcetype = 'article';
+        //                     break;
+        //                 case 'CDC Director':
+        //                 case 'CDC Works for You 24-7':
+        //                 case 'Public Health Matters':
+        //                     data[key].sourcetype = 'blog';
+        //                     break;
+        //                 case 'FastStats':
+        //                 case 'Weekly Disease Case Counts':
+        //                     data[key].sourcetype = 'data';
+        //                     break;
+        //                 case 'Did You Know?':
+        //                 case 'Fact of the Week':
+        //                     data[key].sourcetype = 'fact';
+        //                     break;
+        //                 case 'EID':
+        //                 case 'MMWR':
+        //                 case 'PCD':
+        //                     data[key].sourcetype = 'journal';
+        //                     break;
+        //                 case 'Newsroom':
+        //                 case 'Outbreaks':
+        //                 case 'Travel Notices':
+        //                     data[key].sourcetype = 'news';
+        //                     break;
+        //                 case 'Image Library':
+        //                 case 'Instagram':
+        //                 case 'Flickr':
+        //                     data[key].sourcetype = 'photo';
+        //                     break;
+        //                 case 'Facebook':
+        //                 case 'Google+':
+        //                 case 'Pinterest':
+        //                 case 'Twitter':
+        //                     data[key].sourcetype = 'social';
+        //                     break;
+        //                 case 'Podcasts':
+        //                 case 'YouTube CDC Director Briefing':
+        //                 case 'YouTube CDC TV':
+        //                 case 'YouTube All Other':
+        //                     data[key].sourcetype = 'video';
+        //                     break;
+        //             }
+        //         }
 
-			// if(data[position].cardtype.indexOf('type-d') === 0) {
-			// 	data.splice(position + 1, 0, facebookCard);
-			// }
-			// else {
-			// 	data.splice(position, 0, facebookCard);	
-			// }
+        //         var previouscard = typeof data[key - 1] !== 'undefined' ? data[key - 1] : '';
 
- 			position = getRandom(9,2);
- 			data.splice(position, 0, twitterCard);
+        //         if (previouscard && previouscard.cardtype.indexOf('type-d') === 0) {
+        //             if (!previouscard.modified) {
+        //                 data[key].cardtype = 'type-d1';
+        //                 data[key].modified = true;
+        //             }
+        //         }
 
-			// if(data[position].cardtype.indexOf('type-d') === 0) {
-			// 	data.splice(position + 1, 0, twitterCard);
-			// }
-			// else {
-			// 	data.splice(position, 0, twitterCard);	
-			// }
+        //         // RULES for "D" cards
+        //         // 1. Always in pairs
+        //         // 2. if the very last card is a D card, and the previous card isn't, change it!
 
+        //         // set a new card
+        //         card = data[key].cardtype;
 
-			HomeStreamStorage.save(data);
-			deferred.resolve();
-		}).
-		// called asynchronously if an error occurs
-		// or server returns response with an error status.
-		error(function() {
-			data = HomeStreamStorage.all();
-			deferred.reject();
-		});
+        //         // quick and dirty, add a random image based on card type since the json source doesn't provide images
+        //         if (card.indexOf('type-a') === 0) {
+        //             // + key to randomize
+        //             data[key].image = 'http://placeimg.com/300/200/any/' + key;
+        //         } else
+        //             if (card.indexOf('type-c') === 0) {
+        //                 data[key].image = 'http://placeimg.com/80/80/any/' + key;
+        //         } else
+        //             if (card.indexOf('type-d') === 0) {
+        //                 data[key].image = 'http://placeimg.com/150/120/any/' + key;
+        //                 data[key].size = 'half';
+        //         }
+        //     }
 
-		return promise;
+        //     // insert FB and Twitter (top type) at the top
+        //     data.splice(0, 0, twitterCard2);
+        //     data.splice(1, 0, facebookCard2);
 
-	};
+        //     // TODO
+        //     // insert sources which aren't in aggregate feed into random spots, but not between type-ds
+        //     var position = getRandom(9, 4);
+        //     data.splice(position, 0, facebookCard);
 
-	service.getAll = function() {
-		return data;
-	};
+        //     position = getRandom(9, 4);
+        //     data.splice(position, 0, twitterCard);
 
-	service.get = function(newId) {
-		return data[newId];
-	};
+        //     position = getRandom(20, 8);
+        //     data.splice(position, 0, pinterestCard);
 
-	service.getBySource = function(source) {
-		var d, obj = [];
-		for (d in data) {
-			if (data[d].source === source) {
-				obj.push(data[d]);
-			}
-		}
-		return obj;
-	}
-	
-	return service;
+        //     position = getRandom(20, 8);
+        //     data.splice(position, 0, instagramCard);
+
+        //     HomeStreamStorage.save(data);
+        //     deferred.resolve();
+        // }).
+        // // called asynchronously if an error occurs
+        // // or server returns response with an error status.
+        // catch(function(response) {
+        //     console.error(response);
+        //     data = HomeStreamStorage.all();
+        //     deferred.reject();
+        // }).
+        // finally(function() {
+        //     console.log('finally');
+        //     console.log(data);
+        // });
+
+        return promise;
+    };
+
+    service.getAll = function() {
+        return data;
+    };
+
+    service.get = function(newId) {
+        return data[newId];
+    };
+
+    service.getBySource = function(source) {
+        var d, obj = [];
+        for (d in data) {
+            if (data[d].source === source) {
+                obj.push(data[d]);
+            }
+        }
+        return obj;
+    };
+
+    return service;
 })
 
 // DOTW Data: JSON
-.factory('DotwData', function($http, $q, DotwStorage) {
-	var deferred = $q.defer();
-	var promise = deferred.promise;
-	var data = [];
-	var service = {};
+.factory('DotwStreamData', function($http, $q, DotwStorage) {
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+    var data = [];
+    var service = {};
 
-	service.async = function() {
-		$http({
-			method: 'GET',
-			url: 'http://www.cdc.gov/mobile/Applications/CDCGeneral/DotW/diseases.xml',
-			transformResponse: function(data) {
-				// convert the data to JSON and provide
-				// it to the success function below
-				var x2js = new X2JS();
-				var json = x2js.xml_str2json(data);
-				return json;
-			},
-			timeout: 5000
-		}).
-		// this callback will be called asynchronously
-		// when the response is available.
-		success(function(d) {
-			data = d.diseases.disease;
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/DOTW.json',
+            timeout: 5000
+        }).
+        then(function(d) {
+            result = d;
 
-			var cardtypes = 'a,b,c,d,e'.split(','),
-				card = '';
+            data = result.results;
+            // do something with data
+            DotwStorage.save(data);
+            deferred.resolve();
+        }).
+        catch(function() {
+            data = DotwStorage.all();
+            deferred.reject();
+        });
 
+        return promise;
+    };
 
-			for (var key in data) {
-				// if the selected card is a double
-				if (card === 'd') {
-					data[key].cardtype = 'type-' + card;
-					card = ''; // card is cached, reset it if we're using the previous value
-				} else {
-					// get the card for this item
-					card = cardtypes[Math.floor(Math.random() * cardtypes.length)];
-				}
+    service.getAll = function() {
+        return data;
+    };
 
-				// if one hasn't been applied already
-				if (typeof data[key].cardtype === 'undefined') {
-					data[key].cardtype = 'type-' + card;
-				}
-			}
+    service.get = function(newId) {
+        return data[newId];
+    };
 
-			DotwStorage.save(data);
-			deferred.resolve();
-		}).
-		// called asynchronously if an error occurs
-		// or server returns response with an error status.
-		error(function() {
-			data = DotwStorage.all();
-			deferred.reject();
-		});
-
-		return promise;
-
-	};
-
-	service.getAll = function() {
-		return data;
-	};
-
-	service.get = function(newId) {
-		return data[newId];
-	};
-
-	return service;
+    return service;
 })
 
 // Health Articles Data: JSON
 .factory('HealthArticlesData', function($http, $q, HealthArticlesStorage) {
-	var deferred = $q.defer();
-	var promise = deferred.promise;
-	var data = [];
-	var service = {};
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+    var data = [];
+    var service = {};
 
-	service.async = function() {
-		$http({
-			method: 'GET',
-			url: 'json/health-articles.xml',
-			transformResponse: function(data) {
-				// convert the data to JSON and provide
-				// it to the success function below
-				var x2js = new X2JS();
-				var json = x2js.xml_str2json(data);
-				return json;
-			},
-			timeout: 5000
-		}).
-		// this callback will be called asynchronously
-		// when the response is available.
-		success(function(d) {
-			data = d.feed.entry;
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/health-articles.xml',
+            transformResponse: function(data) {
+                // convert the data to JSON and provide
+                // it to the success function below
+                var x2js = new X2JS();
+                var json = x2js.xml_str2json(data);
+                return json;
+            },
+            timeout: 5000
+        }).
+        // this callback will be called asynchronously
+        // when the response is available.
+        then(function(d) {
+            data = d.feed.entry;
 
-			var cardtypes = 'a,b,c,d,e'.split(','),
-				card = '';
+            var cardtypes = 'a,b,c,d,e'.split(','),
+                card = '';
 
 
-			for (var key in data) {
-				// if the selected card is a double
-				if (card === 'd') {
-					data[key].cardtype = 'type-' + card;
-					card = ''; // card is cached, reset it if we're using the previous value
-				} else {
-					// get the card for this item
-					card = cardtypes[Math.floor(Math.random() * cardtypes.length)];
-				}
+            for (var key in data) {
+                // if the selected card is a double
+                if (card === 'd') {
+                    data[key].cardtype = 'type-' + card;
+                    card = ''; // card is cached, reset it if we're using the previous value
+                } else {
+                    // get the card for this item
+                    card = cardtypes[Math.floor(Math.random() * cardtypes.length)];
+                }
 
-				// if one hasn't been applied already
-				if (typeof data[key].cardtype === 'undefined') {
-					data[key].cardtype = 'type-' + card;
-				}
-			}
+                // if one hasn't been applied already
+                if (typeof data[key].cardtype === 'undefined') {
+                    data[key].cardtype = 'type-' + card;
+                }
+            }
 
-			console.log(data);
-			HealthArticlesStorage.save(data);
-			deferred.resolve();
-		}).
-		// called asynchronously if an error occurs
-		// or server returns response with an error status.
-		error(function() {
-			data = HealthArticlesStorage.all();
-			deferred.reject();
-		});
+            console.log(data);
+            HealthArticlesStorage.save(data);
+            deferred.resolve();
+        }).
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        catch(function(response) {
+            console.error(response);
+            data = HealthArticlesStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {
+            console.log('finally');
+        });
 
-		return promise;
+        return promise;
 
-	};
+    };
 
-	service.getAll = function() {
-		return data;
-	};
+    service.getAll = function() {
+        return data;
+    };
 
-	service.get = function(productId) {
-		return data[productId];
-	};
+    service.get = function(productId) {
+        return data[productId];
+    };
 
-	service.getLetterLimit = function() {
-		return 100;
-	};
+    service.getLetterLimit = function() {
+        return 100;
+    };
 
-	return service;
+    return service;
 })
 
 // Health Articles Data: JSON
 .factory('VitalSignsData', function($http, $q, VitalSignsStorage) {
-	var deferred = $q.defer();
-	var promise = deferred.promise;
-	var data = [];
-	var service = {};
+    var deferred = $q.defer();
+    var promise = deferred.promise;
+    var data = [];
+    var service = {};
 
-	service.async = function() {
-		$http({
-			method: 'GET',
-			url: 'json/vital-signs.xml',
-			transformResponse: function(data) {
-				// convert the data to JSON and provide
-				// it to the success function below
-				var x2js = new X2JS();
-				var json = x2js.xml_str2json(data);
-				return json;
-			},
-			timeout: 5000
-		}).
-		// this callback will be called asynchronously
-		// when the response is available.
-		success(function(d) {
-			data = d.feed.entry;
+    service.async = function() {
+        $http({
+            method: 'GET',
+            url: 'json/vital-signs.xml',
+            transformResponse: function(data) {
+                // convert the data to JSON and provide
+                // it to the success function below
+                var x2js = new X2JS();
+                var json = x2js.xml_str2json(data);
+                return json;
+            },
+            timeout: 5000
+        }).
+        // this callback will be called asynchronously
+        // when the response is available.
+        then(function(d) {
+            data = d.feed.entry;
 
-			var cardtypes = 'a,b,c,d,e'.split(','),
-				card = '';
+            var cardtypes = 'a,b,c,d,e'.split(','),
+                card = '';
 
 
-			for (var key in data) {
-				// if the selected card is a double
-				if (card === 'd') {
-					data[key].cardtype = 'type-' + card;
-					card = ''; // card is cached, reset it if we're using the previous value
-				} else {
-					// get the card for this item
-					card = cardtypes[Math.floor(Math.random() * cardtypes.length)];
-				}
+            for (var key in data) {
+                // if the selected card is a double
+                if (card === 'd') {
+                    data[key].cardtype = 'type-' + card;
+                    card = ''; // card is cached, reset it if we're using the previous value
+                } else {
+                    // get the card for this item
+                    card = cardtypes[Math.floor(Math.random() * cardtypes.length)];
+                }
 
-				// if one hasn't been applied already
-				if (typeof data[key].cardtype === 'undefined') {
-					data[key].cardtype = 'type-' + card;
-				}
-			}
+                // if one hasn't been applied already
+                if (typeof data[key].cardtype === 'undefined') {
+                    data[key].cardtype = 'type-' + card;
+                }
+            }
 
-			console.log(data);
-			VitalSignsStorage.save(data);
-			deferred.resolve();
-		}).
-		// called asynchronously if an error occurs
-		// or server returns response with an error status.
-		error(function() {
-			data = VitalSignsStorage.all();
-			deferred.reject();
-		});
+            VitalSignsStorage.save(data);
+            deferred.resolve();
+        }).
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        catch(function(response) {
+            console.error(response);
+            data = VitalSignsStorage.all();
+            deferred.reject();
+        }).
+        finally(function() {
+            console.log('finally');
+        });
 
-		return promise;
+        return promise;
 
-	};
+    };
 
-	service.getAll = function() {
-		return data;
-	};
+    service.getAll = function() {
+        return data;
+    };
 
-	service.get = function(productId) {
-		return data[productId];
-	};
+    service.get = function(productId) {
+        return data[productId];
+    };
 
-	service.getLetterLimit = function() {
-		return 100;
-	};
+    service.getLetterLimit = function() {
+        return 100;
+    };
 
-	return service;
+    return service;
 })
+
 // Settings Data: Settings configuration
 .factory('SettingsData', function() {
-	var data = {};
+    var data = {};
 
-	data.items = {
-		options: [{
-			name: 'First Option',
-			value: true
-		}, {
-			name: 'Second Option',
-			value: false
-		}, {
-			name: 'Third Option',
-			value: false
-		}],
-		sorting: 'A',
-		range: 30
-	};
+    data.items = {
+        options: [{
+            name: 'First Option',
+            value: true
+        }, {
+            name: 'Second Option',
+            value: false
+        }, {
+            name: 'Third Option',
+            value: false
+        }],
+        sorting: 'A',
+        range: 30
+    };
 
-	return data;
+    return data;
 })
 
 // YouTube Data: YouTube Videos configuration
 .factory('YouTubeData', function($http, $q) {
+    var data = [],
+        result = [],
+        videos = [],
+        service = {};
 
-	// CDC Directors Videos: https://www.youtube.com/playlist?list=PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL
+    service.async = function(categoryId, id) {
 
-    var youtubeKey = 'AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc';
-    var apiUrl = 'https://www.googleapis.com/youtube/v3/';
-    var videosUrl    = apiUrl + 'playlistItems?part=snippet&key=' + youtubeKey + '&maxResults=' + 20;
-    var playlistsUrl = apiUrl + 'channels?part=contentDetails&key=' + youtubeKey;	
+        var deferred = $q.defer(),
+            promise = deferred.promise,
+            url = 'json/YouTube.json';
 
-	// var youtubeKey = 'AIzaSyBBdZZvS5Jve2kkKzoj_qH8YanXtnuUWZ4',
-	// maxResults = 10,
-	var playlistId = 'PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL&';
-	// apiUrl = 'https://www.googleapis.com/youtube/v3/',
-	// // videosUrl = apiUrl + 'playlistItems?part=id,snippet&playlistId=' + playlistId + 'key=' + youtubeKey + '&maxResults=' + maxResults,
-	// videosUrl = apiUrl + 'playlistItems?part=id,snippet&key=' + youtubeKey + '&maxResults=' + maxResults,
-	// playlistsUrl = apiUrl + 'channels?part=contentDetails&key=' + youtubeKey;
+        // if (!playlistId) {
+        //     deferred.reject();
+        // }
 
-// console.log(videosUrl);	
-	//https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc&maxResults=20
+        $http({
+            method: 'GET',
+            url: url,
+            timeout: 5000
+        }).
+        // this callback will be called asynchronously
+        // when the response is available.
+        then(function(d) {
+            result = d;
+            data = result.data.results;
+            deferred.resolve();
+        }).
+        // called asynchronously if an error occurs
+        // or server returns response with an error status.
+        catch(function(response) {
+            console.error(response);
+            deferred.reject();
+        }).
+        finally(function() {
+            console.log('finally');
+        });
 
-	//https://www.googleapis.com/youtube/v3/playlistItems?part=id,snippet&playlistId=PLvrp9iOILTQb0_WAGpHGyMTzi2WZwAXaL&key=AIzaSyBBdZZvS5Jve2kkKzoj_qH8YanXtnuUWZ4&maxResults=10
-	https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&key=AIzaSyClMa-MaKro_m95tb--4LaAorl-NmGPJxc&maxResults=20&playlistId=null
-	var username = 'cdc',
-	data = [],
-	result = [],
-	videos = [],
-	service = {};
+        return promise;
 
-	service.async = function(categoryId, id) {
+    };
 
-		var deferred = $q.defer();
-		var promise = deferred.promise;
-		var url = videosUrl + '&playlistId=' + playlistId;
+    // service.getPlaylistId = function() {
+    //     var url = playlistsUrl + '&forUsername=' + username;
 
-		if (!playlistId) {
-			deferred.reject();
-		}
+    //     return $http.get(url).then(function(response) {
+    //         var items = response.data.items;
+    //         if (items.length && items[0].contentDetails.relatedPlaylists.uploads) {
+    //             return items[0].contentDetails.relatedPlaylists.uploads;
+    //         }
 
-		$http({
-			method: 'GET',
-			url: url,
-			timeout: 5000
-		}).
-		// this callback will be called asynchronously
-		// when the response is available.
-		success(function(d) {
-			result = d;
-			data = result.items;
-			deferred.resolve();
-		}).
-		// called asynchronously if an error occurs
-		// or server returns response with an error status.
-		error(function() {
-			deferred.reject();
-		});
-	
+    //         return null;
+    //     });
+    // };
 
-		// service.getPlaylistId().then(function(playlistId) {
+    service.getVideos = function() {
+        return data;
+    };
 
-		// 	if (!playlistId) {
-		// 		deferred.reject();
-		// 	}
+    service.getVideo = function(videoId) {
+        return data[videoId];
+    };
 
-		// 	var url = videosUrl + '&playlistId=' + playlistId;
-
-		// 	$http({
-		// 		method: 'GET',
-		// 		url: url,
-		// 		timeout: 5000
-		// 	}).
-		// 	// this callback will be called asynchronously
-		// 	// when the response is available.
-		// 	success(function(d) {
-		// 		result = d;
-		// 		data = result.items;
-		// 		deferred.resolve();
-		// 	}).
-		// 	// called asynchronously if an error occurs
-		// 	// or server returns response with an error status.
-		// 	error(function() {
-		// 		deferred.reject();
-		// 	});
-
-		// });
-
-		return promise;
-
-	};
-
-	service.getPlaylistId = function() {
-
-		var url = playlistsUrl + '&forUsername=' + username;
-
-		console.log(url);
-
-		return $http.get(url).then(function(response) {
-			var items = response.data.items;
-			if (items.length && items[0].contentDetails.relatedPlaylists.uploads) {
-				return items[0].contentDetails.relatedPlaylists.uploads;
-			}
-
-			return null;
-		});
-	}
-
-	service.getVideos = function() {
-		return data;
-	};
-
-	service.getVideo = function(videoId) {
-		return data[videoId];
-	};
-
-	return service;
+    return service;
 
 })
 
-.factory('GalleryData', function(){
-	// newp
-})
+.factory('GalleryData', function() {
+    // newp
+});

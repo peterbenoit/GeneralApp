@@ -61,7 +61,7 @@
         }, {
             "id": 8,
             "title": "FastStats",
-            "contenttype": "Data &amp; Statistics",
+            "contenttype": "Data",
             "url": "#/app/faststats",
             "icon": "",
             "default": false,
@@ -69,10 +69,10 @@
         }, {
             "id": 9,
             "title": "Weekly Disease Case Counts",
-            "contenttype": "Data &amp; Statistics",
+            "contenttype": "Data",
             "url": "#/app/casecounts",
             "icon": "",
-            "default": false,
+            "default": true,
             "readonly": false
         }, {
             "id": 10,
@@ -80,7 +80,7 @@
             "contenttype": "Facts",
             "url": "#/app/didyouknow",
             "icon": "",
-            "default": false,
+            "default": true,
             "readonly": false
         }, {
             "id": 11,
@@ -96,7 +96,7 @@
             "contenttype": "Journals",
             "url": "#/app/eid",
             "icon": "",
-            "default": false,
+            "default": true,
             "readonly": false
         }, {
             "id": 13,
@@ -104,7 +104,7 @@
             "contenttype": "Journals",
             "url": "#/app/mmwr",
             "icon": "",
-            "default": false,
+            "default": true,
             "readonly": false
         }, {
             "id": 14,
@@ -112,7 +112,7 @@
             "contenttype": "Journals",
             "url": "#/app/pcd",
             "icon": "",
-            "default": false,
+            "default": true,
             "readonly": false
         }, {
             "id": 15,
@@ -120,7 +120,7 @@
             "contenttype": "News",
             "url": "#/app/newsroom",
             "icon": "",
-            "default": false,
+            "default": true,
             "readonly": false
         }, {
             "id": 16,
@@ -128,15 +128,15 @@
             "contenttype": "News",
             "url": "#/app/outbreaks",
             "icon": "",
-            "default": false,
-            "readonly": false
+            "default": true,
+            "readonly": true
         }, {
             "id": 17,
             "title": "Travel Notices",
             "contenttype": "News",
             "url": "#/app/travelnotices",
             "icon": "",
-            "default": false,
+            "default": true,
             "readonly": false
         }, {
             "id": 18,
@@ -144,7 +144,7 @@
             "contenttype": "Photos",
             "url": "#/app/imagelibrary",
             "icon": "",
-            "default": false,
+            "default": true,
             "readonly": false
         }, {
             "id": 19,
@@ -161,6 +161,70 @@
             "url": "#/app/flickr",
             "icon": "",
             "default": false,
+            "readonly": false
+        }, {
+            "id": 21,
+            "title": "Facebook",
+            "contenttype": "Social",
+            "url": "#/app/facebook",
+            "icon": "",
+            "default": true,
+            "readonly": false
+        }, {
+            "id": 22,
+            "title": "Twitter",
+            "contenttype": "Social",
+            "url": "#/app/twitter",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 23,
+            "title": "Google +",
+            "contenttype": "Social",
+            "url": "#/app/googleplus",
+            "icon": "",
+            "default": false,
+            "readonly": false
+        }, {
+            "id": 24,
+            "title": "Pinterest",
+            "contenttype": "Social",
+            "url": "#/app/pinterest",
+            "icon": "",
+            "default": true,
+            "readonly": false
+        }, {
+            "id": 25,
+            "title": "Podcasts",
+            "contenttype": "AudioVideo",
+            "url": "#/app/podcasts",
+            "icon": "",
+            "default": true,
+            "readonly": false
+        }, {
+            "id": 26,
+            "title": "CDC Director Briefing",
+            "contenttype": "AudioVideo",
+            "url": "#/app/cdcdirectorbriefing",
+            "icon": "",
+            "default": true,
+            "readonly": false
+        }, {
+            "id": 27,
+            "title": "CDC-TV",
+            "contenttype": "AudioVideo",
+            "url": "#/app/cdctv",
+            "icon": "",
+            "default": true,
+            "readonly": false
+        }, {
+            "id": 28,
+            "title": "Other Videos",
+            "contenttype": "AudioVideo",
+            "url": "#/app/othervideos",
+            "icon": "",
+            "default": true,
             "readonly": false
         }
     ]

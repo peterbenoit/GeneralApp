@@ -1,38 +1,33 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.cdc.generalapp" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-	<name>CDC General App</name>
-	
-	<description>
-	The CDC General App is a PhoneGap / Cordova Full Hybrid App with AngularJS + Ionic Framework.
-	</description>
-	
-	<content src="index.html" />
-	<access origin="*" />
-	<preference name="webviewbounce" value="false" />
-	<preference name="UIWebViewBounce" value="false" />
-	<preference name="DisallowOverscroll" value="true" />
-
-	<!-- Don't store local date in an iCloud backup. Turn this to "cloud" to enable storage 
-		 to be sent to iCloud. Note: enabling this could result in Apple rejecting your app.
-	-->
-	<preference name="BackupWebStorage" value="none" />
-
-	<!-- the following causes the build to crash -->
-	<!-- <gap:plugin name="nl.x-services.plugins.socialsharing" /> -->
-
-	<platform name="browser">
-		<preference name="SplashScreen" value="img/splash.png" /> <!-- defaults to "img/logo.png" -->
-		<preference name="SplashScreenDelay" value="10000" /> <!-- defaults to "3000" -->
-		<preference name="SplashScreenBackgroundColor" value="green" /> <!-- defaults to "#464646" -->
-		<preference name="ShowSplashScreen" value="false" /> <!-- defaults to "true" -->
-		<preference name="SplashScreenWidth" value="600" /> <!-- defaults to "170" -->
-		<preference name="SplashScreenHeight" value="300" /> <!-- defaults to "200" -->
-	</platform>
-	
-	<feature name="StatusBar">
-		<param name="ios-package" value="CDVStatusBar" onload="true" />
-	</feature>
-	<feature name="Toast">
-		<param name="android-package" value="nl.xservices.plugins.Toast" />
-	</feature>    
+    <name>CDC General App</name>
+    <description>
+    The CDC General App is a PhoneGap / Cordova Full Hybrid App with AngularJS + Ionic Framework.
+    </description>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="webviewbounce" value="false" />
+    <preference name="UIWebViewBounce" value="false" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="BackupWebStorage" value="none" />
+    <platform name="browser">
+        <preference name="SplashScreen" value="img/splash.png" />
+        <preference name="SplashScreenDelay" value="10000" />
+        <preference name="SplashScreenBackgroundColor" value="green" />
+        <preference name="ShowSplashScreen" value="false" />
+        <preference name="SplashScreenWidth" value="600" />
+        <preference name="SplashScreenHeight" value="300" />
+    </platform>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+    </feature>
+    <feature name="Toast">
+        <param name="android-package" value="nl.xservices.plugins.Toast" />
+    </feature>
+    <preference name="xwalkVersion" value="14+" />
+    <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
+    <preference name="xwalkMode" value="embedded" />
 </widget>

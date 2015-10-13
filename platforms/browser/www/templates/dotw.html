@@ -1,22 +1,36 @@
-<ion-view title="">
+<ion-view title="{{title()}}">
 	<ion-nav-buttons side="left">
-<!-- 	<img src="img/cdclogo.png">
-	<button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button>  -->
+<!-- 	<img src="img/mycdc.png">
+	<button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button> -->
 	</ion-nav-buttons>
 	<ion-nav-buttons side="right">
 	<a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
 	</ion-nav-buttons>
 	<ion-content class="has-header">
-        {{storage}}
-        
-        <div class="list">
+		{{storage}}
 
-            <a class="item {{disease.cardtype}}" ng-class="{'item-thumbnail-left' : new.picture}" href="#/app/dotw/{{$index}}" ng-repeat="disease in diseases">
-                <h2>{{disease.name}} ({{disease.cardtype}})</h2>
-                <p>{{disease.shortDescription}}</p>
+        <ion-refresher
+        pulling-text="Pull to refresh..."
+        on-refresh="doRefresh()">
+        </ion-refresher>
+
+        <ion-list>
+
+            <a class="card type-c" href="#/app/disease/{{$index}}" ng-repeat="d in diseases | limitTo: paginationLimit()">
+                <div class="item item-thumbnail-left">
+                    <img ng-src="{{d.enclosures[0].resourceUrl}}" alt="{{d.name}}" class="thumbnail" err-SRC="img/d-placeholder.png">
+                    <strong>{{d.name | words:10}}</strong>
+                    <p>{{d.description}}</p>
+                </div>
             </a>
 
+        </ion-list>
+
+        <div class="padding">
+            <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()">
+                Show more
+            </button>
         </div>
-       
-    </ion-content>
+
+	</ion-content>
 </ion-view>

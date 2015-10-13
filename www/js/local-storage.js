@@ -143,77 +143,7 @@ angular.module('cdcgeneralapp.storage', [])
         }
     };
 })
-.factory('AboutStorage', function() {
-    return {
-        all: function() {
-            var about = window.localStorage['about'];
-            if (about) {
-                return angular.fromJson(about);
-            }
-            return {};
-        },
-        save: function(about) {
-            window.localStorage['about'] = angular.toJson(about);
-        },
-        clear: function() {
-            window.localStorage.removeItem('about');
-        }
-    };
-})
 
-.factory('PostsStorage', function() {
-    return {
-        all: function() {
-            var posts = window.localStorage['posts'];
-            if (posts) {
-                return angular.fromJson(posts);
-            }
-            return {};
-        },
-        save: function(posts) {
-            window.localStorage['posts'] = angular.toJson(posts);
-        },
-        clear: function() {
-            window.localStorage.removeItem('posts');
-        }
-    };
-})
-
-.factory('ServerPostsStorage', function() {
-    return {
-        all: function() {
-            var serverposts = window.localStorage['serverposts'];
-            if (serverposts) {
-                return angular.fromJson(serverposts);
-            }
-            return {};
-        },
-        save: function(serverposts) {
-            window.localStorage['serverposts'] = angular.toJson(serverposts);
-        },
-        clear: function() {
-            window.localStorage.removeItem('serverposts');
-        }
-    };
-})
-
-.factory('FeedsStorage', function() {
-    return {
-        all: function() {
-            var feeds = window.localStorage['feeds'];
-            if (feeds) {
-                return angular.fromJson(feeds);
-            }
-            return {};
-        },
-        save: function(feeds) {
-            window.localStorage['feeds'] = angular.toJson(feeds);
-        },
-        clear: function() {
-            window.localStorage.removeItem('feeds');
-        }
-    };
-})
 
 .factory('SettingsStorage', function() {
     return {
@@ -223,23 +153,21 @@ angular.module('cdcgeneralapp.storage', [])
                 return angular.fromJson(settings);
             }
             return {
-            // Initial App Setting Values
-            options: [
-            {
-                name: 'First Option',
-                checked: true
-            },
-            {
-                name: 'Second Option',
-                checked: false
-            },
-            {
-                name: 'Third Option',
-                checked: false
-            }],
-            sorting: 'A',
-            range: 30
-        };
+                options: [
+                {
+                   name: 'Receive Notifications',
+                   checked: true
+                },
+                {
+                   name: 'Vibrate',
+                   checked: false
+                },
+                {
+                   name: 'Sound',
+                   checked: false
+                }],
+                sorting: 'A'
+            };
     },
     save: function(settings) {
         window.localStorage['settings'] = angular.toJson(settings);
@@ -248,4 +176,27 @@ angular.module('cdcgeneralapp.storage', [])
         window.localStorage.removeItem('settings');
     }
 };
+})
+
+.factory('MenuStorage', function() {
+    return {
+        all: function() {
+            var menu = window.localStorage['menu'];
+            if (menu) {
+                console.log("Menu Data Exists");
+                return angular.fromJson(menu);
+            }
+
+            // default settings, which ideally would come from a JSON file stored locally... say, config.json?
+            return {}
+
+        },
+        save: function(menu) {
+            console.log("Saving Menu: ", menu);
+            window.localStorage['menu'] = angular.toJson(menu);
+        },
+        clear: function() {
+            window.localStorage.removeItem('menu');
+        }
+    };
 });

@@ -1,12 +1,12 @@
 <ion-view title="">
 	<ion-nav-buttons side="left">
-	<img src="img/cdclogo.png">
-	<button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button> 
+	<img src="img/mycdc.png">
+	<button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button>
 	</ion-nav-buttons>
 	<ion-nav-buttons side="right">
 	<a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
 	</ion-nav-buttons>
-	<ion-content class="has-header" ng-init="loadImages('110/110')">		
+	<ion-content class="has-header" ng-init="loadImages('110/110')">
 
 		<div class="row" ng-repeat="image in images" ng-if="$index % 3 === 0">
 			<div class="col col-33" ng-if="$index < images.length">
@@ -19,6 +19,6 @@
 				<img ng-src="{{images[$index + 2].src}}" width="100%" />
 			</div>
 		</div>
-	
+
 	</ion-content>
 </ion-view>

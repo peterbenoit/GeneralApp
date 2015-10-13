@@ -1,5 +1,15 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="com.cdc.generalapp" version="2.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="Device">
+        <param name="browser-package" value="Device" />
+    </feature>
+    <preference name="AndroidPersistentFileLocation" value="Internal" />
+    <preference name="SplashScreen" value="img/splash.png" />
+    <preference name="SplashScreenDelay" value="10000" />
+    <preference name="SplashScreenBackgroundColor" value="green" />
+    <preference name="ShowSplashScreen" value="false" />
+    <preference name="SplashScreenWidth" value="600" />
+    <preference name="SplashScreenHeight" value="300" />
     <name>CDC General App</name>
     <description>
     The CDC General App is a PhoneGap / Cordova Full Hybrid App with AngularJS + Ionic Framework.
@@ -10,8 +20,7 @@
     <preference name="UIWebViewBounce" value="false" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="BackupWebStorage" value="none" />
-    <feature name="Device">
-        <param name="browser-package" value="Device" />
-    </feature>
-    <preference name="AndroidPersistentFileLocation" value="Internal" />
+    <preference name="xwalkVersion" value="14+" />
+    <preference name="xwalkCommandLine" value="--disable-pull-to-refresh-effect" />
+    <preference name="xwalkMode" value="embedded" />
 </widget>

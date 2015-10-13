@@ -1,13 +1,13 @@
 <ion-view title=""
     <ion-nav-buttons side="left">
-    <img src="img/cdclogo.png">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button> 
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button>
+    <img src="img/mycdc.png">
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
     <a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
     </ion-nav-buttons>
     <ion-content class="has-header">
-        
+
 		<div class="screen">
 			<img src="http://lorempixel.com/1024/768/"/>
 			<div class="item item-text-wrap">
@@ -15,7 +15,7 @@
                 <h2></h2>
 			</div>
 		</div>
-        
+
 		<div ng-repeat="item in items" ng-if="$index%3==0" class="row">
 
 			<div class="card col home">
@@ -33,7 +33,7 @@
                     <span class="item-note">{{items[$index + 1].note}}</span>
 				</a>
 			</div>
-            
+
 			<div class="card col home">
 				<a class="item item-text-wrap" href="{{items[$index + 2].url}}">
 					<h1><i class="icon {{items[$index + 2].icon}}"></i></h1>

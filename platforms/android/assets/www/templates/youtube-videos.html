@@ -1,34 +1,35 @@
 <ion-view title="">
     <ion-nav-buttons side="left">
-    <img src="img/cdclogo.png">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button> 
+<!--         <img src="img/mycdc.png">
+        <button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button> -->
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
-    <a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
+        <a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
     </ion-nav-buttons>
     <ion-content class="has-header">
-        
+
         <ion-refresher
         pulling-text="Pull to refresh..."
         on-refresh="doRefresh()">
         </ion-refresher>
-        
+
         <ion-list>
 
-            <a class="item item-thumbnail-left" href="#/app/youtubevideos/{{$index}}" ng-repeat="video in videos | limitTo: paginationLimit()">
-                <img ng-src="{{video.snippet.thumbnails.default.url}}" ng-if="video.snippet.thumbnails.default.url" alt="{{video.snippet.title}}"  class="thumbnail"></img>
-                
-                <h2>{{video.snippet.title}}</h2>
-                <p ng-bind-html="video.snippet.description"></p>
+            <a class="card type-c" href="#/app/youtubevideos/{{$index}}" ng-repeat="video in videos | limitTo: paginationLimit()">
+                <div class="item item-thumbnail-left" ng-click="clickControl('{{$index}}')">
+                    <img ng-src="{{video.enclosures[0].resourceUrl}}" alt="{{video.name}}" class="thumbnail" err-SRC="img/video-placeholder.png">
+                    <strong>{{video.name | words:10}}</strong>
+                    <p>{{video.description}}</p>
+                </div>
             </a>
 
         </ion-list>
-        
+
         <div class="padding">
-        <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()">
-        Show more
-        </button>
+            <button class="button button-block button-positive" ng-show="hasMoreItems()" ng-click="showMoreItems()">
+                Show more
+            </button>
         </div>
-       
+
     </ion-content>
 </ion-view>

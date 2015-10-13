@@ -1,167 +1,239 @@
 <ion-view title="">
 	<ion-nav-buttons side="left">
-		<img src="img/cdclogo.png">
-		<button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button> 
+		<button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button>
+		<img src="img/mycdc.png">
 	</ion-nav-buttons>
 	<ion-content class="has-header">
-<!-- 		<div class="row">
-			<div class="col">
-				<div class="card">
-					<div class="item item-text-wrap item-body">
-						This is a basic Card which contains an item that has wrapping text.
-					</div>
-				</div>
-			</div>
-			<div class="col">
-				<div class="card">
-					<div class="item item-text-wrap item-body">
-						This is a basic Card which contains an item that has wrapping text.
-					</div>
-				</div>
-				<div class="card">
-					<div class="item item-text-wrap item-body">
-						This is a basic Card which contains an item that has wrapping text.
-					</div>
-				</div>
-			</div>
-		</div> -->
 
-		<div class="row">
-			<div class="col">
-				<div class="listss card type-a">
-					<div class="item item-image">
-						<img src="https://placeimg.com/320/240/tech">
-					</div>
-					<div class="item item-text-wrap item-body">
-						<strong>(A1) A Polio-Free U.S.</strong>
-						<p class="date">Jul 22, 2015</p>
-						<p>Polio, a crippling and potentially fatal infectious disease, is still a threat in some countries. Get your children...</p>
-						<a class="source">Source</a>
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="row">
-			<div class="col">
+			<div class="row">
 				<div class="card type-a">
-					<div class="item item-image">
-						<img src="https://placeimg.com/320/240/tech">
+					<div class="item item-image" ng-click="clickControl('stream.sourcetype')">
+						<img src="http://placeimg.com/300/200/any/13">
 					</div>
-					<div class="item item-text-wrap item-body">
-						<strong>(A2) A Polio-Free U.S.</strong>
-						<p class="date">Jul 22, 2015</p>
-						<p>Polio, a crippling and potentially fatal infectious disease, is still a threat in some countries. Get your children...</p>
-						<a class="source">Source</a>
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>A1: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+						<p text-collapse text-collapse-max-length="110" text-collapse-text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source">stream.source</a>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col">
+			<div class="row">
 				<div class="card type-a">
-					<div class="item item-image">
-						<img src="https://placeimg.com/320/240/tech">
+					<div class="item item-image" ng-click="clickControl('stream.sourcetype')">
+						<img src="http://placeimg.com/300/200/any/13">
 					</div>
-					<div class="item item-text-wrap item-body">
-						<strong>(A3) A Polio-Free U.S.</strong>
-						<p class="date">Jul 22, 2015</p>
-						<a class="source">Source</a>
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>A2: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source">stream.source</a>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col">
+			<div class="row">
+				<div class="card type-b">
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>B1: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+						<p text-collapse text-collapse-max-length="110" text-collapse-text="Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum."></p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source">stream.source</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="card type-b">
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>B2: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source">stream.source</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
 				<div class="card type-b">
 					<div class="item item-text-wrap item-body">
-						<strong>(B1) A Polio-Free U.S.</strong>
-						<p class="date">Jul 22, 2015</p>
-						<p>Polio, a crippling and potentially fatal infectious disease, is still a threat in some countries. Get your children...</p>
-						<a class="source">Source</a>
+						<strong>B3: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<div class="card type-b">
-					<div class="item item-text-wrap item-body">
-						<strong>(B2) A Polio-Free U.S.</strong>
-						<p class="date">Jul 22, 2015</p>
-						<p>Polio, a crippling and potentially fatal infectious disease, is still a threat in some countries. Get your children...</p>
-						<a class="source">Source</a>
+			<div class="row">
+				<div class="card type-c">
+					<div class="item item-thumbnail-left" ng-click="clickControl('stream.sourcetype')">
+						<img src="http://placeimg.com/300/200/any/13">
+						<strong>C1: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+						<p class="source"><a href="#app/source/stream.source">stream.source</a></p>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<div class="card type-c">
-					<a class="item item-thumbnail-left" href="#">
-						<img src="https://placeimg.com/320/240/tech">
-						<strong>(C1) A Polio-Free U.S.</strong>
-						<p class="date">Jul 22, 2015</p>
-						<p class="source">Source</p>
-					</a>
+			<div class="row">
+				<div class="card type-d2 inline">
+					<div class="item item-image" ng-click="clickControl('stream.sourcetype')">
+						<img src="http://placeimg.com/300/200/any/13">
+					</div>
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>D1: Lorem ipsum dolor sit</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source">stream.source</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<div class="card type-c">
-					<a class="item item-thumbnail-left" href="#">
-						<img src="https://placeimg.com/320/240/tech">
-						<strong>(C2) A Polio-Free U.S.</strong>
-						<p class="date">Jul 22, 2015</p>
-						<p class="source">Source</p>
-					</a>
+			<div class="row">
+				<div class="card type-d2 inline">
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>D2: Lorem ipsum dolor sit</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source/stream.source">stream.source</a>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<div class="card type-e">
-					<a class="item item-body" href="#">
-						<strong>(E1) A Polio-Free U.S.</strong>
-						<p class="date">Jul 22, 2015</p>
-						<p class="source">Source</p>
-					</a>
+			<div class="row">
+				<div class="card type-c" href="stream.targetUrl">
+					<div class="item item-thumbnail-left">
+						<img src="http://placeimg.com/300/200/any/13">
+						<strong>S: Lorem ipsum dolor sit amet, consectetur adipisicing elit.</strong>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col">
-				<div class="card type-e">
-					<a class="item item-body" href="#">
-						<strong>(E2) A Polio-Free U.S.</strong>
-						<p class="date">Jul 22, 2015</p>
-						<p class="source"> Source</p>
-					</a>
+			<div class="row">
+				<div class="card type-c" href="stream.targetUrl">
+					<div class="item item-thumbnail-right">
+						<img src="http://placeimg.com/300/200/any/13">
+						<strong>S: Lorem ipsum dolor sit amet, consectetur adipisicing elit.</strong>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+					</div>
 				</div>
 			</div>
-		</div>
-		<div class="row">
-			<div class="col-50">
-				<div class="card type-d">
+			<div class="row">
+				<div class="card type-d2 inline" href="stream.targetUrl">
 					<div class="item item-image">
-						<img src="https://placeimg.com/320/240/tech">
+						<img src="http://placeimg.com/300/200/any/13">
 					</div>
 					<div class="item item-text-wrap item-body">
-						<strong>(D1) A Polio-Free U.S.</strong>
-						<p class="date">Jul 22, 2015</p>
-						<a class="source">Source</a>
+						<strong>S: Lorem ipsum dolor sit amet, consectetur adipisicing elit.</strong>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+			tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+			quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+			consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+			cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+			proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
 					</div>
 				</div>
 			</div>
-			<div class="col-50">
-				<div class="card type-d">
-					<div class="item item-text-wrap item-body">
-						<strong>(D2) A Polio-Free U.S.</strong>
-						<p class="date">Jul 22, 2015</p>
-						<a class="source">Source</a>
+			<div class="row">
+				<div class="card type-t1">
+					<div class="item item-notice"><strong>Travel Notice</strong> - Watch Level 1</div>
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>T1: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source">stream.source</a>
 					</div>
 				</div>
 			</div>
-		</div>		
+			<div class="row">
+				<div class="card type-t2">
+					<div class="item item-notice"><strong>Travel Notice</strong> - Alert Level 2</div>
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>T2: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source">stream.source</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="card type-t3">
+					<div class="item item-notice"><strong>Travel Notice -</strong> Warning Level 3</div>
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>T3: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source">stream.source</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="card type-t1a">
+					<div class="item item-notice"><span class="ion-bag"></span><strong>Travel Notice</strong> - Watch Level 1</div>
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>T1: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source">stream.source</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="card type-t2a">
+					<div class="item item-notice"><span class="ion-bag"></span><strong>Travel Notice</strong> - Alert Level 2</div>
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>T2: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source">stream.source</a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="card type-t3a">
+					<div class="item item-notice"><span class="ion-bag"></span><strong>Travel Notice</strong> - Warning Level 3</div>
+					<div class="item item-text-wrap item-body" ng-click="clickControl('stream.sourcetype')">
+						<strong>T3: Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod</strong>
+						<p class="date">amDateFormat:'MMMM Do, YYYY'</p>
+					</div>
+					<div class="item item-divider source">
+						<a href="#app/source/stream.source">stream.source</a>
+					</div>
+				</div>
+			</div>
+
+
+
 	</ion-content>
 </ion-view>

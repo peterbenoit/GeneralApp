@@ -1,19 +1,19 @@
 <ion-view title="">
     <ion-nav-buttons side="left">
-    <img src="img/cdclogo.png">
-    <button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button> 
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"> Menu</button>
+    <img src="img/mycdc.png">
     </ion-nav-buttons>
     <ion-nav-buttons side="right">
     <a class="button button-clear" href="#/app/settings"><i class="icon ion-gear-a"></i></a>
     </ion-nav-buttons>
     <ion-content class="has-header">
-        
+
         {{storage}}
 
         <div class="row healtharticles" ng-repeat="row in healtharticles | partition:2">
         {{row.category._term}}
             <div class="col card {{field.cardtype}}" ng-repeat="field in row">
-                
+
                 <a href="#/app/healtharticle/{{(($parent.$index*row.length)+$index)}}">
                     <h2>{{field.title.__cdata}}</h2>
                     <p>{{field.summary.__cdata}}</p>
@@ -24,7 +24,7 @@
             <p class="tags"><i class="icon ion-pricetags"></i>
             <span ng-repeat="tag in product.tags">{{tag}}{{$last ? '' : ', '}}</span>
             </p>
-           -->  
+           -->
             </div>
         </div>
 
